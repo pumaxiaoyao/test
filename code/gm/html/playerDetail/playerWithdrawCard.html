@@ -1,0 +1,85 @@
+<form id="form_wd_card" class="form-horizontal" role="form" method="post" action="/player/editWDCard">
+    <input type="hidden" name="wdbankid" value="%CardIdx%"/>
+
+    <div class="form-body">
+        <div class="form-group">
+            <label class="col-md-3 control-label">所属银行<span class="required">*</span></label>
+
+            <div class="col-md-8">
+                <select class="form-control" tabindex="1" name="bankType" id="bankType">
+                                            %BankOptions%
+                                    </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-3 control-label">持卡人<span class="required">*</span></label>
+
+            <div class="col-md-8">
+
+                <input type="text" name="account" id="account" class="form-control"
+                       value="%RealName%">
+
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-3 control-label">开户账号<span class="required">*</span></label>
+
+            <div class="col-md-8">
+
+                <input type="text" name="card" id="card" class="form-control"
+                       value="%CardNo%">
+
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-3 control-label">开户行</label>
+
+            <div class="col-md-8">
+
+                <input type="text" name="banknode" id="banknode" class="form-control"
+                       value="%registerBank%">
+                <span class="help-block">如<font color="red">工行</font>需填写此项，示例：河南商丘工商银行五一路支行</span>
+
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-3 control-label">状态</label>
+
+            <div class="col-md-8">
+                <select class="form-control" tabindex="1" name="status" id="status">
+                    %StatusOptions%
+</select>            </div>
+        </div>
+    </div>
+</form>
+<script type="text/javascript">
+    $('#form_wd_card').ajaxForm({
+        error: function () {
+            $.notific8('未知错误！', {theme: 'ebony'});
+        },
+        success: function (data) {
+            data = JSON.parse(data);
+            if (data.success) {
+                $('#_user_wd_card').modal('hide');
+                update_wdbank(data.response);
+                $.notific8("编辑银行卡信息成功！");
+            } else {
+                $.notific8(data.msg, {theme: 'ebony'});
+            }
+        }
+    });
+
+    var _wd_card_status = {'0':'<span class="label label-warning">未知</span>',
+        '1':'<span class="label label-success">有效</span>',
+        '2':'<span class="label label-danger">无效</span>'};
+    function update_wdbank(data) {
+        var tr = $('#_wdbandkid_' + data.wdbankid);
+        for (var key in data) {
+            var text = data[key];
+            if(key == 'status'){
+                text = _wd_card_status[data[key]];
+            }
+            var td = $(tr).find('td[' + key + '=' + key + ']').html(text);
+        }
+    }
+</script>

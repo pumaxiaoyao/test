@@ -1,0 +1,28 @@
+/*banner start*/
+.c_top{
+	position:relative;
+	width:100%;
+	height:460px;
+	max-width:1920px;
+}
+.ct_img{
+	width:100%;
+	height:460px;
+	position:relative;
+	overflow:hidden;
+	}
+.gt_img{width:100%; height: 100%; position: absolute; background-position:  center; opacity: 0;  filter:alpha(opacity=0);}
+
+.gt_swf{width:100%; height: 460px; position: absolute; top: 0px; left: 0px;}
+/*.gt_ad_btn1{width:145px; height: 36px; position: absolute; top: 220px; left: 50%; display: none;}*/
+.gt_ad_btn4{width:145px; height: 36px; margin: 400px auto; display: none;}
+.dl_btn{width:150px; height:36px; line-height:36px; *line-height:38px; font-size:14px;color:#ffffff; text-align:center; float:right; display:block; background:url(/static/imgs/btn_download.png) no-repeat;}
+.dl_btn:hover{ background-position:0 -40px;}
+
+.gt_bnctrl{width:40px; min-height:40px; overflow: hidden; position: absolute; top:35px; right:8%; z-index: 2;}
+.gt_icon{width:40px; height: 40px; margin-bottom: 10px; cursor:pointer;}
+
+.dl_btn{width:150px; height:36px; line-height:36px; *line-height:38px; font-size:14px;color:#ffffff; text-align:center; float:right; display:block; background:url(../imgs/btn_download.png) no-repeat;}
+.dl_btn:hover{ background-position:0 -40px;}
+/*banner end*/
+

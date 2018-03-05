@@ -1,0 +1,403 @@
+.container {
+    background: url(../../static/img/slots/slots_bj.png) no-repeat center top #1e314d;
+    text-align: center;
+}
+
+.slots_bj {
+    width: 1190px;
+    margin: auto;
+    height: 215px;
+    position: relative;
+
+}
+
+.slots_nr {
+    border-top: 4px solid #0099ff;
+    width: 1190px;
+    margin: auto;
+    height: 513px;
+    background: url(../../static/img/slots/slots_nr.png) no-repeat center top;
+
+}
+
+.slots_title {
+    padding: 0;
+    margin: 0;
+}
+
+.slots_title li {
+    float: left;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.slots_title li {
+    font-size: 18px;
+    color: #ffffff;
+    height: 57px;
+    line-height: 57px;
+    width: 94px;
+    display: inline-block;
+}
+
+.slots_title li a {
+    text-align: center;
+    color: #fff;
+    text-decoration: none;
+    display: block
+}
+
+.slots_title li a:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #0099ff;
+}
+
+.slots_title li a.on {
+    background: rgba(255, 255, 255, 0.1);
+    color: #0099ff;
+}
+
+.slots_title li + li {
+    font-size: 14px;
+}
+
+.slots_top {
+    display: inline-block;
+    width: 100%;
+    height: 437px;
+    overflow: hidden;
+
+}
+
+.slots_top ul, .slots_top ul li, .slots_list ul, .slots_list ul li {
+    padding: 0;
+    margin: 0;
+}
+
+.slots_top ul, .slots_list ul {
+    padding: 0 15px;
+}
+
+.slots_top ul li, .slots_list ul li {
+    float: left;
+    list-style: none;
+}
+
+.slots_top li a {
+    text-decoration: none;
+    display: inline-block;
+    width: 100%;
+    position: relative
+}
+
+.slots_top li a span.text, .slots_list li a span.text {
+    display: block;
+    line-height: 40px;
+    height: 40px;
+    color: #fff;
+    transition: color 0.25s;
+}
+
+.slots_top li {
+    height: 290px;
+    width: 491px;
+
+    overflow: hidden;
+    float: left
+}
+
+.slots_top li img {
+    transition: all 0.3s;
+    transform: scale(1);
+}
+
+.slots_top li + li, .slots_list ul li {
+    width: 157px;
+    height: 146px;
+
+}
+
+.slots_top li + li + li + li + li + li + li + li + li + li {
+    margin-left: 0;
+}
+
+.slots_top li + li + li + li + li + li + li + li + li + li + li {
+    margin-left: 10px;
+}
+
+.slots_top li .imgDiv {
+    width: 487px;
+    height: 256px;
+    overflow: hidden
+}
+
+.slots_top li + li .imgDiv, .slots_list ul li .imgDiv {
+    height: 106px;
+    width: 157px;
+    border: 2px solid #fff;
+    overflow: hidden
+}
+
+.slots_top li + li img, .slots_list ul li img {
+    height: 106px;
+    width: 157px;
+    transition: all 0.3s;
+    transform: scale(1);
+}
+
+.slots_top li + li {
+    margin-left: 10px;
+}
+
+.slots_top li + li a, .slots_list ul li a {
+    position: relative;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.slots_top li + li a .slots_covering, .slots_list li a .slots_covering {
+    background: rgba(82, 199, 151, 0.8);
+    height: 100%;
+    left: 0;
+    top: -100%;
+    width: 100%;
+    position: absolute;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+}
+
+.slots_top li + li a .slots_covering span, .slots_list li a .slots_covering span {
+    color: #fff
+}
+
+.slots_top li + li a:hover .slots_covering, .slots_list li a:hover .slots_covering, .slots_list li a:hover .slots_covering {
+    position: absolute;
+    width: 100%;
+    height: 106px;
+    background: rgba(82, 199, 151, 0.8);
+    /*opacity:.85;background:#76cca1;background:-moz-linear-gradient(top,#76cca1 12%,#44ce89 88%);background:-webkit-gradient(linear,left top,left bottom,color-stop(12%,#76cca1),color-stop(88%,#44ce89));background:-webkit-linear-gradient(top,#76cca1 12%,#44ce89 88%);background:-o-linear-gradient(top,#76cca1 12%,#44ce89 88%);background:-ms-linear-gradient(top,#76cca1 12%,#44ce89 88%);background:linear-gradient(to bottom,#76cca1 12%,#44ce89 88%);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#76cca1', endColorstr='#44ce89', GradientType=0)*/
+    top: 0;
+}
+
+.slots_top li a:hover .text {
+    color: #0088ff;
+}
+
+.slots_top li a:hover img, .slots_list li a:hover img {
+    transform: scale(1.1);
+}
+
+.slots_top li + li a div b, .slots_top li + li a:hover div b, .slots_list li a div b, .slots_list li a:hover div b {
+    text-align: center;
+    display: inline-block;
+    width: 100%;
+    padding-top: 10px;
+    color: #fff;
+    font-weight: normal;
+}
+
+.slots_top li + li a:hover div .text_nr, .slots_list li a div .text_nr {
+    clear: both;
+    font-size: 12px;
+    color: #fff;
+    margin: 7px 0;
+    display: block
+}
+
+.slots_top li + li a em, .slots_list li a em {
+    color: #fff;
+    font-style: normal
+}
+
+.slots_top li + li a em strong, .slots_list li a em strong {
+    width: 95px;
+    line-height: 25px;
+    height: 25px;
+    background: #fff;
+    color: #0099ff;
+    text-align: center;
+    display: inline-block;
+    font-weight: normal;
+    border-radius: 2px;
+    font-size: 12px;
+    vertical-align: middle;
+    margin-right: 4px;
+}
+
+.slots_top li + li a:hover em i, .slots_list li a:hover em i {
+    border-radius: 2px;
+    line-height: 25px;
+    height: 25px;
+    width: 29px;
+    display: inline-block;
+    vertical-align: middle;
+    background: url(/static/img/PT_sc_icon.png) no-repeat;
+}
+
+.slots_top li + li a:hover em i.on, .slots_list li a:hover em i.on {
+    background-position: -29px 0px;
+}
+
+.slots_top ul li a div.keywords {
+    position: absolute;
+    bottom: 44px;
+    right: 5px;
+}
+
+.slots_top ul li a div.keywords span {
+    background: rgba(0, 0, 0, 0.8);
+    padding: 2px 4px;
+    font-size: 10px;
+    text-align: center;
+    margin: 0 2px;
+    color: #fff;
+}
+
+.slots_top ul li a div.hot {
+
+}
+
+.slots_top ul li a div.hot .hd, .slots_top ul li a div.hot .movie {
+    width: 60px;
+    height: 60px;
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    transition: top 0.25s ease-out 0s, right 0.25s ease-out 0s;
+}
+
+.slots_top ul li a div.hot .hd {
+    background: url(../../static/img/slots/slots_tip2.png) no-repeat;
+}
+
+.slots_top ul li a div.hot .movie {
+    background: url(../../static/img/slots/slots_tip.png) no-repeat;
+}
+
+.slots_search {
+    background: #152236;
+    width: 1190px;
+    margin: auto;
+
+}
+
+.slots_search_title {
+    display: inline-block;
+    width: 100%;
+    text-align: initial;
+    padding: 30px 15px;
+
+}
+
+.slots_search_title div {
+    height: 20px;
+    line-height: 20px;
+    margin: 10px 0
+}
+
+.slots_search_title div span, .slots_search_title div a {
+    font-size: 12px;
+    text-decoration: none;
+    color: #fff;
+}
+
+.slots_search_title div span {
+    margin-right: 20px;
+}
+
+.slots_search_title div a {
+    padding: 0 8px;
+    height: 20px;
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.slots_search_title div a:hover, .slots_search_title div a.on {
+    background: #0088ff;
+}
+
+.slots_list {
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.slots_list ul {
+    margin-left: -10px;
+}
+
+.slots_list ul li {
+    margin-left: 10px;
+    overflow: hidden
+}
+
+.slots_list ul li a:hover .text {
+    color: #0088ff;
+}
+
+.slots_list ul li a:hover img {
+    border: 2px solid rgba(0, 132, 255, 1);
+    transform: scale(1.1);
+}
+
+.slots_list ul li a:hover .hot .hd, .slots_list ul li a:hover .hot .movie {
+    top: -4px;
+    right: -6px;
+}
+
+.slots_list ul li a div.keywords {
+    position: absolute;
+    bottom: 44px;
+    right: 5px;
+}
+
+.slots_list ul li a div.keywords span {
+    background: rgba(0, 0, 0, 0.8);
+    padding: 2px 4px;
+    font-size: 10px;
+    text-align: center;
+    margin: 0 2px;
+    color: #fff;
+
+}
+
+.slots_list ul li a div.hot {
+
+}
+
+.slots_list ul li a div.hot .hd, .slots_list ul li a div.hot .movie {
+    width: 60px;
+    height: 60px;
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    transition: top 0.25s ease-out 0s, right 0.25s ease-out 0s;
+}
+
+.slots_list ul li a div.hot .hd {
+    background: url(../../static/img/slots/slots_tip2.png) no-repeat;
+}
+
+.slots_list ul li a div.hot .movie {
+    background: url(../../static/img/slots/slots_tip.png) no-repeat;
+}
+
+.slots_jackpot{
+    background: url(../../static/img/slots/jackpot.png) no-repeat;
+     margin:313px auto auto auto;
+    width: 415px;
+    height: 115px;
+}
+#total{width:100%; height:54px; line-height:54px;  font-size:20px; }
+#total .t_num{ display:inline-block; line-height:13px; padding-top: 65px; float: left}
+#total .t_num i{width:18px;height:23px; display:inline-block; background: url(../../static/img/slots/number.png) no-repeat; background-position:0 0; text-indent:-999em; margin:10px;}
+#total .t_num i+i{ margin-right:20px;}
+#total .t_num i+i+i,#total .t_num i+i+i+i+i+i{ margin-right: 11px;}
+#total .t_num i+i+i+i+i,#total .t_num i+i+i+i+i+i+i+i{margin-right:20px; margin-left: 11px;}
+#total .t_num i+i+i+i+i+i+i+i+i{margin-right:7px;}
+.slots_gif_1{background: url(../../static/img/slots/potgif.gif) no-repeat; width: 318px;height: 167px; display: inline-block; position: absolute}

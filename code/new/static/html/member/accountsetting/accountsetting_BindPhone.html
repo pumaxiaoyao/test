@@ -1,0 +1,27 @@
+<div class="bindinfo_box" id="ismobile_box">
+        <div>
+            <img src="/static/img/secure_phone.png" /> <br />
+            <span style="color:#808080;">阁下已绑定的手机</span><br />
+            <span>%BindPhoneNumber%</span>
+        </div>
+        <div id="change_phone_bt" style="margin-top:10px;"  class="centered as_but inputwd300">
+            更换绑定的手机
+        </div>
+    </div>
+
+    
+    <div id="remobile_box" style="display:none;" class="from_Centered" >
+        <div class="setting_pwd_box_row">
+            手机号码： 
+            <input id="setting_phone_box_phonenumber"  value="%BindPhoneNumber%" readonly="readonly" class="r_inptut inputwd300"  type="text" />
+        </div>
+
+        <div class="setting_pwd_box_row" >
+            验证码：
+            <input id="re_phone_code" class="r_inptut inputwd300" type="text" style="width:177px;vertical-align: middle;" />  
+            <span class="setting_phone_tip"><a id="GetUnPhoneCodeBt">获取验证码</a>  <b id="GetPhoneTime" style="display: none; "><span class="time_sec" id="phoneTiming">60</span>s</b></span>
+        </div>
+        <div class="setting_pwd_box_row">
+            <button id="re_phone" type="button" class="as_but inputwd300">解绑</button>
+        </div>
+    </div>  

@@ -1,0 +1,365 @@
+.mod-reg,
+.mod-forget-passwd,
+.mod-error {
+    background: #f7f7f7;
+    padding: 30px 0 80px;
+}
+
+.mod-reg .layout,
+.mod-forget-passwd .layout,
+.mod-error .layout {
+    overflow: hidden;
+    border: 1px solid #e5e5e5;
+    background: #fff;
+}
+
+.mod-reg .hd,
+.mod-forget-passwd .hd {
+    padding: 28px 30px;
+    border-bottom: 1px dashed #e3e3e3;
+}
+
+.mod-reg .hd h3,
+.mod-forget-passwd .hd h3 {
+    font-size: 24px;
+    line-height: 24px;
+    color: #cf271e;
+}
+
+.mod-reg .hd p {
+    padding-top: 10px;
+    color: #666;
+    line-height: 12px;
+}
+
+.cRed,
+a.cRed,
+.cRed a,
+.cRed a:active {
+    color: #ea0011;
+}
+
+i,
+em {
+    font-style: normal;
+}
+
+.layout {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.mod-reg fieldset,
+.mod-forget-passwd fieldset {
+    border: 1px solid #eee;
+    margin: 30px;
+    padding: 10px;
+}
+
+.mod-reg fieldset legend {
+    font-size: 21px;
+    color: #333;
+}
+
+legend {
+    display: block;
+    -webkit-padding-start: 2px;
+    -webkit-padding-end: 2px;
+    border-width: initial;
+    border-style: none;
+    border-color: initial;
+    border-image: initial;
+}
+
+.mod-reg .agreement {
+    margin: 0 160px;
+    color: #999;
+}
+
+.mod-reg .agreement a {
+    color: #cf271e;
+    text-decoration: underline;
+}
+
+.mod-reg .reg-sub a:hover,
+.mod-forget-passwd .ways a:hover {
+    background-position: 0 -149px;
+}
+
+.mod-reg .reg-sub a,
+.mod-forget-passwd .ways a {
+    background: url(/static/img/btn_spirits.png) no-repeat 0 -106px;
+    margin: 30px 160px;
+    display: block;
+    width: 180px;
+    height: 43px;
+    color: #fff;
+    font-size: 18px;
+    text-align: center;
+    line-height: 43px;
+}
+
+ol,
+ul {
+    list-style: none;
+}
+
+.mod-forms li,
+.mod-forget-passwd li,
+.mod-reg .mod-forms li {
+    margin-bottom: 10px;
+}
+
+.mod-reg .mod-forms label,
+.mod-forget-passwd li label {
+    color: #333;
+}
+
+.mod-forms label,
+.mod-forget-passwd li label {
+    line-height: 30px;
+}
+
+.mod-forms label,
+.mod-forget-passwd li label {
+    width: 120px;
+    text-align: right;
+    float: left;
+    margin-right: 10px;
+    font-size: 16px;
+    line-height: 40px;
+}
+
+.mod-forms .item-ipt {
+    float: left;
+    display: inline;
+}
+
+.mod-forms .item-ipt p {
+    margin-top: 14px;
+}
+
+.mod-forms .item-ipt .tips {
+    color: #666;
+    vertical-align: middle;
+    margin-left: 5px;
+}
+
+li:after,
+.user-form:after,
+.mod-forms-list li:after {
+    display: block;
+    overflow: hidden;
+    clear: both;
+    height: 0;
+    visibility: hidden;
+    content: ".";
+}
+
+select,
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"],
+.uneditable-input {
+    display: inline-block;
+    height: 34px;
+    padding: 4px 6px;
+    font-size: 14px;
+    line-height: 20px;
+    color: #444;
+    vertical-align: middle;
+}
+
+.hd_input_unpwd {
+    width: 150px;
+    background: #33425A;
+    color: #fff;
+    height: 24px !important;
+    line-height: 24px !important;
+    padding-left: 10px;
+    border: 1px solid #33425A;
+    overflow: hidden;
+    border-radius: 3px;
+}
+
+.nav {
+    width: 605px;
+}
+
+.ag-ctr-nav {
+    width: 484px;
+}
+
+.mod-agency {
+    background: #f5f5f5;
+    padding: 30px 0;
+}
+
+.agency-home {
+    padding: 0 0 120px;
+}
+
+.agency-platform li {
+    margin: 50px 0 0;
+    background: #fff;
+    border-radius: 20px;
+    -moz-border-radius: 20px;
+    -webkit-border-radius: 20px;
+    overflow: hidden;
+    height: 216px;
+}
+
+.agency-platform .platform-logo {
+    width: 300px;
+    margin: 70px 0 0;
+    height: 70px;
+    border-right: 1px solid #e5e5e5;
+    text-align: center;
+}
+
+.agency-platform .platform-logo h2 {
+    font: 30px/1.2 "Microsoft YaHei";
+    color: #cf271e;
+}
+
+.agency-platform .platform-text {
+    font-size: 14px;
+    width: 360px;
+    padding: 60px 10px 10px 100px;
+    color: #666;
+    line-height: 2.2;
+}
+
+.agency-platform .platform-text strong {
+    color: #ff9a01;
+    padding-right: 20px;
+}
+
+.agency-platform .platform-go {
+    background: url(/static/img/btn_spirits.png) no-repeat;
+    margin: 80px 140px 0px 0;
+    width: 215px;
+    height: 53px;
+    cursor: pointer;
+    color: #fff;
+    font-size: 22px;
+    text-align: center;
+    line-height: 53px;
+}
+
+.agency-platform .platform-go:hover {
+    background-position: 0 -53px;
+}
+
+.agency-content {
+    background: #fff;
+    color: #666;
+    margin: 20px auto 70px;
+}
+
+.agency-content .agency-wrap {
+    padding: 40px;
+}
+
+.agency-content h2 {
+    font: 30px/1.5 "Microsoft YaHei";
+    margin-bottom: 30px;
+    color: #222;
+    text-align: center;
+}
+
+.agency-content p {
+    font-size: 14px;
+    line-height: 24px;
+    margin: 10px 0;
+    text-indent: 2em;
+}
+
+.agency-content h3 {
+    font: 18px/1.5 "Microsoft YaHei";
+    color: #cf271e;
+    margin-top: 30px;
+}
+
+.agency-content .child {
+    font-size: 12px;
+    text-indent: 4em;
+}
+
+.agency-content .form-t th {
+    background: #cf271e;
+    border-color: #e3cbcb;
+    color: #fff;
+}
+
+.agency-content .form-t td {
+    background: #fff;
+    border-color: #e3cbcb;
+    color: #666;
+}
+
+.mod-forms .tips-date,
+.mod-forms .add-btn,
+.mod-forms .del-btn,
+span.error-tips,
+span.valid-tips,
+.forms-btn-g .btn-sub,
+.refresh-btn,
+.forms-btn-g a,
+.forms-btn-g input,
+.item .item-tab a.current i,
+.bank-card-info .btn-copy,
+.btn-red .btn-sub,
+.unfold i,
+.fold i,
+.hd-cell i,
+.item .item-tab .tip-dot,
+.items-tab .tip-dot,
+.recycle-btn,
+.recycle-btn em,
+.form-guide .form-guide-btn,
+.form-guide .form-guide-btn i,
+.transfer-btn a,
+.lock-btn a,
+.mod-retrieval .btn-sub,
+.mod-retrieval .btn {
+    background: url(/static/img/common_spirits.png) no-repeat;
+}
+
+span.valid-tips,
+span.error-tips {
+    height: 18px;
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 5px;
+}
+
+.gender span.valid-tips,
+.gender span.error-tips {
+    margin-top: 5px;
+}
+
+span.error-tips {
+    background-position: 0 -70px;
+    padding-left: 23px;
+    color: #cc000f;
+    line-height: 18px;
+}
+
+span.valid-tips {
+    background-position: 0 0;
+    width: 18px;
+    padding: 0;
+}

@@ -1,0 +1,28 @@
+将以下信息配置到apache的http-vhost文件中
+
+
+<VirtualHost *:8080>
+    RewriteEngine on
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_URI} !^/(css|js|ajax|image|incloud)/.*$
+    RewriteCond %{REQUEST_URI} !^.*(/.css|/.js|/.gif|/.png|/.jpg|/.jpeg|/.php|/.woff2|/.woff)$
+    RewriteRule ^(.+)$ /index.php/$1
+    ##ServerAdmin webmaster@dummy-host.example.com
+    ##DocumentRoot "C:/xampp/htdocs/dummy-host.example.com"
+    DocumentRoot "C:\Users\17385\Desktop\wok\res_dev\gm"
+    ServerName localhost:8080
+    <ifModule dir_module>
+        DirectoryIndex index.php
+    </ifModule>
+    
+    <Directory "C:\Users\17385\Desktop\wok\res_dev\gm">
+      Options FollowSymLinks IncludesNOEXEC Indexes
+      DirectoryIndex index.php index.html index.shtml
+      AllowOverride all
+      Order Deny,Allow
+      Allow from all
+    </Directory>
+    ##ServerAlias www.dummy-host.example.com
+    ##ErrorLog "logs/dummy-host.example.com-error.log"
+    ##CustomLog "logs/dummy-host.example.com-access.log" common
+</VirtualHost>

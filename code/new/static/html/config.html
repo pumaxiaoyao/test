@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>AlienPage ConfigTool</title>
+
+<script type="text/javascript">
+        
+function validation()
+{
+    var gmHost = document.getElementById("gmHost").value;
+    var gmPort = document.getElementById("gmPort").value;
+    var gmDebug = document.getElementById("gmDebug").value;
+
+    var webHost = document.getElementById("webHost").value;
+    var webPort = document.getElementById("webPort").value;
+    var webDebug = document.getElementById("webDebug").value;
+
+    var postStr = "gmHost="+gmHost+"&gmPort="+gmPort+"&gmDebug="+gmDebug+"&webHost="+webHost+"&webPort="+webPort+"&webDebug="+webDebug;
+    
+	ajax("/API/common/ModifyIp",postStr,function(result){
+        
+        document.getElementById("info").innerHTML=result;
+		});
+}
+
+function ajax(url,postStr,onsuccess)
+{
+    var xmlhttp = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP'); //创建XMLHTTP对象，考虑兼容性。XHR
+    xmlhttp.open("POST", url, true); //“准备”向服务器的GetDate1.ashx发出Post请求（GET可能会有缓存问题）。这里还没有发出请求
+
+    //AJAX是异步的，并不是等到服务器端返回才继续执行
+    xmlhttp.onreadystatechange = function ()
+    {
+        if (xmlhttp.readyState == 4) //readyState == 4 表示服务器返回完成数据了。之前可能会经历2（请求已发送，正在处理中）、3（响应中已有部分数据可用了，但是服务器还没有完成响应的生成）
+        {
+            if (xmlhttp.status == 200) //如果Http状态码为200则是成功
+            {
+                onsuccess(xmlhttp.responseText);
+            }
+            else
+            {
+                alert("AJAX服务器返回错误！");
+            }
+        }
+    }
+	xmlhttp.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
+    //不要以为if (xmlhttp.readyState == 4) {在send之前执行！！！！
+    xmlhttp.send(postStr); //这时才开始发送请求。并不等于服务器端返回。请求发出去了，我不等！去监听onreadystatechange吧！
+}
+</script>
+</head>
+<body>
+        <table>
+            <tr>
+                <td>GM后台 - 服务器IP</td>
+                <td><input id="gmHost" name="gmHost" type="text" value="%GM_ServerHost%" style="width:300px;" /></td>
+            </tr>
+            <tr>
+                <td>GM后台 - 服务器Port</td>
+                <td><input id="gmPort" name="gmPort" type="text" value="%GM_ServerPort%" style="width:300px;" /></td>
+            </tr>
+            <tr>
+                <td>GM后台 - 是否开启打印调试（填写true / false）</td>
+                <td><input id="gmDebug" name="gmDebug" type="text" value="%GM_ShowDebug%" style="width:300px;" /></td>
+            </tr>
+            <tr>
+                <td>Web前台 - 服务器IP</td>
+                <td><input id="webHost" name="webHost" type="text" value="%WEB_ServerHost%" style="width:300px;" /></td>
+            </tr>
+            <tr>
+                <td>Web前台 - 服务器Port</td>
+                <td><input id="webPort" name="webPort" type="text" value="%WEB_ServerPort%" style="width:300px;" /></td>
+            </tr>
+            <tr>
+                <td>Web后台 - 是否开启打印调试（填写true / false）</td>
+                <td><input id="webDebug" name="webDebug" type="text" value="%WEB_ShowDebug%" style="width:300px;" /></td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="button" name="button" value="提交" onclick="validation();" />
+                </td>
+            </tr>
+        </table>
+            
+        <div id="info"></div>
+        <iframe id="main-frame"  style="width: 100%; height: 100%;" name="main-frame" scrolling="no" frameborder="0" src=""></iframe>
+        
+</body>
+</html>

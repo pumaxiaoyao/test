@@ -1,0 +1,74 @@
+    <div class="tab-pane" id="tab_5">
+        <table class="table table-striped table-bordered table-hover table-full-width">
+            <thead>
+            <tr>
+                <th>序号</th>
+                <th>IP</th>
+                <th>时间</th>
+                <th>登录渠道</th>
+                <th>域名</th>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(document).ready(function () {
+                $('#tab_5').find('label[attr=ip]').each(function(){
+                    var tip = $(this);
+                    var ip = $(this).html();
+                    if (ip != "" && ip != null) {
+                        if (ip.indexOf(".") != -1) {
+                            ip = ip.split(".");
+                            ip = ip[0] + "." + ip[1] + "." + ip[2] + ".1";
+                            $.ajax({
+                                url: '/site/getIpInfo',
+                                type: 'get',
+                                dataType: 'json',
+                                data: {
+                                    ip: ip
+                                },
+                                cache: true,
+                                error: function () {
+
+                                },
+                                success: function (data) {
+                                    var text = '获取IP信息失败!';
+                                    if (data.code == 0) {
+                                        text = data.data['country'] + data.data['region'] + data.data['city'];
+                                        if (data.data['region'] + data.data['city'] == "" ) {
+                                            // $.ajax({
+                                            //     url: '/site/getIpInfoTB',
+                                            //     type: 'get',
+                                            //     dataType: 'json',
+                                            //     data: {
+                                            //         ip: ip
+                                            //     },
+                                            //     cache: true,
+                                            //     error: function () {},
+                                            //     success: function (data) {
+                                            //         tip.attr('flag',1);
+                                            //         var text = '获取IP信息失败!';
+                                            //         if (data.code == 0) {
+                                            //             text = data['country'] + data.data['region'] +data.data['city'];
+                                            //         }
+                                            //         var td = $(tip).parent();
+                                            //         //$(td).css('width',180);
+                                            //         $(td).find('label[attr=addr]').html(text);
+                                            //     }
+                                            // });
+                                        }
+                                    }
+                                    var td = $(tip).parent();
+                                    $(td).css('width', 180);
+                                    $(td).find('label[attr=addr]').html(
+                                        text);
+                                    }
+                            });
+                        }};
+                });
+            });
+        });
+    </script>

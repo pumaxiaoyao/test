@@ -1,0 +1,17 @@
+{
+    "sEcho": "1",
+    "iTotalRecords": "1",
+    "iTotalDisplayRecords": "1",
+    "aaData": [
+        ["398926884211417088", 
+            "<span class=\"label label-info\" style=\"cursor:pointer;\" onclick=\"custom_getBalance('1608429705659684','test2014101')\">test2014101<\/span>", 
+            "\u6d4b\u8bd5\u5c42\u7ea7", 
+            "llikllik", 
+            "<label style=\"color: red\">100.00<\/label>", 
+            "0.00", "0.00", "100.00", "0.00", "2017-11-03<br\/>11:13:44", 
+            "\u4e2d\u56fd\u5e73\u5b89\u94f6\u884c \u6d4b\u8bd5\u8d26\u53f7<br>123456789<br>\u6cb3\u5357\u5546\u4e18\u5de5\u5546\u94f6\u884c\u4e94\u4e00\u8def\u652f\u884c", 
+            "<label remark=\"cs\" data-original-title=\"\" id=\"cs_398926884211417088\"><\/label><a href=\"javascript:void(0);\"  csremark=\"csremark\" dno=\"398926884211417088\"><i class=\"fa fa-edit\"><\/i><\/a>", 
+            "<div id=\"watercheckresult_398926884211417088\"><a href=\"#WCheck\" data-toggle=\"modal\" onclick=\"getWList('398926884211417088','1608429705659684',1);\" class=\"btn mini green\"><i class=\"icon-trash\"><\/i>\u8bf7\u68c0\u67e5<\/a><\/td><\/div>",
+             "<a href=\"#refuseModal\" data-toggle=\"modal\" onclick=\"refuseSet('398926884211417088','100.00','0.00','1509678824');\" class=\"btn btn-xs red\"><i class=\"icon-trash\"><\/i>\u62d2\u7edd<\/a><\/td>"]
+    ]
+}

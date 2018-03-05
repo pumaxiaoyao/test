@@ -1,0 +1,131 @@
+
+.reveal-modal-bg {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    background: url(/static/img/transparent_80_bg.png) repeat;
+    z-index: 9998;
+    top: 0;
+    left: 0;
+}
+
+
+.txt-left th,
+.txt-left td {
+    text-align: left;
+}
+
+.m-t-20 {
+    margin-top: 20px!important;
+}
+
+.form-t th {
+    font-weight: normal;
+    background: #ececec;
+    height: 36px;
+    font-size: 12px;
+    padding: 0 10px;
+    width: auto;
+}
+
+.form-t th,
+.form-t td {
+    border: 1px solid #ccc;
+    font-size: 10px;
+    text-align: center;
+}
+
+.form-t td {
+    color: #666;
+    padding: 10px;
+    line-height: 22px;
+    background: #fff;
+}
+
+
+.form-t td.cGreen {
+    color: #2bb774;
+}
+
+.form-t td.cRed {
+    color: #cc000f;
+}
+
+.form-t td.cOrange {
+    color: #ffc000;
+}
+
+
+.reveal-modal {
+    left: 50%;
+    top: 100px;
+    position: absolute;
+    z-index: 9999;
+    visibility: hidden;
+    padding-bottom: 20px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    -moz-box-shadow: 0 0 10px rgba(0, 0, 0, .4);
+    -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, .4);
+    box-shadow: 0 0 10px rgba(0, 0, 0, .4);
+    background: rgb(255, 255, 255);
+}
+
+.reveal-modal .close-reveal-modal {
+    font-size: 22px;
+    line-height: .5;
+    position: absolute;
+    top: 8px;
+    right: 11px;
+    color: #aaa;
+    text-shadow: 0 -1px 1px rbga(0, 0, 0, .6);
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.reveal-modal h2 {
+    font-size: 18px;
+    color: #990000;
+    padding: 0 0 20px 0;
+}
+
+.reveal-modal p {
+    padding: 0 0 15px 0;
+}
+
+
+.reveal-modal .modal-hd h2 {
+    font-size: 20px;
+    font-weight: normal;
+    padding: 15px 20px 10px;
+    font-family: "Microsoft YaHei";
+}
+
+.reveal-modal .modal-close {
+    background: url(/static/img/close.png) no-repeat;
+    width: 21px;
+    height: 21px;
+    cursor: pointer;
+}
+
+.reveal-modal .modal-close {
+    position: absolute;
+    right: 20px;
+    top: 21px;
+}
+
+.reveal-modal .modal-close:hover {
+    background-position: 0 -19px;
+}
+
+.reveal-modal .modal-content {
+    margin-left: 20px;
+    border: none;
+    box-shadow: none;
+}
+
+.reveal-modal .modal-content h3 {
+    font: 14px/22px "Microsoft YaHei";
+    color: #666;
+}

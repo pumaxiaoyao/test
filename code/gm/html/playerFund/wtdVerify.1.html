@@ -1,0 +1,471 @@
+<div class="page-content-wrapper">
+    <div class="page-content" id="a_pageContent">
+        <div class="portlet">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="icon-globe"></i>取款审核 </div>
+            </div>
+            <div class="portlet-body">
+                <form action="/playerfund/wtdVerifyAjax" id="s_search" class="form-inline" style="text-align:right;">
+                    <div class="form-group">
+                        <select name="w_type" id="w_type" class="table-group-action-input form-control input-small input-sm" tabindex="1" onchange="$('#s_submit').click();">
+                            <option value="1">待审核</option>
+                            <option value="2">待对账</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <select name="s_type" id="s_type" class="table-group-action-input form-control input-small input-sm" tabindex="1">
+                            <option value="">不筛选</option>
+                            <option value="1">账号</option>
+                            <option value="2">姓名</option>
+                            <option value="3">代理</option>
+                            <option value="4">玩家银行卡</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <input name="s_keyword" id="s_keyword" type="text" placeholder="关键词" class="table-group-action-input form-control input-inline input-sm"
+                        />
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" id="s_submit" class="btn btn-sm green table-group-action-submit">
+                            搜索 &nbsp;
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+                </form>
+                <table class="table table-bordered table-striped table-condensed flip-content table-hover" id="data">
+                    <thead>
+                        <tr>
+                            <th>单号</th>
+                            <th>账号</th>
+                            <th>姓名</th>
+                            <th>玩家组</th>
+                            <th>代理</th>
+                            <th>取款申请</th>
+                            <th>取款手续费</th>
+                            <th>出款确认</th>
+                            <th>申请时间</th>
+                            <th>玩家银行卡</th>
+                            <th>备注</th>
+
+                            <th>流水检查</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="modal fade bs-modal-lg" id="WCheck" tabindex="-1" role="basic" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button id="WCheckVerify" class="close" type="button" onclick="endverifytask();" data-dismiss="modal">×</button>
+                        <button id="WCheckNoVerify" class="close" type="button" data-dismiss="modal">×</button>
+                        <h3>流水检查</h3>
+                        <!-- <div id="limit"></div> -->
+                    </div>
+                    <div class="modal-body">
+                        <div id="waterDetialTable" style="display:none;">
+                            <div class="col-md-6" name="check">
+                                <table class="table table-striped table-bordered table-hover table-full-width">
+                                    <thead>
+                                        <tr>
+                                            <th>限制平台</th>
+                                            <th>金额</th>
+                                            <th>还需流水</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="col-md-6" name="water">
+                                <table class="table table-striped table-bordered table-hover table-full-width">
+                                    <thead>
+                                        <tr>
+                                            <th>游戏平台</th>
+                                            <th>金额</th>
+                                            <th>剩余</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <table class="table table-striped table-bordered table-hover table-full-width" id="wtable">
+                            <thead>
+                                <tr>
+                                    <th>单号</th>
+                                    <th>类型</th>
+                                    <th>说明</th>
+                                    <th>限制平台</th>
+                                    <th>主账户余额</th>
+                                    <th>流水要求</th>
+                                    <th>未完成流水</th>
+                                    <th>代理</th>
+                                    <th>活动</th>
+                                    <th>时间</th>
+                                    <th>是否完成</th>
+                                    <th>检查说明</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary red" id="submitCheckResult" onclick="submitCheckResult(this);">提交检查结果 </button>
+                        <button id="WCheckCancel" class="btn" data-dismiss="modal" onclick="endverifytask();" aria-hidden="true">取消</button>
+                        <button id="WCheckNoCancel" class="btn" data-dismiss="modal" aria-hidden="true">取消</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="remarkModal" tabindex="-1" role="basic" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button class="close" type="button" data-dismiss="modal">×</button>
+                        <h3>取款客服备注</h3>
+                    </div>
+                    <div class="modal-body">
+                        <form id="remark_form" class="form-horizontal" role="form">
+                            <input type="hidden" id="cs_remark_dno" />
+                            <div class="form-body">
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">备注
+                                        <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-10">
+                                        <div class="input-icon right">
+                                            <textarea id="csremark" style="margin: 0px; width: 450px; height: 100px;"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary red" save="save">确认</button>
+                        <button class="btn" data-dismiss="modal" aria-hidden="true">取消</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="fnremarkModal" tabindex="-1" role="basic" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button class="close" type="button" data-dismiss="modal">×</button>
+                        <h3>财务备注</h3>
+                    </div>
+                    <div class="modal-body">
+                        <form id="fnremark_form" class="form-horizontal" role="form">
+                            <input type="hidden" id="fn_remark_dno" />
+                            <div class="form-body">
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">备注
+                                        <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-10">
+                                        <div class="input-icon right">
+                                            <textarea id="fnremark" style="margin: 0px; width: 450px; height: 100px;"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary red" save="save">确认</button>
+                        <button class="btn" data-dismiss="modal" aria-hidden="true">取消</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="refuseModal" tabindex="-1" role="basic" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button class="close" type="button" data-dismiss="modal">×</button>
+                        <h3>拒绝出款申请</h3>
+                    </div>
+                    <div class="modal-body">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label">备注:
+                                    <span class="required">*</span>
+                                </label>
+                                <input type="text" id="refusedealremark" class="form-control" value="" placeholder="请认真填写拒绝的理由">
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary red" onclick="refuse(this);">拒绝</button>
+                        <button class="btn" data-dismiss="modal" aria-hidden="true">取消</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="passModal" tabindex="-1" role="basic" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button class="close" type="button" data-dismiss="modal">×</button>
+                        <h3>通过出款申请</h3>
+                        <div id="passinfo"></div>
+                        <div id="alertInfo" style="color: red;"></div>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label class="control-label">取款申请数额</label>
+                                </div>
+                            </div>
+                            <div class="col-md-9">
+                                <div class="form-group">
+                                    <input type="text" readonly id="pamount" class="form-control" placeholder="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label class="control-label">取款手续费</label>
+                                </div>
+                            </div>
+                            <div class="col-md-9">
+                                <div class="form-group">
+                                    <select name="pfeetype" id="pfeetype" class="form-control" tabindex="1">
+                                        <option value="1">取款手续费由玩家承担</option>
+                                        <option value="2">取款手续费由公司承担</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label class="control-label">取款手续费比例</label>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <select name="pperc" id="pperc" class="form-control" tabindex="1">
+                                        <option value="0">无</option>
+                                        <option value="0.01">1%</option>
+                                        <option value="0.012">1.2%</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <input type="text" readonly id="ppercresult" class="form-control" placeholder="">
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <select name="jj" id="jj" class="form-control" tabindex="1">
+                                        <option value="1">+</option>
+                                        <option value="2">-</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <input type="text" id="jjnum" class="form-control" placeholder="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label class="control-label">取款手续费确认</label>
+                                </div>
+                            </div>
+                            <div class="col-md-9">
+                                <div class="form-group">
+                                    <input type="text" readonly id="pwfee" class="form-control" placeholder="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label class="control-label">取款金额确认</label>
+                                </div>
+                            </div>
+                            <div class="col-md-9">
+                                <div class="form-group">
+                                    <input type="text" readonly id="pactual" class="form-control" placeholder="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label class="control-label">备注</label>
+                                </div>
+                            </div>
+                            <div class="col-md-9">
+                                <div class="form-group">
+                                    <input type="text" id="pdealremark" class="form-control" placeholder="" value="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div style="color:red;">建议：可以将玩家银行卡提前录入出款系统，验证出款银行卡是否正确。完全正确后，再点击“通过”。一旦通过，此操作将无法恢复。</div>
+                        <button class="btn btn-primary red" onclick="pass(this);">通过</button>
+                        <button class="btn" data-dismiss="modal" aria-hidden="true">取消</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="bankModal" tabindex="-1" role="basic" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button class="close" type="button" data-dismiss="modal">×</button>
+                        <h3>银行卡出款</h3>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label class="control-label">取款银行</label>
+                                </div>
+                            </div>
+                            <div class="col-md-9">
+                                <div class="form-group">
+                                    <input type="text" readonly id="outBankInfo" class="form-control" placeholder="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label class="control-label">出款金额确认</label>
+                                </div>
+                            </div>
+                            <div class="col-md-9">
+                                <div class="form-group">
+                                    <input type="text" readonly id="bmactual" class="form-control" placeholder="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label class="control-label">选择出款银行</label>
+                                </div>
+                            </div>
+                            <div class="col-md-9">
+                                <div class="form-group">
+                                    <select class="form-control" id="bmbcid">
+                                        <option balance="0.0000" value="3012">李想-6217933180066670 -上海浦东发展银行-余额0.0000元
+                                        </option>
+                                        <option balance="0.0000" value="3013">徐立洋-6214833116622971 -中国招商银行-余额0.0000元
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label class="control-label">出款手续费确认</label>
+                                </div>
+                            </div>
+                            <div class="col-md-9">
+                                <div class="form-group">
+                                    <input type="text" id="bmwfee" class="form-control" placeholder="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label class="control-label">备注</label>
+                                </div>
+                            </div>
+                            <div class="col-md-9">
+                                <div class="form-group">
+                                    <input type="text" id="bmremark" class="form-control" placeholder="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-primary red" onclick="submitWtdBankInfo(this);">通过</button>
+                            <button class="btn" data-dismiss="modal" aria-hidden="true">取消</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade bs-modal-lg" id="WCheckDetial" tabindex="-1" role="basic" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button id="checkVerify" class="close" type="button" onclick="endverifytask();" data-dismiss="modal">×</button>
+                        <button id="noVerify" class="close" type="button" data-dismiss="modal">×</button>
+                        <h3>流水检查详情</h3>
+                    </div>
+                    <div class="modal-body">
+                        <div class="col-md-6" name="check">
+                            <table class="table table-striped table-bordered table-hover table-full-width">
+                                <thead>
+                                    <tr>
+                                        <th>限制平台</th>
+                                        <th>金额</th>
+                                        <th>检查</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-md-6" name="water">
+                            <table class="table table-striped table-bordered table-hover table-full-width">
+                                <thead>
+                                    <tr>
+                                        <th>限制平台</th>
+                                        <th>金额</th>
+                                        <th>检查</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button id="checkVerifyCancel" class="btn" data-dismiss="modal" onclick="endverifytask();" aria-hidden="true">关闭</button>
+                        <button id="noVerifyCancel" class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <script>
+            var a =
+                '10000,62207692669952,39500154618880,38712217599873024,3277767810617344,5707231341449216,8246252097638400,11964220589608960,350808494186201,285467739648'
+                .split(",");
+            var b = '主账户,188体育,188真人,AG真人,GD真人,Libianc快乐彩,沙巴体育,MG电子游戏,BBIN,凤凰彩票'.split(",");
+            var haspt = 'false';
+        </script>
+        <script type="text/javascript" src="/js/kindeditor/kindeditor.js"></script>
+        <script type="text/javascript" src="/js/kindeditor/lang/zh_CN.js"></script>
+        <script type="text/javascript" src="/js/support/playerfund/wtdverify.js?20171012"></script>
+    </div>
+</div>
+<!-- END CONTENT -->
+
+</div>
+<!-- END CONTAINER -->

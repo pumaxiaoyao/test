@@ -1,0 +1,221 @@
+<script>
+    $(function () {
+        agentPageinit();
+        addClasson('.left_nav_one');
+        addClasson('.left_nav_two');
+        addClasson('.left_nav_three');
+        $(".nr_left_nav").find("dl").find(".on").parent().prev().toggleClass("on");
+        $(".nr_left_nav").find("dl").find(".on").parent().show();
+    })
+    // $("#setting_history_box").delegate('#choose', "click", function () {
+    //     console.log(12311);
+    // });
+    // // $('#setting_history_box').find('select#choose').change(function(){
+    //     console.log("this choose value is ");
+    // });
+    // // $("#choose").change(function () {
+        
+        
+    
+        
+    // });
+
+    function addClasson(id) {
+        $(id).find('.left_nav_title').click(function () {
+            var $left_nav_one = $(id);
+            $(this).toggleClass("on");
+            if (!$(this).hasClass("on")) {
+                $left_nav_one.find('dl').slideUp()
+            } else {
+                $left_nav_one.find('dl').slideDown()
+            }
+        })
+    }
+
+    function agentPageinit() {
+        var settingactive = GetAgentQueryString("setting");
+        var currentPage = pageName();
+        console.log("currentPage is ", currentPage);
+        var referpage = "memberlist";
+        if (currentPage.toLowerCase() == "memberreports") {
+            referpage = "memberlist";
+        } else if (currentPage.toLowerCase() == "agentaccount") {
+            referpage = "basicinfo";
+        } else if (currentPage.toLowerCase() == "agentwithdrawl") {
+            referpage = "tk";
+        } else if (currentPage.toLowerCase() == "benifitreports") {
+            referpage = "benifitreports";
+        } else if (currentPage.toLowerCase() == "agentinfo") {
+            referpage = "agentinfo";
+        } else if (currentPage.toLowerCase() == "agentreports") {
+            referpage = "agentreports";
+        }
+        if (settingactive != null) {
+            selectAgentSettingBox(settingactive);
+        } else {
+            selectAgentSettingBox(referpage);
+        }
+    }
+
+    function GetAgentQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]);
+        return null;
+    }
+
+    function selectAgentSettingBox(type) {
+        console.log(type);
+        $(".as_menu_icon").attr("class", "as_triangle_down");
+        $(".as_info").attr("class", "as_info");
+        $("#setting_" + type + "_bt").attr("class", "as_info as_info_select");
+        $("#setting_" + type + "_icon").attr("class", "as_menu_icon zx_icon as_" + type);
+
+        $(".setting_box_div").hide();
+        $("#setting_" + type + "_box").show();
+        console.log("switch to " + type);
+        if (type == "memberlist") {
+            searchMember();
+        } else if (type == "history") {
+            searchHistoryRecord();
+        } else if (type == "daily") {
+            searchDailyReport();
+        } else if (type == "wdHistory") {
+            searchwdHistoryRecord();
+        } else if (type == "benifitreports") {
+            searchBenifitReport();
+        } else if (type == "agentinfo") {
+            searchAgentInfo();
+        } else if (type == "agentreports") {
+            searchAgentReport();
+        }
+    }
+
+    function addNewAgent() {
+        window.location.href = "/agent/agents/apply";
+    }
+</script>
+
+<script src="/static/js/member/Accountmenu.js?201801191544"></script>
+<link href="/static/css/bootstrap.min.css" rel="stylesheet" />
+<link href="/static/css/agent/agentInfo.css?201801082062" rel="stylesheet" />
+<link href="/static/font-awesome/css/font-awesome.min.css?201801082031" rel="stylesheet" />
+
+<div class="conmain">
+
+    <div class="nr_nav">
+        <div class="nr_nav_userimg">
+            <img src="/static/img/zx/touxiang.png" />
+        </div>
+        <div class="nr_nav_user">
+            <div class="nr_nav_user_title">
+                <span id="salutationtext"></span>
+                <b>%LoginMemberName%</b>
+            </div>
+            <div class="nr_nav_user_time"></div>
+        </div>
+
+        <div class="nr_nav_money">
+            <div class="nr_nav_money_title">
+                <span>账户余额</span>
+            </div>
+            <div class="nr_nav_money_num">
+                <b id="MainBalance_b">%MainBalance%</b>
+                <span id="refreshAgentBt"></span>
+            </div>
+        </div>
+
+        <div class="nr_nav_saveMoney">
+            <div class="nr_nav_saveMoney_box">
+                <div class="pic_1">
+                    <a href="memberReports?setting=memberlist">
+                        <i></i>会员列表</a>
+                </div>
+                <div class="pic_2">
+                    <a href="memberReports?setting=daily">
+                        <i></i>每日报表</a>
+                </div>
+                <div class="pic_3">
+                    <a href="agentWithdrawl?setting=tk">
+                        <i></i>提款</a>
+                </div>
+                <div class="pic_4">
+                    <a href="benifitReports">
+                        <i></i>佣金报表</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="nr_main">
+
+
+
+        <div class="nr_left_nav">
+            <span class="nr_left_nav_san">
+                <i class="nr_left_nav_i">
+                    <b></b>
+                </i>
+            </span>
+
+            <div class="left_nav_one">
+                <div class="left_nav_title">
+                    <i></i>报表中心
+                    <b></b>
+                </div>
+                <dl style="display:none;">
+                    <dd class="left_nav_ck %memberReportsSwitch%">
+                        <a href="memberReports">
+                            <span></span>下线会员报表</a>
+                    </dd>
+                    <dd class="left_nav_tk %agentReportsSwitch%">
+                        <a href="agentReports">
+                            <span></span>下线代理报表</a>
+                    </dd>
+                    <dd class="left_nav_zz %benifitReportsSwitch%">
+                        <a href="benifitReports">
+                            <span></span>佣金报表</a>
+                    </dd>
+                </dl>
+            </div>
+
+            <div class="left_nav_two">
+
+                <div class="left_nav_title">
+                    <i></i>资金管理
+                    <b></b>
+                </div>
+                <dl style="display:none;">
+                    <dd class="left_nav_ck %agentWithdrawlSwitch%">
+                        <span></span>
+                        <a href="agentWithdrawl">提交提款</a>
+                    </dd>
+                    <dd class="left_nav_tk %bankManagerSwitch%">
+                        <span></span>
+                        <a href="bankManager"> 银行卡</a>
+                    </dd>
+                </dl>
+            </div>
+
+            <div class="left_nav_three">
+
+                <div class="left_nav_title">
+                    <i></i>个人中心
+                    <b></b>
+                </div>
+                <dl style="display:none;">
+                    <dd class="left_nav_ck %agentAccountSwitch%">
+                        <span></span>
+                        <a href="agentAccount">账号管理</a>
+                    </dd>
+                    <dd class="left_nav_tk %agentInfoSwitch%">
+                        <span></span>
+                        <a href="agentInfo"> 合营信息</a>
+                    </dd>
+                    <dd class="left_nav_tk %receiveboxSwitch%">
+                        <span></span>
+                        <a href="receivebox"> 消息中心</a>
+                    </dd>
+                </dl>
+            </div>
+        </div>

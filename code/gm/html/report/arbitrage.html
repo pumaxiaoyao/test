@@ -1,0 +1,146 @@
+
+
+    <div class="page-content-wrapper">
+        <div class="page-content" id="a_pageContent">
+            <div class="portlet">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="icon-globe"></i>套利查询
+        </div>
+        <div class="actions">
+            <div class="btn-group">
+
+            </div>
+        </div>
+    </div>
+    <div class="portlet-body">
+        <div class="portlet box blue">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-gift"></i>套利查询
+                </div>
+                <ul class="nav nav-tabs">
+                                        <li class="active">
+                        <a href="#portlet_tab1" data-toggle="tab">
+                            重复信息查询</a>
+                    </li>
+                                        <li>
+                        <a href="#portlet_tab2" data-toggle="tab">
+                            重叠IP查询</a>
+                    </li>
+                                        <li>
+                        <a href="#portlet_tab3" data-toggle="tab">
+                            UUID查询</a>
+                    </li>
+                                    </ul>
+            </div>
+            <div class="portlet-body">
+                <div class="tab-content">
+                                        <div class="tab-pane active" id="portlet_tab1">
+                        <form action="/report/arbitrageAjax" id="s_search1" class="form-inline"
+                              style="text-align:right;">
+                            <div class="form-group">
+                                <input name="name" id="s_keyword" type="text"
+                                       placeholder="玩家"
+                                       class="table-group-action-input form-control input-inline input-sm"/>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" id="s_submit"
+                                        class="btn btn-sm green table-group-action-submit">
+                                    搜索 &nbsp; <i class="fa fa-search"></i>
+                                </button>
+                            </div>
+                        </form>
+                        <table id="data1" class="table table-bordered table-striped table-condensed flip-content table-hover">
+                            <thead>
+                            <tr>
+                                <th>用户名</th>
+                                <th>真实姓名</th>
+                                <th>密码</th>
+                                <th width="180">注册IP</th>
+                                <th width="85">注册时间</th>
+                                <th width="180">最后登录Ip</th>
+                                <th width="90">最后登录时间</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="tab-pane" id="portlet_tab2">
+                        <form action="/report/sameIpAjax" id="s_search2" class="form-inline"
+                              style="text-align:right;">
+                            <div class="form-group">
+                                <input name="name" id="s_keyword" type="text"
+                                       placeholder="玩家"
+                                       class="table-group-action-input form-control input-inline input-sm"/>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" id="s_submit"
+                                        class="btn btn-sm green table-group-action-submit">
+                                    搜索 &nbsp; <i class="fa fa-search"></i>
+                                </button>
+                            </div>
+                        </form>
+                        <table id="data2" class="table table-bordered table-striped table-condensed flip-content table-hover">
+                            <thead>
+                            <tr>
+                                <th>用户名</th>
+                                <th>真实姓名</th>
+                                <th>重迭登录Ip</th>
+                                <th>登录时间</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="tab-pane" id="portlet_tab3">
+                        <form action="/report/uuidAjax" id="s_search3" class="form-inline"
+                              style="text-align:right;">
+                            <div class="form-group">
+                                <input name="name" id="s_keyword" type="text"
+                                       placeholder="玩家"
+                                       class="table-group-action-input form-control input-inline input-sm"/>
+                            </div>
+                            <div class="form-group">
+                                <input name="uuid" id="s_keyword" type="text"
+                                       placeholder="UUID"
+                                       class="table-group-action-input form-control input-inline input-sm"/>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" id="s_submit"
+                                        class="btn btn-sm green table-group-action-submit">
+                                    搜索 &nbsp; <i class="fa fa-search"></i>
+                                </button>
+                            </div>
+                        </form>
+                        <table id="data3" class="table table-bordered table-striped table-condensed flip-content table-hover">
+                            <thead>
+                            <tr>
+                                <th>序号</th>
+                                <th>用户名</th>
+                                <th>UUID</th>
+                                <th>创建时间</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                            </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+    </div>
+    <!-- END CONTENT -->
+
+</div>
+<!-- END CONTAINER -->
+

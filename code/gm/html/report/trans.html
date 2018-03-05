@@ -1,0 +1,50 @@
+
+    <div class="page-content-wrapper">
+        <div class="page-content" id="a_pageContent">
+            
+<div class="portlet">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="icon-globe"></i>玩家转账差额查询
+        </div>
+
+    </div>
+    <div class="portlet-body">
+        <form class="form-inline" style="text-align:right;" id="s_search" action="/report/transAjax">
+
+            <label>开始</label>
+            <div class="form-group">
+                <input type="text" name="start" id="start" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})"
+                       class="form-control input-inline input-small input-sm" value="2017-10-16 14:47:06"/>
+                <label>结束</label>
+                <input type="text" name="end" id="end" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})"
+                       class="form-control input-inline input-small input-sm" value="2017-10-17 17:54:40"/>
+            </div>
+            <div class="form-group">
+                <button type="submit" id="s_submit"
+                        class="btn btn-sm green table-group-action-submit">
+                    搜索 &nbsp; <i class="fa fa-search"></i>
+                </button>
+            </div>
+        </form>
+        <table id="data" class="table table-bordered table-striped table-condensed flip-content table-hover">
+            <thead>
+            <tr>
+                <th>玩家账户</th>
+                <th>当前主账户</th>
+                <th>转入游戏平台</th>
+                <th>转回主账户</th>
+                <th>玩家占用转账额度</th>
+            </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+
+
+        </div>
+    </div>
+    <!-- END CONTENT -->
+
+</div>
+<!-- END CONTAINER -->

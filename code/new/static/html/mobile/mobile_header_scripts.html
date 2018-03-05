@@ -1,0 +1,110 @@
+<link href="/static/css/bootstrap.min.css" rel="stylesheet" />
+<link href="/static/css/member/mobile.css" rel="stylesheet" />
+<script>
+    var  $pjCarouselbox= $('.pj-Carousel-box'),$mobileitem=$('.index-content-mobile.item'),mobilesetTime, mobilenum=0, $iphonenext = $('.iphonenext'),$iphoneprev = $('.iphoneprev'), tiemer=0,alltiemer=0;
+$(document).ready(function() {
+
+if (alltiemer == 0) {
+                 alltiemer = 10;
+                 var index = setInterval(function(){
+                     alltiemer--;
+                     if (alltiemer == 0) {
+                            $('#dw-item').fadeIn(800);
+
+                              $('#iview').css({'background':'none'});
+                                          if($pjCarouselbox.length==1){
+
+                                                     $mobileitem.eq(0).delay(1000).animate({'visibility':'hidden'},100,function(){
+
+                                                      }).next().fadeOut(300);
+
+                                                        $iphonenext.click();
+                                                        $('.iphonenext,.iphoneprev').attr('data-id',0);
+                                                }else{
+                                                        $pjCarouselbox.html('加载失败，请刷新页面')
+                                                 }
+                         clearInterval(index);
+                     }
+                 }, 100);
+             }
+
+             $('.iphonenext,.iphoneprev').click(function() {
+                      //   $('.index-content-mobile.item').stop();
+                              if (tiemer == 0) {
+                                  tiemer = 11;
+                                  var index = setInterval(function(){
+                                      tiemer--;
+                                      if (tiemer == 0) {
+                                          clearInterval(index);
+                                            $('.iphone-fanye').fadeIn(1000);
+                                      }
+                                  }, 250);
+                                  var nowNum  = parseInt( $iphonenext.attr('data-id'));
+                                  clearTimeout(mobilesetTime);
+                                   $(this).fadeOut(800);
+                                  forTime(nowNum);
+                               ///  alert('按钮事件被触发');
+                              }
+                          });
+    });
+
+        function forTime(n){
+         $mobileitem.eq(0).removeClass('item_oneon');
+          $('.iphonenext,.iphoneprev').fadeIn(300);
+              var   n =   n +1;
+              if(n>3){n=0; }
+                mobilesetTime=setTimeout('forTime('+n+')',6000);
+                var length =  $mobileitem.length;
+            if(n==0){
+               $mobileitem.eq(3).animate({width:'0%','z-index': 4},function(){
+                $mobileitem.eq(3).fadeOut(100).removeClass('active').hide().animate({'z-index':1,'width':'100%'}).hide();
+               });
+
+                $mobileitem.eq(0).addClass('active').fadeIn(800).animate({'z-index': length}).next().fadeOut(300).removeClass('active');
+                $mobileitem.eq(1).animate({'z-index':3,'width':'100%'});
+                $mobileitem.eq(2).animate({'z-index':2,'width':'100%'});
+                //$mobileitem.eq(3).show()
+              // $mobileitem.eq(3).animate({'z-index':3,'width':'100%'});
+            }
+
+             if(n==1){
+                $mobileitem.eq(0).animate({width:'0%','z-index': 4},function(){
+                $mobileitem.eq(0).fadeOut(100).removeClass('active').animate({'z-index':1,'width':'100%'});
+
+               });
+
+                $mobileitem.eq(1).addClass('active').fadeIn(800).animate({'z-index': length}).next().fadeOut(300).removeClass('active');
+                $mobileitem.eq(2).animate({'z-index':2,'width':'100%'});
+                $mobileitem.eq(3).animate({'z-index':1,'width':'100%'});
+            }
+              if(n==2){
+                 $mobileitem.eq(1).animate({width:'0%','z-index': 4},function(){
+                  $mobileitem.eq(1).fadeOut(100).removeClass('active').animate({'z-index':1,'width':'100%'});
+                 });
+                 $mobileitem.eq(2).addClass('active').fadeIn(800).animate({'z-index': length}).next().fadeOut(300).removeClass('active');
+
+                 $mobileitem.eq(3).animate({'z-index':2,'width':'100%'});
+                 $mobileitem.eq(0).animate({'z-index':1,'width':'100%'});
+                 //                      $mobileitem.eq(2).addClass('active').fadeIn(800).animate({'z-index': length});
+//                      $mobileitem.eq(0).animate({'z-index':n-1,'width':'100%'}).fadeOut(300).removeClass('active');
+                }
+
+              if(n==3){
+                     $mobileitem.eq(2).animate({width:'0%','z-index': 4},function(){
+                     $mobileitem.eq(2).fadeOut(100).removeClass('active').animate({'z-index':1,'width':'100%'});
+                 });
+
+                  $mobileitem.eq(3).addClass('active').fadeIn(800).animate({'z-index': 4}).show();
+                   $mobileitem.eq(0).css({'z-index':3,'width':'100%'}).fadeOut(300).removeClass('active');
+                  $mobileitem.eq(1).css({'z-index':3,'width':'100%'});
+
+
+               //   $mobileitem.eq(0).animate({'z-index':n-1,'width':'100%'}).fadeOut(300).removeClass('active');
+                }
+
+
+               $('.iphonenext,.iphoneprev').attr('data-id',n)
+    }
+
+
+</script>

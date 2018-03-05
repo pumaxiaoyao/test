@@ -1,0 +1,102 @@
+
+    <div class="tab-pane" id="tab_3">
+            <form action="/player/fundFlowAjax" id="s_search" class="form-inline" style="text-align:right; margin-bottom: 10px;">
+                <div class="form-group" style="text-align:center; margin-right: 15px;">
+                    <label class="checkbox-label"><input inbox="btype" type="checkbox" value="1200">存款</label>
+                    <label class="checkbox-label"><input inbox="btype" type="checkbox" value="1300">取款</label>
+                    <label class="checkbox-label"><input inbox="btype" type="checkbox" value="1400">红利</label>
+                    <label class="checkbox-label"><input inbox="btype" type="checkbox" value="1500">返水</label>
+                    <label class="checkbox-label"><input inbox="btype" type="checkbox" value="1600">转账</label>
+                </div>
+                <div class="form-group">
+                     <select name="" id="box_StatusFli" class="table-group-action-input form-control input-inline input-sm"
+                        tabindex="1">
+                        <option value="1">成功</option>
+                        <option value="0">失败</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <input type="text" name="box_DnoNo" id="box_DnoNo"
+                    class="form-control input-inline input-small input-sm" placeholder="单号">
+                </div>
+                
+                <div class="form-group">
+                    <select name="" id="s_TimeFliBox" class="table-group-action-input form-control input-inline input-sm"
+                            tabindex="1">
+                        <option value="ClearDate">不筛选</option>
+                        <option value="Today">今日</option>
+                        <option value="Yesterday">昨日</option>
+                        <option value="LastWeek">上周</option>
+                        <option value="LastMonth">上月</option>
+                    </select>
+                    <script type="text/javascript">
+                        $("#s_TimeFliBox").change(function(){
+                            if(this.value=="ClearDate"){
+                                $("#box_StartTime").val('');
+                                $("#box_EndTime").val('');
+                            }
+                            if(this.value=="LastWeek"){
+                                var s=getLastWeekStartDate()+" 00:00:00",e=getLastWeekEndDate()+" 23:59:59";
+                                $("#box_StartTime").val(s);
+                                $("#box_EndTime").val(e);
+    //$('#s_StartTime').datetimepicker('setEndDate',s);
+                                $('#box_EndTime').datetimepicker('setStartDate',e);
+                            }
+                            if(this.value=="LastMonth"){
+                                var s=getLastMonthStartDate()+" 00:00:00",e=getLastMonthEndDate()+" 23:59:59";
+                                $("#box_StartTime").val(s);
+                                $("#box_EndTime").val(e);
+    //$('#s_StartTime').datetimepicker('setEndDate',s);
+                                $('#box_EndTime').datetimepicker('setStartDate',e);
+                            }
+                            if(this.value=="Yesterday"){
+                                var s=getDate(0)+" 00:00:00",e=getDate(0)+" 23:59:59";
+                                $("#box_StartTime").val(s);
+                                $("#box_EndTime").val(e);
+    //$('#s_StartTime').datetimepicker('setEndDate',s);
+                                $('#box_EndTime').datetimepicker('setStartDate',e);
+                            }
+                            if(this.value=="Today"){
+                                var s=getDate(-1)+" 00:00:00",e=getDate(-1)+" 23:59:59";
+                                $("#box_StartTime").val(s);
+                                $("#box_EndTime").val(e);
+    //$('#s_StartTime').datetimepicker('setEndDate',s);
+                                $('#box_EndTime').datetimepicker('setStartDate',e);
+                            }
+                        });
+                    </script>
+                </div>
+                <div class="form-group">
+                    <input type="text" name="box_StartTime" id="box_StartTime" value=""
+                           class="form-control input-inline input-small input-sm datepicker" placeholder="开始时间">
+                </div>
+                <div class="form-group">
+                    <input type="text" name="box_EndTime" id="box_EndTime" value=""
+                           class="form-control input-inline input-small input-sm datepicker" placeholder="结束时间">
+                </div>
+                <div class="form-group">
+                    <button type="button" id="box_ffs" uid="%UID%"
+                            class="btn btn-sm green table-group-action-submit">
+                        搜索 &nbsp; <i class="fa fa-search"></i>
+                    </button>
+                </div>
+            </form>
+            <table id="box_fftable"
+                   class="table table-striped table-bordered table-hover table-full-width">
+                <thead>
+                <tr>
+                    <th>序号</th>
+                    <th>类型</th>
+                    <th>单号</th>
+                    <th>金额</th>
+                    <th>备注</th>
+                    <th>客服</th>
+                    <th>时间</th>
+                    <th>状态</th>
+                </tr>
+                </thead>
+                <tbody>
+                    %TRANSDATA%
+                </tbody>
+            </table>
+        </div>

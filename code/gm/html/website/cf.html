@@ -1,0 +1,164 @@
+
+    <div class="page-content-wrapper">
+        <div class="page-content" id="a_pageContent">
+            <div class="portlet">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="icon-globe"></i>网站信息管理
+        </div>
+        <div class="actions">
+            <form action="#" class="form-inline" style="text-align:right;">
+                <div class="form-group">
+                    <select id="type" class="table-group-action-input form-control input-sm">
+                                                    <option value="0a">------------------------网站公告设置(请勿编辑本条)------------------------</option>
+                                                    <option value="12">网站公告</option>
+                                                    <option value="22">首页赛事公告</option>
+                                                    <option value="0b">------------------------网站初始化设置(请勿编辑本条)------------------------</option>
+                                                    <option value="26">客服页面地址</option>
+                                                    <option value="2">网站标题</option>
+                                                    <option value="32">手机版网站标题</option>
+                                                    <option value="3">网站关键词</option>
+                                                    <option value="4">网站描述</option>
+                                                    <option value="13">备用域名</option>
+                                                    <option value="1">底部说明</option>
+                                                    <option value="6">常见问题</option>
+                                                    <option value="7">联系我们</option>
+                                                    <option value="42">关于我们</option>
+                                                    <option value="8">隐私政策</option>
+                                                    <option value="9">责任博彩</option>
+                                                    <option value="10">规则条款</option>
+                                                    <option value="14">合营模式</option>
+                                                    <option value="15">佣金政策</option>
+                                                    <option value="16">合营协议</option>
+                                                    <option value="27">存款标题-在线支付</option>
+                                                    <option value="28">存款标题-网银支付</option>
+                                                    <option value="29">存款标题-支付宝/微信/财付通/ATM</option>
+                                                    <option value="0c">------------------------网站说明备注设置(请勿编辑本条)------------------------</option>
+                                                    <option value="30">合营伙伴佣金报表底部说明</option>
+                                                    <option value="20">注册说明-玩家</option>
+                                                    <option value="21">注册说明-代理</option>
+                                                    <option value="17">存款说明-公司入款（网银）</option>
+                                                    <option value="18">存款说明-公司入款（自助转账）</option>
+                                                    <option value="19">存款说明-三方支付</option>
+                                                    <option value="11">提款说明</option>
+                                                    <option value="40">存款说明-互联网入款</option>
+                                                    <option value="41">存款说明-点卡支付</option>
+                                                    <option value="33">存款备注-ATM类</option>
+                                                    <option value="35">基本资料-页面说明</option>
+                                                    <option value="36">修改账户密码-页面说明</option>
+                                                    <option value="37">取款银行卡-页面说明</option>
+                                                    <option value="38">设置取款密码-页面说明</option>
+                                                    <option value="39">转账页面说明</option>
+                                                    <option value="0d">------------------------网站js代码设置(请勿编辑本条)------------------------</option>
+                                                    <option value="5">底部Js</option>
+                                                    <option value="31">首页JS</option>
+                                                    <option value="111">网址检测地址（玩家网站）</option>
+                                                    <option value="112">网址检测地址（代理网站）</option>
+                                                    <option value="0e">------------------------专属设置(请勿编辑本条)------------------------</option>
+                                                    <option value="201">手机APP公告</option>
+                                                    <option value="202">手机APP首页Banner</option>
+                                                    <option value="207">手机html首页Banner</option>
+                                                    <option value="208">手机html版首页Js</option>
+                                                    <option value="34">手机html版底部Js</option>
+                                                    <option value="43">手机html版系统公告</option>
+                                                    <option value="203">客户端页面APP二维码图片地址</option>
+                                                    <option value="204">客户端页面手机Web版二维码图片地址</option>
+                                                    <option value="205">客户端页面手机Web版点击体验网址</option>
+                                                    <option value="206">客户端页面APP公司编号</option>
+                                                    <option value="100">系统LOGO</option>
+                                                    <option value="101">首页Banner代码</option>
+                                                    <option value="102">视讯页Banner</option>
+                                                    <option value="103">彩票页Banner-1</option>
+                                                    <option value="108">彩票页Banner-2</option>
+                                                    <option value="104">电子游戏页Banner-1</option>
+                                                    <option value="109">电子游戏页Banner-2</option>
+                                                    <option value="110">电子游戏页Banner-3</option>
+                                                    <option value="114">电子游戏页Banner-4</option>
+                                                    <option value="115">电子游戏页Banner-5</option>
+                                                    <option value="105">体育页Banner</option>
+                                                    <option value="106">优惠活动页Banner</option>
+                                                    <option value="107">帮助页Banner</option>
+                                                    <option value="113">合营代理页Banner</option>
+                                                    <option value="116">客户端页Banner</option>
+                                                    <option value="24">電子优胜榜单</option>
+                                            </select>
+                </div>
+                <div class="form-group">
+                    <a class="btn btn-sm green table-group-action-submit">选择</a>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="portlet-body">
+        <div class="row">
+            <div class="col-md-12">
+                <textarea id="editinfo" style="width:100%;height:300px;"></textarea>
+            </div>
+        </div>
+                        <a class="col-md-12 btn green table-group-action-submit" id="savefile">保存</a>
+              </div>
+</div>
+
+<script type="text/javascript">
+    $("#savefile").click(function () {
+        if($("#type").val()=="0a"||$("#type").val()=="0b"||$("#type").val()=="0c"||$("#type").val()=="0d"||$("#type").val()=="0e"){return false;}
+        if($("#type").val()=="26"){ // cs url
+            var csUrl = $("#editinfo").val().trim("");
+            if( !csUrl.startsWith("http") && !csUrl.startsWith("https")){
+                $.notific8('保存失败。請輸入正確的連結', {theme: 'ebony'});
+                return false;
+            }
+        }
+        $('.portlet').block({message: '保存中...'});
+        var type = $("#type").val();
+        var content = $("#editinfo").val() == "" ? " " : $("#editinfo").val();
+        $.ajax({
+            url: '/website/editCfg',
+            type: 'post',
+            data: {type: type, content: content},
+            success: function (data) {
+                if (data.success) {
+                    $.notific8('保存成功。');
+                } else {
+                    $.notific8('保存失败。', {theme: 'ebony'});
+                }
+                $('.portlet').unblock();
+            },
+            error: function (e) {
+                $('.portlet').unblock();
+            },
+            cache: false
+        });
+    });
+
+    function loadfile() {
+        $('.portlet').block({message: '读取中...'});
+        var type = $("#type").val();
+        $.ajax({
+            url: '/website/getFile?type=' + type,
+            type: 'get',
+            success: function (data) {
+                $("#editinfo").val(data);
+                $('.portlet').unblock();
+            },
+            error: function (e) {
+                $('.portlet').unblock();
+            },
+            cache: false
+        });
+
+    }
+
+    $("#type").change(function () {
+        if($("#type").val()=="0a"||$("#type").val()=="0b"||$("#type").val()=="0c"||$("#type").val()=="0d"||$("#type").val()=="0e"){return false;}
+        loadfile();
+    });
+    loadfile();
+</script>        </div>
+    </div>
+    <!-- END CONTENT -->
+
+</div>
+<!-- END CONTAINER -->
+
+

@@ -1,0 +1,92 @@
+[{
+    "data": [{
+        "recordType": 2,
+        "time": 1510108678,
+        "roleId": 10000001,
+        "recordType1": 512,
+        "numVals": [10, 102916058663, 1509465168, 16805070],
+        "strVals": ["IBC", "sport"],
+        "recordNum": 1
+    }, {
+        "recordType": 2,
+        "time": 1510108678,
+        "roleId": 10000001,
+        "recordType1": 1024,
+        "numVals": [7.5, 102916058663, 1509465600, 16805070, 1, 0.75],
+        "strVals": ["IBC", "sport", "WON"],
+        "recordNum": 2
+    }, {
+        "recordType": 2,
+        "time": 1510108678,
+        "roleId": 10000001,
+        "recordType1": 512,
+        "numVals": [10, 102916066196, 1509465484, 16806183],
+        "strVals": ["IBC", "sport"],
+        "recordNum": 3
+    }, {
+        "recordType": 2,
+        "time": 1510108678,
+        "roleId": 10000001,
+        "recordType1": 1024,
+        "numVals": [10, 102916066196, 1509465600, 16806183, 1, -0.86],
+        "strVals": ["IBC", "sport", "WON"],
+        "recordNum": 4
+    }, {
+        "recordType": 2,
+        "time": 1510108678,
+        "roleId": 10000001,
+        "recordType1": 512,
+        "numVals": [10, 102928921513, 1509652871, 16888034],
+        "strVals": ["IBC", "sport"],
+        "recordNum": 5
+    }, {
+        "recordType": 2,
+        "time": 1510108678,
+        "roleId": 10000001,
+        "recordType1": 1024,
+        "numVals": [0, 102928921513, 1509638400, 16888034, 1, 0.72],
+        "strVals": ["IBC", "sport", "Refund"],
+        "recordNum": 6
+    }, {
+        "recordType": 2,
+        "time": 1510108761,
+        "roleId": 10000001,
+        "recordType1": 8,
+        "numVals": [17.5, 108],
+        "strVals": ["IBC", "MAIN"],
+        "recordNum": 7
+    }, {
+        "recordType": 2,
+        "time": 1510108798,
+        "roleId": 10000001,
+        "recordType1": 8,
+        "numVals": [100, 109],
+        "strVals": ["MAIN", "MAIN"],
+        "recordNum": 8
+    }, {
+        "recordType": 2,
+        "time": 1510108798,
+        "roleId": 10000001,
+        "recordType1": 4,
+        "numVals": [100, 110],
+        "strVals": ["MAIN", "IBC"],
+        "recordNum": 9
+    }, {
+        "recordType": 2,
+        "time": 1510108809,
+        "roleId": 10000001,
+        "recordType1": 8,
+        "numVals": [100, 111],
+        "strVals": ["IBC", "MAIN"],
+        "recordNum": 10
+    }, {
+        "recordType": 2,
+        "time": 1510108809,
+        "roleId": 10000001,
+        "recordType1": 4,
+        "numVals": [100, 112],
+        "strVals": ["MAIN", "MAIN"],
+        "recordNum": 11
+    }],
+    "size": 11
+}]

@@ -1,0 +1,68 @@
+<div class="modal fade bs-modal-lg" id="brokerageModal" tabindex="-1" role="basic" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" type="button" data-dismiss="modal">×</button>
+                <h3 id="brokerageModalTitle">设置抽佣/抽水</h3>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <table class="table table-striped table-bordered table-hover table-full-width" id="brokerageModalData">
+                        <thead>
+                            <tr>
+                                <th>序号</th>
+                                <th>游戏平台</th>
+                                <th>抽佣方式</th>
+                                <th>比例（%）<a href="#floatSettingModal" id="commisionconfig" modalTag="commision" data-toggle="modal" class="btn btn-xs blue">浮动比例设置</a></th>
+                                <th>抽水方式</th>
+                                <th>比例（%）</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary red" onclick="saveBrokerage(this);">保存</button>
+                <button class="btn" data-dismiss="modal" aria-hidden="true">取消</button>
+            </div>
+
+        </div>
+    </div>
+    <div class="modal fade bs-modal-lg" id="floatSettingModal" tabindex="-1" role="basic" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button class="close" type="button" data-dismiss="modal">×</button>
+                    <h3 id="FloatSettingTitle">
+                    </h3>
+                </div>
+                <div class="modal-body">
+                    <button class="btn btn-primary blue" onclick="addlevertr();">添加</button>
+                    <div class="row" style="padding-top:10px;">
+                        <table id="t_waterlever" class="table table-striped table-bordered table-hover table-full-width">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>最大值</th>
+                                    <th>比例(%)</th>
+                                    <th></th>
+                                    <th>操作</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary red" onclick="savelevertr(this);">保存</button>
+                    <button class="btn" data-dismiss="modal" aria-hidden="true">取消</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

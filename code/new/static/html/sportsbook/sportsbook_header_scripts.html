@@ -1,0 +1,25 @@
+<script>
+    var SportStatus = 1;
+</script>
+
+
+<script type="text/javascript">
+    $(function () {
+        if (SportStatus == 1) {
+            $.ajax({
+                type: "post",
+                url: "/API/common/GetPlatformLogin",
+                contentType: "application/json; charset=utf-8",
+                data: { "MemberName" : "%LoginMemberName%" },
+                dataType: "text",
+                success: function (datas) {
+                    $("#main-frame").attr("src", datas);
+                },
+                error: function (err) {
+                }
+            }, 'text');
+        }else if(SportStatus == 2){
+            $("#main-frame").attr("src", "maintenance.aspx");
+        }
+    });
+</script>

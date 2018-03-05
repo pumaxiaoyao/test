@@ -1,0 +1,123 @@
+{
+    "type": "serial",
+    "theme": "none",
+    "pathToImages":"/incloud/global/plugins/amcharts/amcharts/images/",
+    "dataProvider": [{
+        "country": "ag真人",
+        "visits": 546584.75,
+        "color": "#FF6600"
+    }, {
+        "country": "188真人",
+        "visits":  0.00,
+        "color": "#FCD202"
+    }, {
+        "country": "188体育",
+        "visits":  0.00,
+        "color": "#B0DE09"
+    }, {
+        "country": "快乐彩",
+        "visits": 0.00,
+        "color": "#0D8ECF"
+    }, {
+        "country": "GD真人",
+        "visits": 0.00,
+        "color": "#2A0CD0"
+    }, {
+        "country": "沙巴",
+        "visits": 117910.84,
+        "color": "#CD0D74"
+    }, {
+        "country": "MG",
+        "visits": 741.85,
+        "color": "#CC0000"
+    }, {
+        "country": "bbin_ld",
+        "visits": 714363.62,
+        "color": "#00CC00"
+    }, {
+        "country": "bbin_3d",
+        "visits": 0.00,
+        "color": "#0000CC"
+    }, {
+        "country": "bbin_ch",
+        "visits": 429.90,
+        "color": "#DDDDDD"
+    }, {
+        "country": "bbin_lt",
+        "visits": -15600.38,
+        "color": "#999999"
+    }, {
+        "country": "bbin_sp",
+        "visits": -61399.64,
+        "color": "#333333"
+    }, {
+        "country": "pt_ld",
+        "visits": 0.00,
+        "color": "#990000"
+    }, {
+        "country": "pt_re",
+        "visits": 0.00,
+        "color": "#83b426"
+    }, {
+        "country": "pl",
+        "visits": 0.00,
+        "color": "#08b27f"
+    }, {
+        "country": "hg",
+        "visits": 0.00,
+        "color": "#8cb82c"
+    },{
+        "country": "sgwin",
+        "visits": 259128.44,
+        "color": "#8cb82c"
+    },{
+        "country": "allbet",
+        "visits": -3528.75,
+        "color": "#8cb82c"
+    },{
+        "country": "im",
+        "visits": 0.00,
+        "color": "#8cb82c"
+    },{
+        "country": "电竞牛",
+        "visits": 0.00,
+        "color": "#01a9db"
+    },{
+        "country": "新188体育",
+        "visits": 0.00,
+        "color": "#01a9db"
+    },{
+        "country": "一鹿8",
+        "visits": 0.00,
+        "color": "#01a9db"
+    },{
+        "country": "CQ9",
+        "visits": 0.00,
+        "color": "#01a9db"
+    }],
+    "valueAxes": [{
+        "axisAlpha": 0,
+        "position": "left"
+    }],
+    "startDuration": 1,
+    "graphs": [{
+        "balloonText": "<b>[[category]]: [[value]]</b>",
+        "fillColorsField": "color",
+        "fillAlphas": 0.9,
+        "lineAlpha": 0.2,
+        "type": "column",
+        "valueField": "visits"
+    }],
+    "chartCursor": {
+        "categoryBalloonEnabled": false,
+        "cursorAlpha": 0,
+        "zoomable": false
+    },
+    "categoryField": "country",
+    "categoryAxis": {
+        "gridPosition": "start",
+        "labelRotation": 45
+    },
+    "amExport":{}
+
+}
