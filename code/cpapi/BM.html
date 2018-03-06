@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script src="/js/test.js?20171208" type="text/javascript"></script>
+</head>
+<a href="/b.html">查询参数说明</a><br/>
+<form method="post" action="%URL%">
+    URL: <a id="urlall">%URLALL%</a>
+    <div>
+        <INPUT id="action" type="hidden" name="action" value="bm">
+        <a>userno：</a><INPUT id="uno" type="text" name="uno" value="%UNO%">&nbsp;
+        <a>pwd: </a><INPUT id="pw" type="text" name="pw" value="%PWD%">&nbsp;
+        <a>opstyle: </a><INPUT id="opstyle" type="text" name="opstyle" value="%opstyle%">&nbsp;
+        <a>qty: </a><INPUT id="qty" type="text" name="qty" value="%qty%">&nbsp;
+        <a>orderid: </a><INPUT id="orderid" type="text" name="orderid" value="%orderid%">&nbsp;<br/>
+        <a>signstr: </a><INPUT id="signstr" readonly name="signstr" style="width:300px" value="%SIGN%">
+    </div>
+    <div>
+        <button type="button" onclick="genBmMd5()">刷新SIGN</button>&nbsp;
+        <input type="submit" value="发起请求" />
+    </div>
+</form>
+<div id="info"></div>
+
+</html>

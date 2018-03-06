@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+<script type="text/javascript" src='static/js/md5.js'></script>
+
+<script type="text/javascript">
+        
+function validation()
+{
+	var opcode = document.getElementById("fieldOpCode").value;
+	var name = document.getElementById("fieldPlayerName").value;
+    var privatekey = document.getElementById("fieldPrivateKey").value;
+    var SecurityToken = md5(privatekey);
+    document.getElementById("SecurityToken").value = SecurityToken;
+    var postStr = "SecurityToken="+SecurityToken+"&OpCode="+opcode+"&PlayerName="+name+"&PrivateKey="+privatekey;
+    console.log(postStr);
+	ajax("demo.php",postStr,function(result){
+        
+        if (result.indexOf("index.aspx") >= 0 && result.indexOf("http://")) {
+            document.getElementById("main-frame").attr("src", result);
+        }else{
+            document.getElementById("info").innerHTML=result;
+        }
+		
+		});
+}
+
+function ajax(url,postStr,onsuccess)
+{
+    var xmlhttp = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP'); //创建XMLHTTP对象，考虑兼容性。XHR
+    xmlhttp.open("POST", url, true); //“准备”向服务器的GetDate1.ashx发出Post请求（GET可能会有缓存问题）。这里还没有发出请求
+
+    //AJAX是异步的，并不是等到服务器端返回才继续执行
+    xmlhttp.onreadystatechange = function ()
+    {
+        if (xmlhttp.readyState == 4) //readyState == 4 表示服务器返回完成数据了。之前可能会经历2（请求已发送，正在处理中）、3（响应中已有部分数据可用了，但是服务器还没有完成响应的生成）
+        {
+            if (xmlhttp.status == 200) //如果Http状态码为200则是成功
+            {
+                onsuccess(xmlhttp.responseText);
+            }
+            else
+            {
+                alert("AJAX服务器返回错误！");
+            }
+        }
+    }
+	xmlhttp.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
+    //不要以为if (xmlhttp.readyState == 4) {在send之前执行！！！！
+    xmlhttp.send(postStr); //这时才开始发送请求。并不等于服务器端返回。请求发出去了，我不等！去监听onreadystatechange吧！
+}
+</script>
+</head>
+
+<body>
+<table>
+    <tr>
+        <td>Operator Code</td>
+        <td><input id="fieldOpCode" name="fieldOpCode" type="text" value="ABETLICN" style="width:300px;" /></td>
+    </tr>
+    <tr>
+        <td>Player Name</td>
+        <td><input id="fieldPlayerName" name="fieldPlayerName" type="text" value="alien" style="width:300px;" /></td>
+    </tr>
+    <tr>
+        <td>Private Key</td>
+        <td><input id="fieldPrivateKey" name="fieldPrivateKey" type="password" value="KSDFHC72965SDDZSY" style="width:300px;" /></td>
+    </tr>
+    <tr>
+            <td>Security Token</td>
+            <td><input id="SecurityToken" name="SecurityToken" type="text" value="" style="width:300px;" /></td>
+        </tr>
+    <tr>
+        <td>
+            <input type="button" name="button" value="提交" onclick="validation();" />
+        </td>
+    </tr>
+</table>
+    
+<div id="info"></div>
+<iframe id="main-frame"  style="width: 100%; height: 100%;" name="main-frame" scrolling="no" frameborder="0" src=""></iframe>
+
+
+</body>
+</html>
