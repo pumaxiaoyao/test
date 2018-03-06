@@ -1,9 +1,9 @@
-Hi��dear 	
-    IG�Ҿ�ƽ̨�ԽӲ�����Ϣ	
-	���Ժ�̨������http://gbksw.iasia99.com
-	���Ժ�̨��ɶ��˺ţ�tniubo ���룺chengdu123
-	���Աұ�TEST��ȡ��ӿڲ������ƣ�
-	�Խ���֪��
-	1.���ݶԽӵ�API�ĵ�����Ĳ���API�����ַ�������ÿһ���ӿ�
-	2.��̨��6���˺�ģʽ���ܹ�˾����ɶ����ɶ����ܴ�������������Ա�����������˺Ż�����hashcode�������ͨ���������˺��ṩ����hashcode����Ҫ�󷽵�¼��̨���������˺ţ�
-	3.���Ի����������Ƶ���API�������ͺ�̨��¼������
+Hi，dear 
+    IG埔京平台对接测试信息
+	测试后台域名：http://gbksw.iasia99.com
+	测试后台大股东账号：tniubo 密码：qqww1122 
+	测试币别：TEST（取款接口测试限制）
+	对接须知：
+	1.根据对接的API文档里面的测试API请求地址请求测试每一个接口
+	2.后台是6级账号模式（总公司，大股东，股东，总代理，代理，会员）新增代理账号会生成hashcode，由这边通过检查代理账号提供给贵方hashcode（需要贵方登录后台开出代理账号）
+	3.测试环境不会限制调用API白名单和后台登录白名单
