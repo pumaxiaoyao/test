@@ -10,6 +10,27 @@
  * @link     http://alien.com
  */
 
+
+
+ /**
+ * 解析日志的状态
+ * 
+ * @param string $codeID  状态码
+ * @param string $codeID1 状态码
+ * 
+ * @return string
+ */
+function parseOPType($optypes)
+{
+    $opArugs = [];
+    foreach (explode(",", $optypes) as $_optype) {
+        $opval = $GLOBALS["ParsePlayerRecordBalanceType"][$_optype];
+        array_push($opArugs, $opval);
+    }
+    return array_sum($opArugs);
+}
+
+
 /**
  * 构建界面中所需的玩家组下拉选项菜单
  *

@@ -17,7 +17,7 @@
  */
 function registerCommonHelper()
 {
-    $_modules = array("utilities", "ipsearch/ipsearch", "PublicArgus", 
+    $_modules = array("utilities", "ipsearch/ipsearch", "Def", "PublicArgus", 
         "verifycode/ValidateCode.class");
     registerModules(array("utilities", "thirdparties"), $_modules);
 }
