@@ -1,0 +1,13 @@
+D:\我的文件\程式相關\收單\其他收單\柬单付\PayInterface\PayInterface\util\obj\Debug\utils.csproj.CoreCompileInputs.cache
+D:\我的文件\程式相關\收單\其他收單\柬单付\PayInterface\PayInterface\util\bin\Debug\util.dll.config
+D:\我的文件\程式相關\收單\其他收單\柬单付\PayInterface\PayInterface\util\bin\Debug\util.dll
+D:\我的文件\程式相關\收單\其他收單\柬单付\PayInterface\PayInterface\util\bin\Debug\util.pdb
+D:\我的文件\程式相關\收單\其他收單\柬单付\PayInterface\PayInterface\util\obj\Debug\util.dll
+D:\我的文件\程式相關\收單\其他收單\柬单付\PayInterface\PayInterface\util\obj\Debug\util.pdb
+D:\我的文件\程式相關\收單\其他收單\柬单付\PayInterface\PayInterface\util\obj\Debug\utils.csprojResolveAssemblyReference.cache
+D:\我的文件\程式相關\收單\其他收單\柬单付\C#版本Demo\PayInterface\PayInterface\util\bin\Debug\util.dll
+D:\我的文件\程式相關\收單\其他收單\柬单付\C#版本Demo\PayInterface\PayInterface\util\bin\Debug\util.pdb
+D:\我的文件\程式相關\收單\其他收單\柬单付\C#版本Demo\PayInterface\PayInterface\util\obj\Debug\utils.csprojResolveAssemblyReference.cache
+D:\我的文件\程式相關\收單\其他收單\柬单付\C#版本Demo\PayInterface\PayInterface\util\obj\Debug\utils.csproj.CoreCompileInputs.cache
+D:\我的文件\程式相關\收單\其他收單\柬单付\C#版本Demo\PayInterface\PayInterface\util\obj\Debug\util.dll
+D:\我的文件\程式相關\收單\其他收單\柬单付\C#版本Demo\PayInterface\PayInterface\util\obj\Debug\util.pdb

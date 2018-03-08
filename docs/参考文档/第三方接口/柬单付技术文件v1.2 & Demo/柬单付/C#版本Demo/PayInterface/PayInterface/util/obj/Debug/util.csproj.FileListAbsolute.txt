@@ -1,0 +1,2 @@
+D:\我的文件\程式相關\收單\其他收單\柬单付\PayInterface\PayInterface\util\obj\Debug\util.csprojResolveAssemblyReference.cache
+D:\我的文件\程式相關\收單\其他收單\柬单付\PayInterface\PayInterface\util\obj\Debug\util.csproj.CoreCompileInputs.cache
