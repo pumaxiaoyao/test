@@ -2264,7 +2264,7 @@ $GLOBALS["IGSSCBetTypeName"] = array(	//IG时时彩-游戏类型
 	"55" => "极速快乐8",
 	"56" => "极速3D",
 	"57" => "极速PC蛋蛋",
-	"58" => "极速六合",
+	"58" => "极速六合彩",
 );
 $GLOBALS["IGSSCBetTypeFit"] = array(	//IG时时彩-游戏类型与游戏明细对应关系
 	"1" => "1",
