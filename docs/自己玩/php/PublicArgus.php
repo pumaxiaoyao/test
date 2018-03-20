@@ -611,6 +611,10 @@ $GLOBALS["betTypeName"] = array(
 			"tie"=>"一样多",
 		),
 	),
+	"143" => array(			//	todo:细节等待官方文档补充
+		"name"=>"上半场分数/总进球数",
+		"detail" => "KeyInfo",
+	),
 	"144" => array(
 		"name"=>"赛果/总进球大小（足球）",
 		"argus" => array(
@@ -900,8 +904,8 @@ $GLOBALS["betTypeName"] = array(
 		"name"=>"下半场双重机会（足球）",
 		"argus" => array(
 			"HD" => "主队/平局",
-			"HA" => "主隊 / 客隊",
-			"DA" => "平局 / 客隊",
+			"HA" => "主隊/客隊",
+			"DA" => "平局/客隊",
 		),
 	),
 	"187" => array(		//特殊
@@ -1462,6 +1466,71 @@ $GLOBALS["betTypeName"] = array(
 			"yn" => "有/沒有",
 			"ny" => "沒有/有",
 			"nn" => "沒有/沒有",
+		),
+	),
+	"448" => array(		//细节等待官方文档补充
+		"name"=>"最后进球的队",
+		"detail" => "KeyInfo",
+		),
+	),
+	"449" => array(		//细节等待官方文档补充
+		"name"=>"双重机会/总进球数",
+		"detail" => "KeyInfo",
+		),
+	),
+	"450" => array(		//细节等待官方文档补充
+		"name"=>"单双盘/总进球数",
+		"detail" => "KeyInfo",
+		),
+	),
+	"451" => array(		//细节等待官方文档补充
+		"name"=>"两队皆进球/双重机会",
+		"detail" => "KeyInfo",
+		),
+	),
+	"452" => array(		//细节等待官方文档补充
+		"name"=>"进球最多的半场(双项)",
+		"detail" => "KeyInfo",
+		),
+	),
+	"453" => array(		//细节等待官方文档补充
+		"name"=>"上半场三项让分投注",
+		"detail" => "KeyInfo",
+		),
+	),
+	"454" => array(		//细节等待官方文档补充
+		"name"=>"双重机会/最先进球的队",
+		"detail" => "KeyInfo",
+		),
+	),
+	"455" => array(		//细节等待官方文档补充
+		"name"=>"第一个进球时段",
+		"detail" => "KeyInfo",
+		),
+	),
+	"456" => array(		//细节等待官方文档补充
+		"name"=>"上半场两队皆进球/赛果",
+		"detail" => "KeyInfo",
+		),
+	),
+	"457" => array(		//细节等待官方文档补充
+		"name"=>"上半场两队皆进球/总进球数",
+		"detail" => "KeyInfo",
+		),
+	),
+	"458" => array(		//细节等待官方文档补充
+		"name"=>"亚洲1x2",
+		"detail" => "KeyInfo",
+		),
+	),
+	"459" => array(		//细节等待官方文档补充
+		"name"=>"上半场亚洲1x2",
+		"detail" => "KeyInfo",
+		),
+	),
+	"460" => array(		//细节等待官方文档补充
+		"name"=>"哪个球队会赢5+球",
+		"detail" => "KeyInfo",
 		),
 	),
 	"461" => array(
@@ -3158,7 +3227,7 @@ $GLOBALS["AGCasinoGameTypeId"] = array(	//AG 视讯游戏类别
 	"NN" => "牛牛",
 	"BJ" => "21 点",
 	"ZJH" => "炸金花",
-)
+);
 $GLOBALS["AGCasinoPlayTypeId"] = array(	//AG 视讯下注类型(AG的游戏与玩法不需要直接挂靠）
 	"1" => "庄",
 	"2" => "闲",
@@ -3316,4 +3385,4 @@ $GLOBALS["AGCasinoPlayTypeId"] = array(	//AG 视讯下注类型(AG的游戏与�
 	"264" => "顺子",
 	"265" => "豹子",
 	"266" => "同花顺",
-)
+);
