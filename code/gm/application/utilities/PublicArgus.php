@@ -5,12 +5,6 @@
  * 为便于使用，全部载入Global变量中
  *
  */
-$GLOBALS["ParsePlayerRecordBalanceType"]= [
-    1 => PlayerRecordBalanceType::deposit,
-    2 => PlayerRecordBalanceType::withdrawal,
-    3 => PlayerRecordBalanceType::bonus,
-];
-
 
 $GLOBALS["mysql"] = array(
     "host" => "localhost",
@@ -33,6 +27,7 @@ $GLOBALS["GP_Names"] = array(
     "MAIN" => "主账户",
     "IBC" => "沙巴体育",
     "NB" => "牛博彩票",
+    "IG" => "时时彩",
 );
 $GLOBALS["Record_Types"] = array(
     0 => array(

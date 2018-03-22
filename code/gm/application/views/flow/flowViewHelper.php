@@ -71,6 +71,8 @@ function showWageredDatas($datas)
             $_tmpData = makeIBCDataArray($datas[$x]);
         } elseif ($platform == "NB") {
             $_tmpData = makeNBDataArray($datas[$x]);
+        } elseif ($platform == "IG") {
+            $_tmpData = makeIGDataArray($datas[$x]);
         }
 
         $_tmpArray = $_tmpData[0];
@@ -88,6 +90,79 @@ function showWageredDatas($datas)
     return array($retdatas, array($Total_Bet, $Total_Bonus, 0 - $Total_Winloss, $Total_validBet));
 }
 
+
+/**
+ * 构建IG的数据
+ * 
+ */
+function makeIGDataArray($data)
+{   
+    $betId = getArrayValue("betId", "", $data);
+    $recordNum = getArrayValue("recordNum", "", $data);
+    
+    $account = getArrayValue("account", "", $data);
+    $platform = getArrayValue("platform", "", $data);
+    
+    $game = getArrayValue("game", "", $data);
+    $pGame = getArrayValue("platformGame", "", $data);
+
+    $dno = (int)getArrayValue("dno", "0", $data);
+    $stakeAmount = getArrayValue("stakeAmount", "", $data);
+    $BonusAmount = getArrayValue("winLoseAmount", "", $data);
+    $validStakeAmount = getArrayValue("validStakeAmount", "", $data);
+    $recordTime = getArrayValue("recordTime", "", $data);
+    
+    $betResult = getArrayValue("isOver", "", $data);
+    $rebateStatus = getArrayValue("isRebateValid", false, $data);
+
+
+    if ($betResult == "1") {
+        $resultSTR = "结算完成";
+    } else {
+        $resultSTR = "待结算";
+    }
+
+    if ($rebateStatus == 1) {
+        $validSTR = "有效";
+        $operStr = array("red", "99", $dno, $platform, "设为无效");
+    } else {
+        $validSTR = "无效";
+        $operStr = array("green", "66", $dno, $platform, "设为有效");
+    }
+    $contentStr = "村长来讲一讲";
+
+    if (!empty($recordTime)) {
+        $betTime = date("Y-m-d", $recordTime)."<br/>".date("H:i:s", $recordTime);
+    }
+    
+    if ($BonusAmount > 0 ) {
+        $betStr = array("red", number_format($stakeAmount, 2));
+        $winStr = array("red", number_format($BonusAmount, 2));
+        $bonusStr = array("red", number_format($BonusAmount, 2));
+        $validAmountStr = array("red", number_format($validStakeAmount, 2));
+    } else {
+        $betStr = array("green", number_format($stakeAmount, 2));
+        $winStr = array("green", number_format($BonusAmount, 2));
+        $bonusStr = array("green", number_format($BonusAmount, 2));
+        $validAmountStr = array("green", number_format($validStakeAmount, 2));
+    }
+    $tmpdata = array(
+        getArrayValue($platform, "", $GLOBALS["GP_Names"]). " - " .$pGame,
+        array($account, $account),
+        $betId,
+        $betTime,
+        $contentStr,
+        $resultSTR,
+        $betStr,
+        $bonusStr,
+        $winStr,
+        $validAmountStr,
+        array($recordNum, $validSTR),
+        $operStr
+    );
+
+    return array($tmpdata, array((float)$stakeAmount, (float)$BonusAmount, (float)$validStakeAmount, (float)$validStakeAmount));
+}
 /**
  * 构建IBC的数据
  *

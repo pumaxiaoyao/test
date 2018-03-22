@@ -17,7 +17,7 @@
  */
 function registerCommonHelper()
 {
-    $_modules = array("utilities", "ipsearch/ipsearch", "Def", "PublicArgus", 
+    $_modules = array("utilities", "ipsearch/ipsearch", "PublicArgus", 
         "verifycode/ValidateCode.class");
     registerModules(array("utilities", "thirdparties"), $_modules);
 }
@@ -73,7 +73,7 @@ function registerModules($_subpaths, $_register)
         foreach ($_subpaths as $_subpath) {
             $_file = "./application/".$_subpath."/".$_.".php";
             if (file_exists($_file)) {
-                require_once $_file;
+                include_once $_file;
             } else {
                 //用于异常无法加载时的调试代码，可忽略
                 // if (!in_array($_subpath, array("utilities", "thirdparties"))) {

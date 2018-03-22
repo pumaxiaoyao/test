@@ -12,8 +12,6 @@
 trait Playerfundtrait
 {
 
-
-
     /**
      * 流水检查接口
      *
@@ -274,17 +272,22 @@ trait Playerfundtrait
      * 
      * @return void
      */
-    static function dptCorrectionAjax($request)
+    function dptCorrectionAjax($request)
     {
         $s_args = parseCommonRequestArgus($request);
 
         $s_type = getArrayValue("s_type", 1, $request);
-        $ptype = getArrayValue("ptype", "1,2,3", $request);
-        $fs_ptype = getArrayValue("fs_ptype", "1,2,3", $request);
-        $optype = parseOPType($ptype);
+        $ptype = getArrayValue("ptype", "", $request);
+        $fs_ptype = getArrayValue("fs_ptype", 1, $request);
+        if (empty($ptype)) {
+            $ptype = 131; // 1+2+128
+        } else {
+            $_ptypes = explode(",", urldecode($ptype));
+            $ptype = array_sum($_ptypes);
+        }
         
         $s_key = getArrayValue("s_keyword", "", $request);//查询关键字
-        $retJson = gmServerCaller("GetBalanceAdjustmentRecord", array($optype, $s_args[0] , $s_args[1], $s_type, $s_key, $s_args[2], $s_args[3]));
+        $retJson = gmServerCaller("GetBalanceAdjustmentRecord", array($ptype, $s_args[0] , $s_args[1], $s_type, $s_key, $s_args[2], $s_args[3]));
         $staticJson = getArrayValue(1, array(), $retJson);
         $retJson = getArrayValue(0, array(), $retJson);
 
