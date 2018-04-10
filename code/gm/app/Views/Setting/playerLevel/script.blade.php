@@ -1,0 +1,2 @@
+<script type="text/javascript" src="/static/js/support/settings/playerlevel.js?201801031255"></script>
+<script type="text/javascript" src="/static/js/support/settings/playerlevelattr.js?201801031562"></script>

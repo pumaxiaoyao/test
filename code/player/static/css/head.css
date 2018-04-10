@@ -433,7 +433,7 @@
     width: 1190px;
     margin: auto;
     background: url(/static/img/head/linebj.png) no-repeat center 130px;
-    height:200px;
+    height:150px;
 }
         .navigation-down .nav-down-menu .navigation-down-inner {
             margin: auto;
@@ -447,10 +447,9 @@
          width:258px;
          display:inline-block;
          float:left
-
     }
-.navigation-down .middle, .navigation-down .last {
-    width: 466px;
+.navigation-down .first, .navigation-down .middle, .navigation-down .last {
+    width: 380px;
     display: inline-block;
     float: left
 }
@@ -468,19 +467,19 @@
 
 
 }
-.navigation-down .middle i,.navigation-down .last i {
+.navigation-down .first i, .navigation-down .middle i,.navigation-down .last i {
     height: 131px;
     width: 100%;
     display: inline-block
 }
-    .navigation-down .middle i img, .navigation-down .last i img {
-        margin-top: 30px;
+    .navigation-down .first i img, .navigation-down .middle i img, .navigation-down .last i img {
+        margin-top: 150px;
     }
-.nav-ylc .middle i img, .nav-ylc .last i img {
-     margin-top:0
+.nav-ylc .first i img, .nav-ylc .middle i img, .nav-ylc .last i img {
+     margin-top:20px;
 }
 
-.navigation-down .middle span, .navigation-down .last span {
+.navigation-down .first span, .navigation-down .middle span, .navigation-down .last span {
     display: block;
     height: 59px;
     font-size: 14px;
@@ -489,7 +488,7 @@
     color: #969696;
     background: url(/static/img/head/navline.png) no-repeat -1px top;
 }
-    .navigation-down .middle span strong, .navigation-down .last span strong {
+.navigation-down .first span strong,    .navigation-down .middle span strong, .navigation-down .last span strong {
         display: block;
         color: #000;
     }

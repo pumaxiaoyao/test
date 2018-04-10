@@ -1,7 +1,3 @@
-var phoneinterval = null;
-var phonetimesec = 60;
-var mailinterval = null;
-var mailtimesec = 60;
 
 //全局的ajax访问，处理ajax清求时session超时
 $.ajaxSetup({
@@ -14,7 +10,7 @@ $.ajaxSetup({
          if(jsonData.code == 999){
            //如果超时就处理 ，指定要跳转的页面(比如登录页)
            alert(jsonData.Message);
-           window.location.replace("/agent/agents/index");
+           window.location.replace("/agent/index");
          }
        }catch(e){
        }
@@ -23,6 +19,7 @@ $.ajaxSetup({
  
 
 $(function () {
+
     $("body").keydown(function () {
         if (event.keyCode == "13") { //keyCode=13是回车键
             $('#agentlogin').click();
@@ -33,715 +30,8 @@ $(function () {
         setTime();
     }, 1000);
 
-    if (pageName() == "agentAccount"){
-        if (LastPhoneCode) {
-            var btId = "#GetPhoneCodeBt";
-            $(btId).hide();
-            $("#GetPhoneTime").show();
-            phonetimesec = PhoneCodeInterval;
-            phoneinterval = setInterval(function () {
-                setPhoneRemainingTime(btId)
-            }, 1000);
-        }
-    
-        if (LastUnPhoneCode) {
-            var btId = "#GetUnPhoneCodeBt";
-            $(btId).hide();
-            $("#GetPhoneTime").show();
-            phonetimesec = UnPhoneCodeInterval;
-            phoneinterval = setInterval(function () {
-                setPhoneRemainingTime(btId)
-            }, 1000);
-        }
-    
-        if (LastMailCode) {
-            var btId = "#GetEmailCodeBt";
-            $(btId).hide();
-            $("#GetEmailTime").show();
-            mailtimesec = MailCodeInterval;
-            mailinterval = setInterval(function () {
-                setMailRemainingTime(btId)
-            }, 1000);
-        }
-    
-        if (LastUnMailCode) {
-            var btId = "#GetUnEmailCodeBt";
-            $(btId).hide();
-            $("#GetEmailTime").show();
-            mailtimesec = UnMailCodeInterval;
-            mailinterval = setInterval(function () {
-                setMailRemainingTime(btId)
-            }, 1000);
-        }
-    }
-    
-    if (!placeholderSupport()) { // 判断浏览器是否支持 placeholder
-        $("#jpwd").attr("placeholder", "请输入密码 ");
-        $('[placeholder]').focus(function () {
-            var input = $(this);
-            if (input.val() == input.attr('placeholder')) {
-                input.val('');
-                input.removeClass('placeholder');
-            }
-        }).blur(function () {
-            var input = $(this);
-            if (input.val() == '' || input.val() == input.attr('placeholder')) {
-                input.addClass('placeholder');
-                input.val(input.attr('placeholder'));
-            }
-        }).blur();
-    };
-
-    $("#setting_history_box").delegate('#choose', "change", function () {
-        console.log(this.value);
-        if (this.value == "ClearDate") {
-            var s = '',
-                e = '';
-        }
-
-        if (this.value == "month") {
-            var s = GetDateStr(-30),
-                e = GetDateStr(0);
-        }
-
-        if (this.value == "week") {
-            var s = GetDateStr(-7),
-                e = GetDateStr(0);
-        }
-
-        if (this.value == "3days") {
-            var s = GetDateStr(-4),
-                e = GetDateStr(0);
-        }
-
-        if (this.value == "today") {
-            var s = GetDateStr(0),
-                e = GetDateStr(0);
-        }
-
-        $('#setting_history_box').find('input#betstartdate').val(s);
-        $('#setting_history_box').find('input#betenddate').val(e);
-        console.log(s);
-        console.log(e);
-        console.log($('#setting_history_box').find('input#betstartdate').val());
-        console.log($('#setting_history_box').find('input#betenddate').val());
-    });
-
-    $("#information_bt").click(function () {
-        var firstName = $("#FirstName").val();
-        var isFristName = $("#isFristName").val();
-        if (firstName == null && firstName == "") {
-            swal({
-                title: "",
-                text: "姓名不能为空",
-                type: "warning"
-            });
-            return false;
-        }
-        $.post("/agent/agents/agentAccount", {
-            "action": "updateinformation",
-            "FirstName": firstName,
-            "isFristName": isFristName
-        }, function (data) {
-            data = JSON.parse(data);
-            if (data.code == 200) {
-                swal({
-                    title: "",
-                    text: "修改成功",
-                    type: "success"
-                }, function () {
-                    location.reload();
-                });
-            } else {
-                errorHandler(data);
-            }
-        });
-    });
-
-    $("#setting_pwd_box_submit").click(function () {
-        var oldpassword = $("#setting_pwd_box_oldpwd").val();
-        var password = $("#setting_pwd_box_newpwd").val();
-        var repassword = $("#setting_pwd_box_newpwd2").val();
-
-        if (oldpassword == null || oldpassword == "") {
-            swal({
-                title: "",
-                text: "请输入原密码",
-                type: "warning"
-            });
-            return false;
-        }
-        if (password == null || password == "") {
-            swal({
-                title: "",
-                text: "请输入新密码",
-                type: "warning"
-            });
-            return false;
-        }
-
-        if (repassword == null || repassword == "") {
-            swal({
-                title: "",
-                text: "请再次输入新密码",
-                type: "warning"
-            });
-            return false;
-        }
-
-        var pwdreg = new RegExp("^.{8,20}$");
-        if (!pwdreg.test(oldpassword) || !pwdreg.test(password) || !pwdreg.test(repassword)) {
-            swal({
-                title: "",
-                text: "请输入8到20字符!",
-                type: "warning"
-            });
-            return false;
-        }
-
-        if (password != repassword) {
-            swal({
-                title: "",
-                text: "两次输入的密码不一致!",
-                type: "warning"
-            });
-            return false;
-        }
-        $.ajax({
-            type: "post",
-            url: "agentAccount",
-            contentType: "application/json; charset=utf-8",
-            data: {
-                "action": "UpdatePassword",
-                "oldPassword": oldpassword,
-                "Password": password,
-                "rePassword": repassword
-            },
-            dataType: "json",
-            success: function (data) {
-                if (data.code == 200) {
-                    swal({
-                        title: "",
-                        text: data.Message,
-                        type: "success"
-                    }, function () {
-                        location.reload();
-                    });
-                } else {
-                    errorHandler(data);
-                }
-            },
-            error: function (err) {}
-        }, 'json');
-    });
-
-    $("#GetPhoneCodeBt").click(function () {
-
-        var phoneNumber = $("#setting_phone_box_phonenumber").val();
-        if (phoneNumber == null || phoneNumber == "") {
-            swal({
-                title: "",
-                text: "手机号码不能为空",
-                type: "warning"
-            });
-            return false;
-        }
-
-        if (!(/^1[34578]\d{9}$/.test(phoneNumber))) {
-            swal({
-                title: "",
-                text: "输入的手机格式不正确",
-                type: "warning"
-            });
-            return false;
-        }
-
-        $.post("/agent/agents/agentAccount", {
-            phoneNumber: phoneNumber,
-            action: "getPhoneCode"
-        }, function (recode) {
-            recode = JSON.parse(recode);
-            if (recode.code == 200) {
-                var btId = "#GetPhoneCodeBt";
-                $(btId).hide();
-                $("#GetPhoneTime").show();
-                phoneinterval = setInterval(function () {
-                    setPhoneRemainingTime(btId)
-                }, 1000);
-                swal({
-                    title: "",
-                    text: recode.Message,
-                    type: "success"
-                });
-            } else if (recode.code == 501) {
-                swal({
-                    title: "",
-                    text: "该手机号码已绑定，请使用其他号码绑定！",
-                    type: "warning"
-                });
-            } else if (recode.code == 502) {
-                swal({
-                    title: "",
-                    text: "您的手机号是绑定状态,不需要再绑定",
-                    type: "warning"
-                });
-            } else if (recode.code == 504) {
-                swal({
-                    title: "",
-                    text: "手机号码不能为空",
-                    type: "warning"
-                });
-            } else if (recode.code == 506) {
-                swal({
-                    title: "",
-                    text: "输入的手机格式不正确",
-                    type: "warning"
-                });
-            } else if (recode.code == 508) {
-                swal({
-                    title: "",
-                    text: "申请失败",
-                    type: "warning"
-                });
-            } else if (recode.code == 560) {
-                swal({
-                    title: "",
-                    text: "60秒内只能发送一次验证码，请勿重复操作。",
-                    type: "warning"
-                });
-            } else if (recode.code == 404) {
-                var btId = "#GetPhoneCodeBt";
-                $(btId).hide();
-                $("#GetPhoneTime").show();
-                phonetimesec = recode.Time;
-                phoneinterval = setInterval(function () {
-                    setPhoneRemainingTime(btId)
-                }, 1000);
-                swal({
-                    title: "",
-                    text: recode.Message,
-                    type: "warning"
-                });
-            } else {
-                errorHandler(recode);
-            }
-        });
-    });
-
-    $("#GetUnPhoneCodeBt").click(function () {
-        $.post("/agent/agents/agentAccount", {
-            action: "getUnPhoneCode"
-        }, function (recode) {
-            recode = JSON.parse(recode);
-            if (recode.code == 200) {
-                var btId = "#GetUnPhoneCodeBt";
-                $(btId).hide();
-                $("#GetPhoneTime").show();
-                phoneinterval = setInterval(function () {
-                    setPhoneRemainingTime(btId)
-                }, 1000);
-                swal({
-                    title: "",
-                    text: recode.Message,
-                    type: "success"
-                });
-            } else if (recode.code == 509) {
-                swal({
-                    title: "",
-                    text: "您还未绑定手机，请先绑定手机",
-                    type: "warning"
-                });
-            } else if (recode.code == 504) {
-                swal({
-                    title: "",
-                    text: "手机号码不能为空",
-                    type: "warning"
-                });
-            } else if (recode.code == 506) {
-                swal({
-                    title: "",
-                    text: "输入的手机格式不正确",
-                    type: "warning"
-                });
-            } else if (recode.code == 508) {
-                swal({
-                    title: "",
-                    text: "申请失败",
-                    type: "warning"
-                });
-            } else if (recode.code == 560) {
-                swal({
-                    title: "",
-                    text: "60秒内只能发送一次验证码，请勿重复操作。",
-                    type: "warning"
-                });
-            } else if (recode.code == 404) {
-                var btId = "#GetUnPhoneCodeBt";
-                $(btId).hide();
-                $("#GetPhoneTime").show();
-                phonetimesec = recode.Time;
-                phoneinterval = setInterval(function () {
-                    setPhoneRemainingTime(btId)
-                }, 1000);
-                swal({
-                    title: "",
-                    text: recode.Message,
-                    type: "warning"
-                });
-            } else {
-                errorHandler(recode);
-            }
-        });
-    });
-
-    $("#GetUnEmailCodeBt").click(function () {
-
-        $.post("agentAccount", {
-            action: "getUnEmailCode"
-        }, function (recode) {
-            recode = JSON.parse(recode);
-            if (recode.code == 200) {
-                var btId = "#GetUnEmailCodeBt";
-                $(btId).hide();
-                $("#GetEmailTime").show();
-                mailinterval = setInterval(function () {
-                    setMailRemainingTime(btId)
-                }, 1000);
-                swal({
-                    title: "",
-                    text: recode.Message,
-                    type: "success"
-                });
-            } else if (recode.code == 509) {
-                swal({
-                    title: "",
-                    text: "您还未绑定邮箱，请先绑定邮箱",
-                    type: "warning"
-                });
-            } else if (recode.code == 504) {
-                swal({
-                    title: "",
-                    text: "邮箱不能为空",
-                    type: "warning"
-                });
-            } else if (recode.code == 506) {
-                swal({
-                    title: "",
-                    text: "输入的邮箱格式不正确",
-                    type: "warning"
-                });
-            } else if (recode.code == 508) {
-                swal({
-                    title: "",
-                    text: "申请失败",
-                    type: "warning"
-                });
-            } else if (recode.code == 404) {
-                var btId = "#GetUnEmailCodeBt";
-                $(btId).hide();
-                $("#GetEmailTime").show();
-                mailinterval = setInterval(function () {
-                    setMailRemainingTime(btId)
-                }, 1000);
-                swal({
-                    title: "",
-                    text: recode.Message,
-                    type: "warning"
-                });
-            } else {
-                errorHandler(recode);
-            }
-        });
-    });
-
-    $("#GetEmailCodeBt").click(function () {
-        var mailnumber = $("#setting_mail_box_mailnumber").val();
-        if (mailnumber == null || mailnumber == "") {
-            swal({
-                title: "",
-                text: "邮箱号码不能为空",
-                type: "warning"
-            });
-            return false;
-        }
-        var reg = new RegExp("^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$");
-        if (!reg.test(mailnumber)) {
-            swal({
-                title: "",
-                text: "输入的邮箱格式不正确",
-                type: "warning"
-            });
-            return false;
-        }
-
-        $.post("agentAccount", {
-            mailNumber: mailnumber,
-            action: "getEmailCode"
-        }, function (recode) {
-            recode = JSON.parse(recode);
-            if (recode.code == 200) {
-                var btId = "#GetEmailCodeBt";
-                $(btId).hide();
-                $("#GetEmailTime").show();
-                mailinterval = setInterval(function () {
-                    setMailRemainingTime(btId)
-                }, 1000);
-                swal({
-                    title: "",
-                    text: recode.Message,
-                    type: "success"
-                });
-            } else if (recode.code == 501) {
-                swal({
-                    title: "",
-                    text: "该邮箱号码已绑定，请使用其他号码绑定！",
-                    type: "warning"
-                });
-            } else if (recode.code == 502) {
-                swal({
-                    title: "",
-                    text: "您的邮箱号是绑定状态,不需要再绑定",
-                    type: "warning"
-                });
-            } else if (recode.code == 504) {
-                swal({
-                    title: "",
-                    text: "邮箱号码不能为空",
-                    type: "warning"
-                });
-            } else if (recode.code == 506) {
-                swal({
-                    title: "",
-                    text: "输入的邮箱格式不正确",
-                    type: "warning"
-                });
-            } else if (recode.code == 508) {
-                swal({
-                    title: "",
-                    text: "申请失败",
-                    type: "warning"
-                });
-            } else if (recode.code == 404) {
-                var btId = "#GetEmailCodeBt";
-                $(btId).hide();
-                $("#GetEmailTime").show();
-                mailtimesec = recode.Time;
-                mailinterval = setInterval(function () {
-                    setMailRemainingTime(btId)
-                }, 1000);
-                swal({
-                    title: "",
-                    text: recode.Message,
-                    type: "warning"
-                });
-            } else {
-                errorHandler(recode);
-            }
-        });
-    });
-
-    $("#setting_phone_box_submit").click(function () {
-        var code = $("#setting_phone_box_code").val();
-
-        if (code == null || code == "") {
-            swal({
-                title: "",
-                text: "请输入验证码",
-                type: "warning"
-            });
-            return;
-        }
-
-        $.ajax({
-            type: "post",
-            url: "agentAccount",
-            contentType: "application/json; charset=utf-8",
-            data: {
-                phoneCode: code,
-                action: "CheckPhoneCode"
-            },
-            dataType: "json",
-            success: function (data) {
-                if (data.code == 200) {
-                    swal({
-                        title: "",
-                        text: data.Message,
-                        type: "success"
-                    }, function () {
-                        window.location.href = "agentAccount?setting=phone";
-                    });
-                } else {
-                    errorHandler(data);
-                }
-            },
-            error: function (err) {}
-        }, 'json');
-    });
-
-    $("#re_phone").click(function () {
-        var code = $("#re_phone_code").val();
-
-        if (code == null || code == "") {
-            swal({
-                title: "",
-                text: "请输入验证码",
-                type: "warning"
-            });
-            return;
-        }
-
-        $.ajax({
-            type: "post",
-            url: "agentAccount",
-            contentType: "application/json; charset=utf-8",
-            data: {
-                action: "UnBindPhone",
-                phoneCode: code
-            },
-            dataType: "json",
-            success: function (data) {
-
-                if (data.code == 200) {
-                    swal({
-                        title: "",
-                        text: data.Message,
-                        type: "success"
-                    }, function () {
-                        window.location.href = "agentAccount?setting=phone";
-                    });
-                } else {
-                    errorHandler(data);
-                }
-            },
-            error: function (err) {}
-        }, 'json');
-    });
-
-    $("#setting_mail_box_submit").click(function () {
-        var code = $("#setting_mail_box_code").val();
-
-        if (code == null || code == "") {
-            swal({
-                title: "",
-                text: "请输入验证码",
-                type: "warning"
-            });
-            return;
-        }
-
-        $.ajax({
-            type: "post",
-            url: "agentAccount",
-            contentType: "application/json; charset=utf-8",
-            data: {
-                action: "CheckEmailCode",
-                emailCode: code
-            },
-            dataType: "json",
-            success: function (data) {
-                if (data.code == 200) {
-                    swal({
-                        title: "",
-                        text: data.Message,
-                        type: "success"
-                    }, function () {
-                        window.location.href = "agentAccount?setting=mail";
-                    });
-                } else {
-                    errorHandler(data);
-                }
-            },
-            error: function (err) {}
-        }, 'json');
-    });
-
-    $("#re_email").click(function () {
-        var code = $("#re_email_code").val();
-
-        if (code == null || code == "") {
-            swal({
-                title: "",
-                text: "请输入验证码",
-                type: "warning"
-            });
-            return;
-        }
-
-        $.ajax({
-            type: "post",
-            url: "agentAccount",
-            contentType: "application/json; charset=utf-8",
-            data: {
-                action: "UnBindEmail",
-                emailCode: code
-            },
-            dataType: "json",
-            success: function (data) {
-                if (data.code == 200) {
-                    swal({
-                        title: "",
-                        text: data.Message,
-                        type: "success"
-                    }, function () {
-                        window.location.href = "agentAccount?setting=mail";
-                    });
-                } else {
-                    errorHandler(data);
-                }
-            },
-            error: function (err) {}
-        }, 'json');
-    });
-
-    $("#change_phone_bt").click(function () {
-        $("#ismobile_box").hide();
-        $("#remobile_box").show();
-    });
-
-    $("#change_email_bt").click(function () {
-        $("#isemail_box").hide();
-        $("#reemail_box").show();
-    });
 });
 
-function GetDateStr(AddDayCount) {     
-    var dd = new Date();    
-    dd.setDate(dd.getDate()+AddDayCount);//获取AddDayCount天后的日期    
-    var y = dd.getFullYear();     
-    var m = (dd.getMonth()+1)<10?"0"+(dd.getMonth()+1):(dd.getMonth()+1);//获取当前月份的日期，不足10补0    
-    var d = dd.getDate()<10?"0"+dd.getDate():dd.getDate();//获取当前几号，不足10补0    
-    return y+"-"+m+"-"+d;     
- }   
-
-function setPhoneRemainingTime(btId) {
-    phonetimesec--;
-    if (phonetimesec < 0) {
-        clearInterval(phoneinterval);
-        phoneinterval = null;
-        $(btId).show();
-        $("#GetPhoneTime").hide();
-        phonetimesec = 60;
-        $("#phoneTiming").html(60);
-        return;
-    }
-
-    $("#phoneTiming").html(phonetimesec);
-}
-
-function setMailRemainingTime(btId) {
-    mailtimesec--;
-    if (mailtimesec < 0) {
-        clearInterval(mailinterval);
-        mailinterval = null;
-        $(btId).show();
-        $("#GetEmailTime").hide();
-        mailtimesec = 60;
-        $("#emailTiming").html(60);
-        return;
-    }
-
-    $("#emailTiming").html(mailtimesec);
-}
 
 function errorHandler(data){
     if (data.code == 400) {
@@ -782,16 +72,17 @@ var code = {
 
 function agent_logout() {
     $.ajax({
-        url: '/agent/agents/logout?r=' + Math.random(),
+        url: '/agent/logout?r=' + Math.random(),
         type: 'post',
         dataType: 'json',
         success: function (da) {
-            if (da.code == 200) {
-                window.location.href = '/agent/agents/index';
+            var resp = da.data;
+            if (resp[0]) {
+                window.location.href = '/agent/index';
             } else {
                 swal({
                     title: "",
-                    text: da.Message,
+                    text: "已退出，是否返回首页",
                     type: "error"
                 });
             }
@@ -821,7 +112,7 @@ function agent_login() {
     };
     console.log(data);
     $.ajax({
-        url: '/agent/agents/login?r=' + Math.random(),
+        url: '/agent/login?r=' + Math.random(),
         type: 'post',
         dataType: 'json',
         data: data,
@@ -830,33 +121,19 @@ function agent_login() {
         },
         success: function (da) {
             enable_login(login_btn, agent_login);
-            if (da.code == 200) {
+            var resp = da.data;
+            if (resp[0]) {
                 //window.location.reload();
-                window.location.href = '/agent/agents/agentAccount';
-            } else if (da.code == 1007) {
-                swal({
-                    title: "",
-                    text: "用户名或密码错误，您还可以尝试" + da.m + "次。",
-                    type: "error"
-                });
-            } else if (da.code == 1000) {
-                swal({
-                    title: "",
-                    text: da.Message,
-                    type: "error"
-                });
+                window.location.href = '/agent/AccountSetting';
             } else {
                 swal({
                     title: "",
-                    text: da.Message,
+                    text: resp[1],
                     type: "error"
                 });
             }
         }
-    })
-    // });
-    // }
-    // });
+    }, "json");
 }
 //打开站内信窗口
 function openMessage() {
@@ -927,6 +204,31 @@ function ScrollBarWidth() {
     return this.sbwidth;
 }
 
+// function pageinit() {
+//     var settingactive = GetQueryString("setting");
+//     if (settingactive != null) {
+//         selectSettingBox(settingactive);
+//     }
+//     if ($("#memberNamelab").html() != null && $("#memberNamelab").html() != "") {
+//         $("#as_info_save_name").hide();
+//         $("#FirstNamelab").html('注意：修改姓名请<a onclick="openServiceBox()">联系客服</a>');
+//     } else {
+//         $("#memberNamelab").hide();
+//     }
+// }
+
+// function selectSettingBox(type) {
+//     //选中菜单动画控制
+
+//     $(".as_menu_icon").attr("class", "as_triangle_down");
+//     $(".as_info").attr("class", "as_info");
+//     $("#setting_" + type + "_bt").attr("class", "as_info as_info_select");
+//     $("#setting_" + type + "_icon").attr("class", "as_menu_icon zx_icon as_" + type);
+
+//     $(".setting_box_div").hide();
+//     $("#setting_" + type + "_box").show();
+// }
+
 
 function searchMember() {
 
@@ -939,14 +241,15 @@ function searchMember() {
     };
     console.log("data is " ,data);
     $.ajax({
-        url: '/agent/agents/memberlistAjax',
+        url: '/agent/memberlistAjax',
         type: 'post',
         dataType: 'json',
         data: data,
         success: function (da) {
-            if (da.code == 200) {
-                $("#membercount").html(da.count);
-                $("#MemberReportData").find("tbody").html(da.content);
+            var resp = da.data;
+            if (resp[0]) {
+                $("#membercount").html(resp[1]);
+                $("#MemberReportData").find("tbody").html(resp[2]);
             } else {
                 $("#membercount").html(0);
                 $("#MemberReportData").find("tbody").html("");
@@ -971,13 +274,14 @@ function searchHistoryRecord() {
     };
     console.log("data is ", data);
     $.ajax({
-        url: '/agent/agents/betHistoryAjax',
+        url: '/agent/betHistoryAjax',
         type: 'post',
         dataType: 'json',
         data: data,
         success: function (da) {
-            if (da.code == 200) {
-                $("#historyRecordData").find("tbody").html(da.content);
+            var resp = da.data;
+            if (resp[0]) {
+                $("#historyRecordData").find("tbody").html(resp[1]);
             } else {
                 $("#historyRecordData").find("tbody").html("");
             }
@@ -987,7 +291,7 @@ function searchHistoryRecord() {
 function searchAgentReport() {
     console.log("click on agent reports.");
     // $.ajax({
-    //     url: '/agent/agents/wdHistoryAjax',
+    //     url: '/agent/wdHistoryAjax',
     //     type: 'post',
     //     success: function (da) {
     //         da = JSON.parse(da);
@@ -1002,12 +306,13 @@ function searchAgentReport() {
 
 function searchwdHistoryRecord() {
     $.ajax({
-        url: '/agent/agents/wdHistoryAjax',
+        url: '/agent/wdHistoryAjax',
         type: 'post',
         success: function (da) {
             da = JSON.parse(da);
-            if (da.code == 200) {
-                $("#wdHistoryData").find("tbody").html(da.content);
+            var resp = da.data;
+            if (resp[0]) {
+                $("#wdHistoryData").find("tbody").html(resp[1]);
             } else {
                 $("#wdHistoryData").find("tbody").html("");
             }
@@ -1017,33 +322,36 @@ function searchwdHistoryRecord() {
 
 function searchBenifitReport() {
     $.ajax({
-        url: '/agent/agents/benifitreportAjax',
+        url: '/agent/benifitreportAjax',
         type: 'post',
         success: function (da) {
             da = JSON.parse(da);
-            if (da.code == 200) {
-                $("#benifitreportData").find("tbody").html(da.content);
+            var resp = da.data;
+            if (resp[0]) {
+                $("#benifitreportData").find("tbody").html(resp[1]);
             } else {
                 $("#benifitreportData").find("tbody").html("");
             }
         }
-    });
+    }, "json");
 }
 
 function searchAgentInfo() {
     $.ajax({
-        url: '/agent/agents/agentInfoAjax',
+        url: '/agent/agentInfoAjax',
         type: 'post',
         success: function (da) {
             da = JSON.parse(da);
-            if (da.code == 200) {
-                $("#agentinfoData").find("tbody").html(da.content);
-                $("#agentCode").text("合营代码：" + da.agentCode);
+            var resp = da.data;
+            if (resp[0]) {
+                $("#agentinfoData").find("tbody").html(resp[1]);
+                $("#agentCode").text("合营代码：" + resp[2]);
             } else {
                 $("#agentinfoData").find("tbody").html("");
+                $("#agentCode").text("合营代码：");
             }
         }
-    });
+    }, "json");
 }
 
 function searchDailyReport() {
@@ -1054,14 +362,15 @@ function searchDailyReport() {
         "enddate": et
     };
     $.ajax({
-        url: '/agent/agents/dailyreportAjax',
+        url: '/agent/dailyreportAjax',
         type: 'post',
         dataType: 'json',
         data: data,
         success: function (da) {
-            if (da.code == 200) {
-                $("#DailyReportData").find("thead").html(da.title);
-                $("#DailyReportData").find("tbody").html(da.content);
+            var resp = da.data;
+            if (resp[0]) {
+                $("#DailyReportData").find("thead").html(resp[1]);
+                $("#DailyReportData").find("tbody").html(resp[2]);
             } else {
                 $("#DailyReportData").find("thead").html("");
                 $("#DailyReportData").find("tbody").html("");

@@ -64,7 +64,7 @@ var code = {
 //                     enable_login(login_btn, agent_login);
 //                     if (da.c == 0) {
 //                         //window.location.reload();
-//                         window.location.href = '/agent/agents/agentAccount';
+//                         window.location.href = '/agent/agentAccount';
 //                     } else if (da.c == 1007) {
 //                         notify("用户名或密码错误，您还可以尝试" + da.m + "次。");
 //                     } else if (da.c == 1000) {

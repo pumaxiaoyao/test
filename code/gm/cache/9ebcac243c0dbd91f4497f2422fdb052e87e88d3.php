@@ -1,0 +1,1 @@
+<?php echo $time; ?><br/><label attr="ip"><?php echo e($ip); ?></label><br /><label attr="addr">&nbsp;</label>

@@ -51,7 +51,7 @@ $(function () {
         }
         $.ajax({  
             type: "post",  
-            url: '/agent/agents/AddBankCard', 
+            url: '/agent/addBankCard', 
             // 1 需要使用JSON.stringify 否则格式为 a=2&b=3&now=14...  
             // 2 需要强制类型转换，否则格式为 {"a":"2","b":"3"}  
             data: { BankNo: $.trim(BankNo), BankType: BankType, RealName: RealName,
@@ -59,43 +59,44 @@ $(function () {
             contentType: "application/json; charset=utf-8",  
             dataType: "json",  
             success: function(recode) {
-                if (recode.code == 200) {
+                var resp = recode.data;
+                if (resp[0]) {
                     swal({ title: "", text: "您的银行卡绑定成功", type: "success" }, function () {
                         window.location.reload();
                     });
                 } else  {
-                    errorHandler(data);
+                    swal({ title: "", text: resp[1], type: "warning" });
                 }}
         });  
     });
 
     $("#GetCodeBt").click(function () {
 
-        $.post("/agent/agents/GetBankCode", { action: 'sendcode' }, function (recode) {
-            recode = JSON.parse(recode);
-            if (recode.code == 200) {
-                swal({ title: "", text: recode.Message, type: "success" });
+        $.post("/agent/getBankCode", { action: 'sendcode' }, function (recode) {
+            var resp = recode.data;
+            if (resp[0]) {
+                swal({ title: "", text: resp[1], type: "success" });
                 $("#GetCodeBt").hide();
                 $("#GetTime").show();
                 interval = setInterval(function () { setRemainingTime() }, 1000);
             } else  {
-                errorHandler(data);
+                swal({ title: "", text: resp[1], type: "warning" });
             }
-        });
+        }, "json");
     });
 });
 
 function delbank(thisv, id) {
     
-    $.post("/agent/agents/DelBankCard", { index: id }, function (recode) {
-        recode = JSON.parse(recode);
-        if (recode.code == 200) {
+    $.post("/agent/delBankCard", { index: id }, function (recode) {
+        var resp = recode.data;
+        if (resp[0]) {
             $(thisv).parent().slideUp();
             swal({ title: "", text: "删除成功！", type: "success" });
         } else  {
-            errorHandler(data);
+            swal({ title: "", text: resp[1], type: "warning" });
         }
-    });
+    }, "json");
 }
 
 var interval = null;

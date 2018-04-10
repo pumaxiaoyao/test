@@ -1,0 +1,1 @@
+{{ $balance }}&nbsp;<a href="#" balance="balance" uid="{{ $account }}"><i class="fa fa-edit"></i></a>

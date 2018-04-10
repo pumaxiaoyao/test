@@ -1,0 +1,1 @@
+{{ $bonus }}&nbsp;<a href="javascript:void(0);" bonus="bonus" uid="{{ $account }}"><i class="fa fa-edit"></i></a>

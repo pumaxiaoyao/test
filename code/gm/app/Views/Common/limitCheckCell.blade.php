@@ -1,0 +1,1 @@
+<a href='#WCheckDetial' data-toggle='modal' onclick="checkWater('{{ $amount }}','{{ $gpid }}','{{ $dno }}','{{ $account }}','{{ $gpname }}', '{{ $type }}');" class='btn btn-xs red'>流水检查</a></td>

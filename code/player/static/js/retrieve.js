@@ -34,7 +34,7 @@ $(function () {
             return false;
         }
 
-        $.post("/zh-cn/member/Retrieve", { phoneNumber: phoneNumber, action: "getPhoneCode"}, function (recode) {
+        $.post("/player/retrieve", { phoneNumber: phoneNumber, action: "getPhoneCode"}, function (recode) {
             recode = JSON.parse(recode);
             if (recode.code == 200) {
                 var btId = "#GetPhoneCodeBt";
@@ -63,7 +63,7 @@ $(function () {
             return false;
         }
 
-        $.post("/zh-cn/member/Retrieve", { phoneCode: phoneCode, action: "CheckPhoneCode"}, function (recode) {
+        $.post("/player/retrieve", { phoneCode: phoneCode, action: "CheckPhoneCode"}, function (recode) {
             recode = JSON.parse(recode);
             if (recode.code == 200) {
                 $('.find_pwd_line div').eq(1).addClass('on').siblings().removeClass('on');
@@ -98,7 +98,7 @@ $(function () {
             swal({ title: "", text: "两次输入的密码不一致!", type: "warning" });
             return false;
         }
-        $.post("/zh-cn/member/Retrieve", {action: "UpdatePassword", Password: password, rePassword: comfpassword }, function (recode) {
+        $.post("/player/retrieve", {action: "updatePassword", Password: password, rePassword: comfpassword }, function (recode) {
             recode = JSON.parse(recode);
             if (recode.code == 200) {
                 $('.find_pwd_line div').eq(2).addClass('on').siblings().removeClass('on');
@@ -123,7 +123,7 @@ $(function () {
             return false;
         }
 
-        $.post("/zh-cn/member/Retrieve", {action: "getEmailCode", mailNumber: mailnumber }, function (recode) {
+        $.post("/player/retrieve", {action: "getEmailCode", mailNumber: mailnumber }, function (recode) {
             recode = JSON.parse(recode);
             if (recode.code == 200) {
                 var btId = "#GetEmailCodeBt";
@@ -151,7 +151,7 @@ $(function () {
             return false;
         }
 
-        $.post("/zh-cn/member/Retrieve", {action: "CheckEmailCode",  emailCode: emailCode }, function (recode) {
+        $.post("/player/retrieve", {action: "CheckEmailCode",  emailCode: emailCode }, function (recode) {
             recode = JSON.parse(recode);
             if (recode.code == 200) {
                 $('.find_pwd_line div').eq(1).addClass('on').siblings().removeClass('on');

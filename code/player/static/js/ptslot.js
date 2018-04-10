@@ -24,14 +24,14 @@ function addEvent() {
             var slotid = $(this).attr("slotid");
             if (!$(this).hasClass('on')) {
                 $(this).addClass('on');
-                $.post("http://www.beplay.cc/zh-cn/slot/Default.aspx", { action: 'favorite', slotid: slotid }, function (re) {
+                $.post("http://www.beplay.cc/slot/Default.aspx", { action: 'favorite', slotid: slotid }, function (re) {
                     if (re != "200") {
                         swal({ title: "", text: re, type: "warning" });
                     }
                 });
             } else {
                 $(this).removeClass('on');
-                $.post("http://www.beplay.cc/zh-cn/slot/Default.aspx", { action: 'delfavorite', slotid: slotid }, function (re) {
+                $.post("http://www.beplay.cc/slot/Default.aspx", { action: 'delfavorite', slotid: slotid }, function (re) {
                     if (re != "200") {
                         swal({ title: "", text: re, type: "warning" });
                     }
@@ -189,7 +189,7 @@ function search() {
 
     $.ajax({
         type: "GET",
-        url: "http://www.beplay.cc/zh-cn/slot/Default.aspx?action=search",
+        url: "http://www.beplay.cc/slot/Default.aspx?action=search",
         dataType: "json",
         data: data,
         success: function (json) {

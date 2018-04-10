@@ -50,14 +50,14 @@
             float: left;
             width: 50px;
             height: 44px;
-            background: url('../../img/slider-controls.png') no-repeat;
+            /* background: url('../../img/slider-controls.png') no-repeat; */
         }
 
         .iview-controlNav a.iview-controlNextNav {
             float: left;
             width: 50px;
             height: 44px;
-            background: url('../../img/slider-controls.png') no-repeat -50px 0;
+            /* background: url('../../img/slider-controls.png') no-repeat -50px 0; */
         }
 
     .iview-controlNav div.iview-items {
@@ -87,7 +87,7 @@
         }
 
 .iview-caption {
-    background: url('../../img/caption-bg.png');
+    /* background: url('../../img/caption-bg.png'); */
     color: #FFF;
     border-radius: 3px;
     padding: 10px 15px;

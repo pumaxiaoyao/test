@@ -1,0 +1,8 @@
+<?php $__currentLoopData = $benifitData; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $_benifit): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+<tr><td><?php echo e(isset($_benifit["month"]) ? $_benifit["month"] : ""); ?></td><td><?php echo e(isset($_benifit["validPlayerCount"]) ? $_benifit["validPlayerCount"] : ""); ?></td>
+<td><a href="javascript:void(0);" class='agentDetailBtn' onclick="detail('<?php echo e(isset($_benifit["month"]) ? $_benifit["month"] : ""); ?>', '1')"><i class='fa fa-building-o'></i><?php echo e(isset($_benifit["platformCommision"]) ? $_benifit["platformCommision"] : ""); ?></a></td>
+<td><a href="javascript:void(0);" class='agentDetailBtn' onclick="detail2('<?php echo e(isset($_benifit["month"]) ? $_benifit["month"] : ""); ?>', '1')"><i class='fa fa-building-o'></i><?php echo e(isset($_benifit["costAllocation"]) ? $_benifit["costAllocation"] : ""); ?></a></td>
+<td><?php echo e(isset($_benifit["lastMonthLeftAmount"]) ? $_benifit["lastMonthLeftAmount"] : ""); ?></td><td><?php echo e(isset($_benifit["adjustmentAmount"]) ? $_benifit["adjustmentAmount"] : ""); ?></td><td><?php echo e(isset($_benifit["commisionAmount"]) ? $_benifit["commisionAmount"] : ""); ?></td><td><?php echo e(isset($_benifit["lastMonthLeftAmount"]) ? $_benifit["lastMonthLeftAmount"] : ""); ?></td>
+<td><?php echo e(isset($_benifit["commisionResultAmount"]) ? $_benifit["commisionResultAmount"] : ""); ?></td><td><?php echo e(isset($_benifit["checkStatus"]) ? $_benifit["checkStatus"] : ""); ?></td>
+</tr>
+<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

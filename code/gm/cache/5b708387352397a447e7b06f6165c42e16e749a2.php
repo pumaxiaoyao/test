@@ -1,0 +1,1 @@
+<a href='javascript:void(0);' domainId='<?php echo e($domainId); ?>' domain='<?php echo e($domain); ?>' class='btn mini red deleteDomain'><i class='icon-trash'></i>删除</a>

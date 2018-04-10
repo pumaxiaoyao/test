@@ -1,0 +1,1 @@
+<a href='#WCheckDetial' data-toggle='modal' onclick="checkWater('<?php echo e($amount); ?>','<?php echo e($gpid); ?>','<?php echo e($dno); ?>','<?php echo e($account); ?>','<?php echo e($gpname); ?>', '<?php echo e($type); ?>');" class='btn btn-xs red'>流水检查</a></td>

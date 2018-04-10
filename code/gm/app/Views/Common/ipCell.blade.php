@@ -1,0 +1,1 @@
+{!! $time !!}<br/><label attr="ip">{{ $ip }}</label><br /><label attr="addr">&nbsp;</label>

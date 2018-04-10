@@ -1,0 +1,1 @@
+<td><a href='#editModal' onclick='setedit(<?php echo e(join(",", $args)); ?>);' data-toggle='modal' class='btn btn-xs green'>编辑</a>

@@ -1,0 +1,1 @@
+<input name="list" class="form-control" dno="<?php echo e(isset($dno) ? $dno : ""); ?>" type="checkbox">

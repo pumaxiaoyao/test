@@ -1,0 +1,1 @@
+<input name='list' class='form-control' status='0' wid='<?php echo e($wid); ?>' uid='<?php echo e($account); ?>' type='checkbox'>

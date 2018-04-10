@@ -1,0 +1,1 @@
+<input name="list" class="form-control" dno="{{ $dno or ""}}" type="checkbox">

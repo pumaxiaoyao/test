@@ -18,28 +18,17 @@ function GetGACookie(cookieName) {
 }
 
 function errorHandler(data){
-    if (data.code == 400) {
-        swal({ title: "", text: data.Message, type: "error" });
-    } else if (data.code == 500) {
-        swal({ title: "", text: data.Message, type: "warning" });
-    }else if (data.code == 999) {
-        swal({ title: "", text: data.Message, type: "warning" }, function(){
-            
+    if (data.data[0] == 400) {
+        swal({ title: "", text: data.data[1], type: "error" });
+    } else if (data.data[0] == 500) {
+        swal({ title: "", text: data.data[1], type: "warning" });
+    }else if (data.data[0] == 999) {
+        swal({ title: "", text: data.data[1], type: "warning" }, function(){
             window.location.href = "/";
         });
     }
 }
 
-function ChkUser() {
-    $.ajaxSetup({ cache: false });
-    $.get("http://www.beplay.cc/zh-cn/member/Login.aspx?action=chkuser", "", function (rescode) {
-        if (rescode == "false") {
-            swal({ title: "", text: "您的账号在其他地方登录，登录失效。", type: "warning" }, function () {
-                window.location.href = "/zh-cn/member/Login.aspx";
-            });
-        }
-    });
-}
 
 var loginmembername = "";
 $(function () {
@@ -90,16 +79,16 @@ setInterval(function(){
     // console.log("IsLogin is " + IsLogin);
     if (IsLogin == "True") {
         var path = GetCurrentPath();
-        if (path == "zh-cn") {
-            getSessionStatus();
-        } else {
+        if (path == "agent") {
             getAgentSessionStatus();
+        } else {
+            getSessionStatus();
         }
     } else {
         //pass
     }
     
-},5000);
+},15000);
 
 function GetCurrentPath() {
     var path = window.location.pathname;
@@ -108,25 +97,30 @@ function GetCurrentPath() {
 }
 
 function getSessionStatus(){
-    $.post("/API/common/CheckStatus",function (data) {
-        data = JSON.parse(data);
-        // console.log(data);
-        if (data.code !== 200) {
-            errorHandler(data);
+    $.post("/common/CheckStatus",function (data) {
+        var resp = data.data;
+        console.log(resp);
+        if (resp[0]) {
             return;
+        } else {
+            swal({ title: "", text: resp[1], type: "warning" }, function(){
+                window.location.href = "/";
+            });
         }
-    });
+    }, "json");
 }
 
 function getAgentSessionStatus() {
-    $.post("/API/common/CheckAgentStatus",function (data) {
-        data = JSON.parse(data);
-        // console.log(data);
-        if (data.code !== 200) {
-            errorHandler(data);
+    $.post("/common/CheckAgentStatus",function (data) {
+        var resp = data.data;
+        if (resp[0]) {
             return;
+        } else {
+            swal({ title: "", text: resp[1], type: "warning" }, function(){
+                window.location.href = "/";
+            });
         }
-    });
+    }, "json");
 }
 
 function toProductPage(product, oddtype) {
@@ -148,7 +142,7 @@ function toProductPage(product, oddtype) {
 
 function showCasinoMessage() {
 
-    var url = "/zh-cn/Casino/info.html";
+    var url = "/Casino/info.html";
     $("#msgIframe").attr("src", url);
     $('#parentBorder').css({ width: '460px' })
     //  openMessage();
@@ -185,7 +179,7 @@ function cookiesEdit(membername) {
         setCookie(cookieName, membername.toString());
     }
     if (cValue.toString().trim() != "") {
-        $.post("/zh-cn/publicView/gu", { partnerCode: cValue.toString().trim() }, function (response) {
+        $.post("/publicView/gu", { partnerCode: cValue.toString().trim() }, function (response) {
         });
     }
     function setCookie(name, value) {

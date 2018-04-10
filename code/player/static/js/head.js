@@ -1,8 +1,8 @@
 
 $(function () {
     $("#btn-logout").click(function () {
-        $.post("/zh-cn/member/Login", { action: "logout" }, function (data) {
-            window.location.reload();
+        $.post("/player/login", { action: "logout" }, function (data) {
+            window.top.location.href = "/index";
         });
     });
 
@@ -29,30 +29,15 @@ $(function () {
             swal({ title: "", text: "密码不能为空", type: "warning" });
             return false;
         }
-        $.post("/zh-cn/member/Login", { "action": 'login', "MemberName": username, "MemberPWD": password }, function (datas) {
-            datas = JSON.parse(datas);
-            console.log(datas);
-            if (datas.code == 200) {
-                cookiesEdit(username);
-                window.top.location.href = "/zh-cn/index";
+        $.post("/player/login", { action: 'login', memberName: username, memberPWD: password }, function (datas) {
+            var data = datas.data;
+            if (data[0]) {
+                // cookiesEdit(username);
+                window.top.location.href = "/index";
+            } else {
+                swal({ title: "", text: data[1], type: "error" });
             }
-            if (datas.code == 999 ) {
-                swal({ title: "", text: datas.Message, type: "error" });
-            }
-
-            if (datas.code == 500 ) {
-                swal({ title: "", text: datas.Message, type: "error" });
-            }
-            if (datas.code == 404) {
-                swal({ title: "", text: "无法从后台获取数据，请确认服务器是否开启", type: "error" });
-            }
-            if (datas.code == 800) {
-                swal({ title: "", text: "账号被锁,原因:" + status, type: "warning" });
-            }
-            if (datas.code == 888) {;
-                swal({ title: "", text: "用户名或密码错误，你还可以尝试 " + datas.Message + " 次", type: "error" });
-            }
-        });
+        },"json");
     });
 });
 

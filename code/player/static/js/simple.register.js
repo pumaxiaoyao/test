@@ -1,5 +1,5 @@
 $(document).ready(function () {
-
+    get_captcha();
     //       代理用户名"aname"
     //       密码"apwd"
     //       代理类型"atype"
@@ -33,7 +33,7 @@ $(document).ready(function () {
                 required: true,
                 username: true,
                 remote: {
-                    url: '/agent/agents/checkAgentName',
+                    url: '/agent/checkAgentName',
                     type: "post",
                     data: {
                         agentName: function() {
@@ -128,7 +128,7 @@ $(document).ready(function () {
 });
 
 function get_captcha() {
-    $('#captcha').attr('src', '/api/common/verifycode');
+    $('#captcha').attr('src', '/help/getCaptcha?t=' + Math.random());
 }
 
 function reg_agent(agentboss) {
@@ -137,43 +137,43 @@ function reg_agent(agentboss) {
         var data = $('#agentReg').serialize();
         console.log("agentboss is " + agentboss);
         if (agentboss == "") {
-            $.post('/agent/agents/agentReg', data, function (d) {
-                d = JSON.parse(d);
-                if (d.code == 200) {
+            $.post('/agent/agentReg', data, function (d) {
+                var resp = d.data;
+                if (resp[1]) {
                     swal({
                         title: "",
                         text: "注册成功！请等待审核！",
                         type: "success"
                     });;
-                    window.location.href="/agent/agents/index";
+                    window.location.href="/agent/index";
                 } else {
                     swal({
                         title: "",
-                        text: d.Message,
+                        text: resp[2],
                         type: "warning"
                     });;
                     get_captcha();
                 }
-            });
+            }, "json");
         } else {
-            $.post('/agent/agents/agentClientReg', data, function (d) {
-                d = JSON.parse(d);
-                if (d.code == 200) {
+            $.post('/agent/agentClientReg', data, function (d) {
+                var resp = d.data;
+                if (resp[1]) {
                     swal({
                         title: "",
                         text: "注册成功！请等待审核！",
                         type: "success"
                     });;
-                    window.location.href="/agent/agents/agentReports";
+                    window.location.href="/agent/agentReports";
                 } else {
                     swal({
                         title: "",
-                        text: d.Message,
+                        text: resp[2],
                         type: "warning"
                     });;
                     get_captcha();
                 }
-            });
+            }, "json");
         }
         
     }

@@ -1,5 +1,5 @@
 $(function () {
-    selBankType("#setting_fastpay_bt", 'bank');
+    selBankType("#setting_thirdpay_bt",'third')
 
     $('#morebank').click(function () {
         if ($('.otherbank').is(':hidden')) {
@@ -36,6 +36,7 @@ $(function () {
     })
 });
 
+
 function setmoney(thisbt, howmoney) {
     $('.tk_num').find(".on").removeClass('on');
     $(thisbt).addClass('on');
@@ -59,23 +60,35 @@ function setmoney(thisbt, howmoney) {
 
 var lastId = 0;
 function thirdDeposit() {
-    var url = "/Api/getlastdeposit.ashx?type=third&clienttype=1";
-    $.ajaxSetup({ cache: false });
-    $.getJSON(url, function (res) {
-        if (res.success == false) { clearInterval(CountDown.timer); return; }
-        var _lid = res.result.length > 0 ? res.result[0].DepositId : -1;
-        if (lastId != 0 && lastId != _lid) {
-            clearInterval(CountDown.timer);
-            $(".bank_prompt .step-1").hide();
-            $(".bank_prompt .step-3").show();
-            $(".amount").html(res.result[0].DepositAmount.toFixed(2));
-            $(".fee").html(res.result[0].BankCharge.toFixed(2));
-            $(".netamount").html(res.result[0].NetAmount.toFixed(2));
+    $.post("/common/getlastdeposit", { type: "third",clienttype: 1 }, function (res) {
+        if (res.code == 900) { 
+            CountDown.seconds = -1;
+            // clearInterval(CountDown.timer); 
             return;
         }
-        lastId = _lid;
-        setTimeout(function () { thirdDeposit(); }, 10000);
-    });
+        if (res.code == 500) { 
+            CountDown.seconds = -1;
+            // clearInterval(CountDown.timer); 
+            return;
+        }
+        // var _lid = res.result.length > 0 ? res.result[0].DepositId : -1;
+        if (res.code == 200) {
+           if (res.data[0] == 2) {
+                clearInterval(CountDown.timer);
+                $(".bank_prompt .step-1").hide();
+                $(".bank_prompt .step-3").show();
+                $(".amount").html(res.data[1].toFixed(4));//res.result[0].DepositAmount.toFixed(2));
+                var bonus = res.data[2] - res.data[1];
+                $(".fee").html(bonus.toFixed(4));//res.result[0].BankCharge.toFixed(2));
+                $(".netamount").html(res.data[2].toFixed(4));//res.result[0].NetAmount.toFixed(2));
+                return;
+            } else if (res.data[0] == 4) {
+                CountDown.seconds = -1;
+            } else {
+                setTimeout(function () { thirdDeposit(); }, 10000);
+            }
+        }
+    }, "json");
 }
 
 var blastId = 0;
@@ -105,7 +118,7 @@ function Count2() {
     $(".bank_prompt").show();
     $(".bank_prompt .step-2").hide(); $(".bank_prompt .step-3").hide(); $(".bank_prompt .step-1").show();
     clearInterval(CountDown.timer);
-    CountDown.seconds = 1200;
+    CountDown.seconds = 420;
     CountDown.timer = setInterval(function () {
         var $el = $(".bank_prompt .time"), v = $el.html();
         CountDown.seconds -= 1;
@@ -116,7 +129,7 @@ function Count2() {
 
 //计时器
 var CountDown = {
-    timer: null, seconds: 1200,
+    timer: null, seconds: 420,
     Format: function () { var seconds = this.seconds; var rs = "0:"; if (seconds >= 60) { rs = Math.floor(seconds / 60) + ":"; } var s = (seconds % 60).toString(); s = s.length == 1 ? "0" + s : s; rs += s; return rs },
 };
 
@@ -141,6 +154,7 @@ function selBankType(thisbt, type) {
         alipayInit();
         $("#depositMoney_tips").html("存款每次最低" + alipayTradeMin + "，个位和十位不能同时为0，如：101.00");
     } else if (type == "third") {
+        $("#deposit_maintain").hide();
         thirdInit();
     } else if (type == "bank") {
         bankInit();
@@ -153,7 +167,6 @@ function selBankType(thisbt, type) {
         $('#setmoneyDiv').html('<span><b onclick="setmoney(this,1000)">1000</b><b onclick="setmoney(this,3000)">3000</b><b onclick="setmoney(this,5000)">5000</b><b onclick="setmoney(this,10000)">10000</b><b onclick="setmoney(this,20000)">20000</b></span>')
         bigalipay();
     }
-
     $("#paymentType").val(type);
 }
 function wechaInit() {
@@ -205,6 +218,7 @@ function qqInit() {
 function bankInit() {
     $("#ATMBankSelectRow").show();
     $("#bankSelectRow").hide();
+    $("#deposit_bt").hide();
     if (youBankAvailable == 1) {
         $("#deposit_from").show();
         $("#depositMoney_tips").html("存款每次最低100，请勿使用支付宝，微信等转账到以下银行账号");
@@ -215,13 +229,19 @@ function bankInit() {
     }
 }
 function thirdInit() {
+
+    $("#third_deposit").show();
+    $("#common_deposit").hide();
+    $("#setting_wybank_box").hide();
+    $("#bankSelectRow").hide();
+    $("#deposit_bt").show();
     if (thirdAvailable == 1) {
         if (thirdNotMaintain == 1) {
-            if (thirdBankList.indexOf(thirdPaymentId) >= 0) {
-                $("#bankSelectRow").hide();
-            } else {
-                $("#bankSelectRow").show();
-            }
+            // if (thirdBankList.indexOf(thirdPaymentId) >= 0) {
+            //     $("#bankSelectRow").hide();
+            // } else {
+            //     $("#bankSelectRow").show();
+            // }
             $("#deposit_from").show();
             $(".deposit_not_available").hide();
         } else {
@@ -229,13 +249,13 @@ function thirdInit() {
             $("#deposit_maintain").show();
         }
     } else {
-        $("#deposit_from").hide();
         $("#deposit_disabled").show();
     }
 }
 
 // bank payment
 function btnbank() {
+
     console.log("bank here.");
     var depositMoney = $("#depositMoney").val();
     if (depositMoney == "") {
@@ -253,14 +273,14 @@ function btnbank() {
     $("#depositMoney_tips").removeClass("redtext");
     $("#deposit_bt").html('<img src="/static/img/loading.gif" />');
 
-    $.post("/API/common/DepositCash", { banktype: 3, mode: 2, amount: depositMoney, clienttype: 1 }, function (data) {
+    $.post("/common/DepositCash", { banktype: 3, mode: 2, amount: depositMoney, clienttype: 1 }, function (data) {
         $("#deposit_bt").html('立即存款');
-        data = JSON.parse(data);
-        if (data.code == 200) {
+        var resp = data.data;
+        if (resp[0]) {
             swal({ title: "", text: "提交成功，存款申请在3-5分钟内处理完成！", type: "success" });
             return;
         }else{
-            errorHandler(data);
+            swal({ title: "", text: resp[1], type: "warning" });
             return;
         }
         if (typeof data.bankaccname == "undefined" || data.bankaccname.length == 0) { return; }
@@ -330,10 +350,10 @@ function btnbank() {
 }
 // third payment
 function btnThird() {
-
+    var thirdTradeMax = 30000;
     var amount = $("#depositMoney").val();
-    var bankCode = $('input[name="radiogroup1"]:checked').val();
-    var url = thirdPaymentUrl + "?SiteCode=" + thirdPaymentId;
+    // var bankCode = $('input[name="radiogroup1"]:checked').val();
+    // var url = thirdPaymentUrl + "?SiteCode=" + thirdPaymentId;
 
     if (amount == "") {
         $("#depositMoney").focus();
@@ -341,30 +361,50 @@ function btnThird() {
         $("#depositMoney_tips").html("请输入金额");
         return;
     }
-    if (isNaN(amount) || amount < 100 || amount > thirdTradeMax) {
+    if (isNaN(amount) || amount > thirdTradeMax) { // || amount < 100
         $("#depositMoney").focus();
         $("#depositMoney_tips").addClass("redtext");
         $("#depositMoney_tips").html("存款每次最低100最高" + thirdTradeMax + "，请输入正确的金额");
         return;
     }
-    if (thirdBankList.indexOf(thirdPaymentId) < 0) {
-        if (bankCode == "") {
-            swal({ title: "", text: "请选择银行", type: "warning" });
-            return;
-        }
-    }
-
-    //ga存款
-    //gaDepositGather(amount, '极速支付', bankCode);
-
-
-    var url = url + "&payType=0&MemberName=" + loginMemberName + "&Amount=" + amount + "&BankCode=" + bankCode + "&client=1";
-    window.open(url);
+    
     $("#deposit_from").hide();
+    $("#deposit_bt").attr("thirdurl", "");
     Count2();
-    thirdDeposit();
-
-
+    
+    $.post("/common/DepositCash", {
+        channelId: 1,
+        channelType: 7,
+        amount:amount
+        }, function(data){
+            var resp = data.data;
+            var urlinfo = resp[2];
+            console.log(data.data);
+            if (urlinfo.indexOf("http") != -1) {
+                swal({
+                    title: "",
+                    text: "提交申请成功，即将跳转银行充值界面",
+                    type: "success"
+                }, function () {
+                    var height = 600;
+                    var width = 1080;
+                    var top =  (window.screen.availHeight-height)/2;
+                    var left = (window.screen.availWidth-width)/2; //窗口的水平位置; 
+                    window.open(urlinfo,'newwindow','height='+height+',width='+width+',top='+top+',left='+left+
+                        ', toolbar=no,menubar=no,scrollbars=no, resizable=no,location=no, status=no') 
+                    });;
+                    thirdDeposit();
+            } else {
+                swal({
+                    title: "",
+                    text: urlinfo,
+                    type: "warning"
+                }, function () {
+                    location.reload();
+                });;
+            }
+        }, "json"
+    );
 }
 
 // wechat payment

@@ -1,0 +1,1 @@
+<input name='list' class='form-control' status='0' wid='{{ $wid }}' uid='{{ $account }}' type='checkbox'>

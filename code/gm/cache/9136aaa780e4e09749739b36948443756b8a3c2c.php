@@ -1,0 +1,2 @@
+<a onclick='refuseSet("<?php echo e($dno); ?>");' data-toggle='modal' href='#refuseModal' class='btn mini red'><i class='icon-trash'></i>拒绝</a>
+<a onclick='passSet("<?php echo e($dno); ?>", "<?php echo e($amount); ?>", "<?php echo e($feeType); ?>", "<?php echo e($fee); ?>");' data-toggle='modal' href='#passModal' class='btn mini green'><i class='icon-trash'></i>通过</a>

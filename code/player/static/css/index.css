@@ -57,7 +57,7 @@ html {
     text-align: left;
     padding-left: 30px;
     position:relative;
-    background: url('/static/img/member/notice.png') no-repeat left center;
+    background: url('/static/img/player/notice.png') no-repeat left center;
     border: 0;
 }
 .index-content-notice .marquee {
@@ -73,7 +73,7 @@ html {
     float: left;
     font-weight: bold;
     font-size: 16px;
-    background: url('/static/img/member/noticebj.png') no-repeat right top;
+    background: url('/static/img/player/noticebj.png') no-repeat right top;
     position: absolute;
     z-index: 3;
     width: 120px;
@@ -116,11 +116,11 @@ html {
 #iphone-fade img ,#android-fade img,#html-fade img{  z-index:10;  opacity: 0;  top: 14px;  position: relative;   }
 #html-fade img.imgfont{    position: absolute;  z-index: 11;  right: 95px;  top: 5px;}
 
-.iphone-bj-1 {  background-image: url('/static/img/member/cs_r_1.png');  animation-duration: 2s; }
-.iphone-bj-2 {  background-image: url('/static/img/member/cs_l_1.png');  animation-duration: 2.5s;  }
-.iphone-bj-3 {  background-image: url('/static/img/member/cs_r_2.png');  animation-duration: 2s;  }
-.iphone-bj-4 {  background-image: url('/static/img/member/cs_l_2.png');  animation-duration: 2.5s;  }
-.iphone-bj-5 {  background-image: url('/static/img/member/cs_all.png');  animation-duration: 3s;  }
+.iphone-bj-1 {  background-image: url('/static/img/player/cs_r_1.png');  animation-duration: 2s; }
+.iphone-bj-2 {  background-image: url('/static/img/player/cs_l_1.png');  animation-duration: 2.5s;  }
+.iphone-bj-3 {  background-image: url('/static/img/player/cs_r_2.png');  animation-duration: 2s;  }
+.iphone-bj-4 {  background-image: url('/static/img/player/cs_l_2.png');  animation-duration: 2.5s;  }
+.iphone-bj-5 {  background-image: url('/static/img/player/cs_all.png');  animation-duration: 3s;  }
 .active{opacity: 1}
 .active .iphone-bj-1,.active  .iphone-bj-2,.active .iphone-bj-3,.active .iphone-bj-4,.active .iphone-bj-5 {  position: absolute;  top: 0;  z-index: 1;  width: 100%;  display: inline-block;  height: 100%;  left: 0; }
 .active #iphone-fade img,.active #android-fade img,.active #html-fade img,.active .index-content-mobile.left { animation-name: fadeInUp;  animation-duration: 1s;  animation-fill-mode: both;  animation-iteration-count: 1;}
@@ -134,7 +134,7 @@ html {
 
 .pj-Carousel-active {    top: -80px;  margin: auto auto;  z-index: 5;  height: 40px;  display: inline-block;  text-align: end;  position: absolute;  left: 180px; }
 .pj-Carousel-color{ float: left}
-.pj-Carousel-color span{ cursor: pointer;   box-shadow: 0 0 3px 1px rgba(0,0,0,0.1);     background: url(/static/img/member/SECBET_slice.png) no-repeat;  float: left;  width: 36px;  height: 36px; border-radius: 18px;margin: 2px 5px; }
+.pj-Carousel-color span{ cursor: pointer;   box-shadow: 0 0 3px 1px rgba(0,0,0,0.1);     background: url(/static/img/player/SECBET_slice.png) no-repeat;  float: left;  width: 36px;  height: 36px; border-radius: 18px;margin: 2px 5px; }
 .pj-Carousel-color  strong{width: 50px; height: 5px; display: inline-block;text-align: left; margin-top:18px;}
 .pj-Carousel-color strong i{ border-radius: 50%;  float: left;  height: 5px;  margin:0 0 0 6px;width: 5px; background-color: #cccccc }
 .pj-Carousel-color strong i.on{background-color: #0099ff; }
@@ -156,7 +156,7 @@ html {
 
 /*图片*/
 .t-1-1, .t-1-2, .t-2-1, .t-3-1, .t-4-1, .t-4-2, .t-5-1, .t-6-1, .t-7-1, .t-8-1, .t-8-2, .t-9-1, .t-10-1, .t-11-1 {
-    background-image: url('/static/img/member/SECBET_slice.png');
+    background-image: url('/static/img/player/SECBET_slice.png');
     background-repeat: no-repeat;
     /*position:absolute;
     display:inline-block; */ /*div 不换行,如果用float父div就没有高度*/
@@ -328,7 +328,7 @@ html {
 .sec-download-1-1,.sec-download-1-2,.sec-download-1-3,
 .sec-download-2-1,.sec-download-2-2,.sec-download-2-3,
 .sec-download-3-1,.sec-download-3-2,.sec-download-3-3 {
-    background-image: url('/static/img/member/SECBET_slice.png');
+    background-image: url('/static/img/player/SECBET_slice.png');
     background-repeat:no-repeat;
     float:left;
     width:36px;
@@ -422,7 +422,7 @@ html {
 
 /*regok end*/
 .regok {
-    background: url(/static/img/member/reg_ok.jpg) no-repeat center top;
+    background: url(/static/img/player/reg_ok.jpg) no-repeat center top;
     height: 340px;
 }
 .regok h2 {
@@ -434,7 +434,7 @@ html {
 }
 .regok_main {
     height: 590px;
-    background: url(/static/img/member/regok_bg.jpg) repeat;
+    background: url(/static/img/player/regok_bg.jpg) repeat;
 }
 .regok_box {
     margin:auto;
@@ -578,7 +578,7 @@ html {
 
 .regok_one .redok_nr .redok_nr_img, .regok_three .redok_nr .redok_nr_img, .regok_two .redok_nr .redok_nr_img {
     width: 200px;
-    background: url(/static/img/member/redok.png) no-repeat;
+    background: url(/static/img/player/redok.png) no-repeat;
     height: 142px;
     margin: -100px;
     position: absolute;
@@ -769,9 +769,9 @@ html {
 .ann_detailmain {width:500px; min-height:100px; background:#FFFFFF; margin: 260px auto 30px; overflow: hidden; box-shadow: 0 0 60px 0 #999999;   position: relative; }
 .ann_detailmain .top{width:100%; height:78px; line-height:78px; border-bottom:1px solid #ccc; *line-height:32px; color:#aa0000; font-size:24px;}
 .ann_detailmain .top_title { margin-left:20px; font-size:20px; color:#444444}
-.ann_detailmain .close,.ann_detailmain .close:hover{width:50px; height:40px; float:right; margin-top:20px; background:url(/static/img/member/turn_off.png) no-repeat 0 -50px;cursor:pointer;opacity: 0.8;}
+.ann_detailmain .close,.ann_detailmain .close:hover{width:50px; height:40px; float:right; margin-top:20px; background:url(/static/img/player/turn_off.png) no-repeat 0 -50px;cursor:pointer;opacity: 0.8;}
 .ann_detailmain .close:hover{opacity: 1;}
-.ann_detailmain .delete{width:18px; height:20px; float:right; background:url(/static/img/member/trash_03.png); margin-right:10px; margin-top:15px; cursor:pointer;}
+.ann_detailmain .delete{width:18px; height:20px; float:right; background:url(/static/img/player/trash_03.png); margin-right:10px; margin-top:15px; cursor:pointer;}
 .ann_detailmain .title{width:100%; border-bottom:1px solid #eeeeee; height:90px; color:#333333; font-size:16px; }
 .ann_detailmain .title_1{ height:48px; color:rgb(0,153,255);  padding-left:15px;  line-height:48px; font-size:16px;}
 .ann_detailmain .title span{font-size:12px; padding-left:15px; color:#666666;}

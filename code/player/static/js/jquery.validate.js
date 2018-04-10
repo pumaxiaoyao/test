@@ -1402,7 +1402,7 @@ jQuery.validator.addMethod("notEqual", function(value, element, param) {
 }, "Please specify a different (non-default) value");
 
 jQuery.validator.addMethod("captcha", function(value, element, param) {
-    var captcha = /^[0-9a-z_A-Z]{4}$/;
+    var captcha = /^[0-9a-z_A-Z]{5}$/;
     return this.optional(element) || (captcha.test(value));
 }, "验证码格式有误！");
 

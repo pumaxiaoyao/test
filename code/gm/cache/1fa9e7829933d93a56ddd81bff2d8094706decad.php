@@ -1,0 +1,1 @@
+<a onclick="setInfo('<?php echo e($agentAccount); ?>','<?php echo e($agentId); ?>');" data-toggle='modal' href='#checkAgentModal' class='btn mini green'><i class='icon-trash'></i>审核</a>

@@ -1,0 +1,1 @@
+<?php echo e($balance); ?>&nbsp;<a href="#" balance="balance" uid="<?php echo e($account); ?>"><i class="fa fa-edit"></i></a>
