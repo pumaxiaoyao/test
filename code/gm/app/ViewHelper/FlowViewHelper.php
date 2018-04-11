@@ -643,7 +643,7 @@ class FlowViewHelper extends BaseViewHelper
         // 显示投注内容
         $contentJson = json_decode($data["content"], true);
 
-        $gameName = [
+        /*$gameName = [
             "AGIN" => "AG国际厅",
             "YOPLAY" => "YOPlay",
         ];
@@ -651,7 +651,7 @@ class FlowViewHelper extends BaseViewHelper
         $gameNameToCell = join(" - ", [
             Config::platform[$platform],
             $gameName[$game],
-        ]);
+        ]);*/
 
         // 显示玩家账号
         $account = $data["account"];
@@ -667,16 +667,26 @@ class FlowViewHelper extends BaseViewHelper
         $betTimeToCell = parseDate($updateTime);
 
         // 构建AG Content
-        $gameCode = $contentJson["gameCode"];
-        $tableCode = $contentJson["tableCode"];
 
-        $gameType = AGConfig::gameType[$contentJson["gameType"]];
-        $playType = $contentJson["playType"];
 
-        $contentToCell = join("<br/>", [
-            $gameCode . " - " . $tableCode,
-            $gameType . " - " . $playType,
-        ]);
+        $gameType =  $contentJson["gameType"];
+		$gameTypeConfig = AGConfig::gameType[$gameType];
+        if (empty($gameTypeConfig)) == true {
+			$contentToCell = "todo:need more config gametype:" . $gameType;
+			$gameNameToCell = "todo:need more config gametype:" . $gameType;
+        }  else   {
+			$gameNameToCell = AGConfig::gameName[$gameTypeConfig[0]];
+			if $gameTypeConfig[0] == 2 {		//AG真人
+				$playType = $data["playType"];
+				if ((AGConfig::gameBetOn[$playType] != NULL) {
+					$playType = AGConfig::gameBetOn[$playType];
+				}
+				$contentToCell = $data["gameCode"]."-". $data["tableCode"]."<br/>".$gameTypeConfig[1]."-".$playType
+			}	else	{
+				$contentToCell = $gameTypeConfig[1];
+			}
+			
+        }
         //注单数获取
         // 显示游戏结算状态
         if ($data["isOver"]) {
