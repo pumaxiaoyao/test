@@ -80,8 +80,8 @@
                             </div>
                             <div class="col-md-10">
                                 <div class="form-group">
-                                    <img id="activityPicShow" src="{{ $act['picUrl1'] or '' }}" />
-                                    <input type="hidden" id="picUrl1" name="picUrl1" value="{{ $act['picUrl1'] or '' }}" />
+                                    <img id="activityPicShow" @if (isset($act['picUrl1']) && $act['picUrl1']) src="$act['picUrl1']" @endif" width="640px"/>
+                                    <input type="hidden" id="picUrl1" name="picUrl1" value="@if (isset($act['picUrl1']) && $act['picUrl1']) $act['picUrl1'] @endif" />
                                 </div>
                             </div>
                         </div>
@@ -122,7 +122,7 @@
                             </div>
                             <div class="col-md-10">
                                 <div class="form-group">
-                                    <img id="headActivityPicShow" src="{{ $act['picUrl2'] or '' }}" />
+                                    <img id="headActivityPicShow" @if (isset($act['picUrl2']) && $act['picUrl2']) src="$act['picUrl2']" @endif" width="640px"/>
                                     <input type="hidden" id="picUrl2" name="picUrl2" value="{{ $act['picUrl2'] or '' }}" />
                                 </div>
                             </div>

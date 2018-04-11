@@ -8,10 +8,10 @@ namespace App\Config;
 class AGConfig
 {
     const gameName = [
-        "1" => "AG视讯",
-        "2" => "AG电游",
-        "3" => "AG捕鱼",
-        "4" => "AG体育",
+        1 => "AG视讯",
+        2 => "AG电游",
+        3 => "AG捕鱼",
+        4 => "AG体育",
     ];
     const gameType = [
 		//---------真人视讯
