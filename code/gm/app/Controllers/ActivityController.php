@@ -25,6 +25,8 @@ class ActivityController extends BaseController
         $factory = View::getView();
         $pageArgs = [
             "sysMessageList" => [],
+            "actTypes" => http::gmHttpCaller("GetActivityType", []),
+            "platforms" => Config::platform
         ];
         return $factory->make('Activity.activityVerify.layout', $pageArgs)
             ->render();
@@ -57,13 +59,11 @@ class ActivityController extends BaseController
     {
         $actId = getArrayValue("actid", false, $request);
 
-
         if ($actId) {
-            $act = http::gmHttpCaller('GetActivity', [$actId]);
+            $act = getArrayValue(0, [], http::gmHttpCaller('GetActivities', [$actId]));
         } else {
             $act = [];
         }
-
 
         $factory = View::getView();
         $groups = SettingAPI::getGroupConfig(false);
@@ -88,5 +88,11 @@ class ActivityController extends BaseController
         ];
         return $factory->make('Activity.actCateList.layout', $pageArgs)
             ->render();
+    }
+
+
+    public static function gPDlist($request)
+    {
+        return json_encode(["c"=>0,"m"=>[]]);
     }
 }

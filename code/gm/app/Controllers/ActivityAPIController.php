@@ -14,7 +14,7 @@ class ActivityAPIController extends BaseController
     public static function activityAjax($request)
     {
         $s_args = parseCommonRequestArgus($request);
-        $retJson = http::gmHttpCaller("GetActivities", [$s_args[2], $s_args[3]]);
+        $retJson = http::gmHttpCaller("GetActivities", [null, $s_args[2], $s_args[3]]);
         $retSize = count($retJson);
         $ret = [];
         foreach ($retJson as $_ret)
@@ -65,9 +65,7 @@ class ActivityAPIController extends BaseController
             urldecode($request["picUrl2"]),
             $request["headActivity"],
             urldecode($request["agentcodes"]),
-            urldecode($request["agentnamelist"]),
             urldecode($request["groupids"]),
-            urldecode($request["groupnames"]),
             $request["status_list"],
             $request["type_list"],
             $request["redirect_to"],
@@ -98,5 +96,132 @@ class ActivityAPIController extends BaseController
             $request['status']
         ];
         return http::gmHttpCaller('SetActivityStatus', $t);
+    }
+
+    /** 
+     * 构建活动参与审核
+     */
+    public static function activityVerifyAjax($request)
+    {
+        $s_args = parseCommonRequestArgus($request);
+        $s_type = $request["type"];
+        $s_actId = false;
+        $retJson = http::gmHttpCaller("GetPlayerActivityCheck", [$s_type, "", $s_actId, $s_args[2], $s_args[3]]);
+        if ($retJson) {
+            $retSize = $retJson["size"];
+            $retData = $retJson["data"];
+        } else {
+            $retSize = 0;
+            $retData = [];
+        }
+        return [
+            "sEcho" => $s_args[4],
+            "iTotalRecords" => $retSize,
+            "iTotalDisplayRecords" => $retSize, //floor($sSize / $sCount), //取整，用于页数
+            "aaData" => viewHelper::makeActivityVerifyHtml($retData), 
+            "total" => 0
+        ];
+    }
+
+    /**
+     * 批量通过活动审核
+     */
+    public static function batchActVerityPass($request)
+    {
+        $dnos = $request["dnos"];
+        foreach (explode(",", $dnos) as $dno) {
+            $request["dno"] = $dno;
+            $ret = self::actVerityPass($request);
+            if (!$ret[0]){
+                return [false, "failed with dno " . $dno];
+            }
+        }
+        return [true];
+    }
+
+
+    /**
+     * 通过活动审核
+     */
+    public static function actVerityPass($request)
+    {
+        $t = [
+            $request["dno"],
+            $request["amount"], //红利
+            $request["flows"], // 流水 
+            $request["gpid"],
+            urldecode($request["remark"])
+        ];
+
+        return http::gmHttpCaller("PlayerActivityAgree", $t);
+
+    }
+
+    /**
+     * 拒绝活动审核
+     */
+    public static function actVerityRefuse($request)
+    {
+        $t = [
+            $request["dno"],
+            urldecode($request["remark"])
+        ];
+        return http::gmHttpCaller("PlayerActivityRefuse", $t);
+    }
+
+    /**
+     * 获取活动审核历史
+     */
+    public static function activityHistoryAjax($request)
+    {
+        $s_args = parseCommonRequestArgus($request);
+        $t = [
+            $request["status"],
+            $request["s_type"],
+            $request["s_keyword"],
+            $s_args[2],
+            $s_args[3]
+        ];
+        $retJson = http::gmHttpCaller("GetPlayerActivityRecord", $t);
+        if ($retJson) {
+            $retSize = $retJson["size"];
+            $retData = $retJson["data"];
+        } else {
+            $retSize = 0;
+            $retData = [];
+        }
+        return [
+            "sEcho" => $s_args[4],
+            "iTotalRecords" => $retSize,
+            "iTotalDisplayRecords" => $retSize, //floor($sSize / $sCount), //取整，用于页数
+            "aaData" => viewHelper::makeActivityVerifyHistoryHtml($retData), 
+            "total" => 0
+        ];
+    }
+
+    public static function activityFundAjax($request)
+    {
+        $s_args = parseCommonRequestArgus($request);
+        $t = [
+            $s_args[0],
+            $s_args[1],
+            $s_args[2],
+            $s_args[3]
+        ];
+        $retJson = http::gmHttpCaller("GetPlayerActivityStatisticsData", $t);
+        if ($retJson) {
+            $retSize = count($retJson);
+            $retData = $retJson;
+        } else {
+            $retSize = 0;
+            $retData = [];
+        }
+        return [
+            "sEcho" => $s_args[4],
+            "iTotalRecords" => $retSize,
+            "iTotalDisplayRecords" => $retSize, //floor($sSize / $sCount), //取整，用于页数
+            "aaData" => viewHelper::makeActivityFundHtml($retData), 
+            "total" => 0
+        ];
     }
 }

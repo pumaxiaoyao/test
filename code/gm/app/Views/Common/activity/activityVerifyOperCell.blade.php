@@ -1,0 +1,2 @@
+<a href="#passModal" data-toggle="modal" onclick="setPass('{{ $dno or "" }}','{{ $account or "" }}');" class="btn btn-xs green">通过</a>
+<a href="#refuseModal" data-toggle="modal" onclick="setRefuse('{{ $dno or ""}}');" class="btn btn-xs red">拒绝</a>

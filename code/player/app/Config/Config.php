@@ -16,7 +16,7 @@ class Config
                 "index",  // 首页
                 "login", "retrieve", "getCaptcha", "BettingRecords", "register", "registerAccount", "namecheck", // 账号管理
                 "iglottery", "iglotto", "lbcp","sportsbook", "aggame", "GetPlatformLogin", "bbgame", "LoginBBinGame",// 游戏
-                "default", "helpText"// 帮助
+                "default", "helpText", "activities", "showDetail", "joinActivity"// 帮助
                     ],
             "skey" => "PlayerSessionID"
         ],

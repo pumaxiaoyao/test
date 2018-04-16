@@ -80,8 +80,10 @@
                             </div>
                             <div class="col-md-10">
                                 <div class="form-group">
-                                    <img id="activityPicShow" @if (isset($act['picUrl1']) && $act['picUrl1']) src="$act['picUrl1']" @endif" width="640px"/>
-                                    <input type="hidden" id="picUrl1" name="picUrl1" value="@if (isset($act['picUrl1']) && $act['picUrl1']) $act['picUrl1'] @endif" />
+                                    <img id="activityPicShow" @if (isset($act['picUrl1']) && $act['picUrl1']) src="{{ $act['picUrl1'] }}" @endif" width="640px"/>
+                                    <input type="hidden" id="picUrl1" name="picUrl1" value="@if (isset($act['picUrl1']) && $act['picUrl1']) 
+                                    {{ $act['picUrl1'] }}
+                                     @endif" />
                                 </div>
                             </div>
                         </div>
@@ -122,7 +124,7 @@
                             </div>
                             <div class="col-md-10">
                                 <div class="form-group">
-                                    <img id="headActivityPicShow" @if (isset($act['picUrl2']) && $act['picUrl2']) src="$act['picUrl2']" @endif" width="640px"/>
+                                    <img id="headActivityPicShow" @if (isset($act['picUrl2']) && $act['picUrl2']) src="{{ $act['picUrl2'] }}" @endif" width="640px"/>
                                     <input type="hidden" id="picUrl2" name="picUrl2" value="{{ $act['picUrl2'] or '' }}" />
                                 </div>
                             </div>
@@ -140,15 +142,18 @@
                                 <div class="radio-list">
                                     <div class="form-group">
                                         <select id="selectagent" style="width: 120px">
-                                            <option value="0" selected="selected">选择代理</option>
+                                            <option value="选择代理" selected="selected">选择代理</option>
                                         </select>
                                         <input type="button" class="btn green btn-sm" style="margin-left: 5px;" id="addagent" value="添加" /></div>
                                 </div>
                             </div>
                             <div class="col-md-6" id="agentlist">
-                                @foreach ( explode(',', isset($act['agentCodes'])?$act['agentCodes']:"") as $agent)
-                                <A href='javascript:void(0);' style='padding:10px;' onclick='$(this).remove();initAgentInfo();' actid='{{ $agent }}'>
-                                        <i class='fa fa-check-square-o'></i>{{ $agent }}</a> @endforeach
+                                @if (isset($act['agentIds']))
+                                    @foreach ( $act['agentIds'] as $agent)
+                                    <A href='javascript:void(0);' style='padding:10px;' onclick='$(this).remove();initAgentInfo();' actid='{{ $agent["roleId"] }}'>
+                                            <i class='fa fa-check-square-o'></i>{{ $agent["name"] }}</a> 
+                                    @endforeach
+                                @endif
                             </div>
                         </div>
                         <div class="row">
@@ -161,7 +166,7 @@
                                 <div class="radio-list">
                                     @foreach( $groups as $group)
                                     <label class="radio-inline">
-                                        <input type="checkbox" @if (in_array($group["name"], explode(",", isset($act['groupNames'])?$act['groupNames']:""))) checked="checked" @endif name="group" gpname="{{ $group["name"] }}" value="{{ $group["id"] }}">{{ $group["name"] }}
+                                        <input type="checkbox" @if (in_array($group["name"], $group)) checked="checked" @endif name="group" gpname="{{ $group["name"] }}" value="{{ $group["id"] }}">{{ $group["name"] }}
                                     </label> @endforeach
                                 </div>
                             </div>

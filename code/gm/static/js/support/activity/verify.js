@@ -55,7 +55,7 @@ function batchPass() {
     }
     $.blockUI();
     $.ajax({
-        url: '/kzb/playeractivity/batchpass',
+        url: '/activity/batchActVerityPass',
         data:{dnos: ids,
             gpid: gpid,
             atype: atype,
@@ -69,8 +69,9 @@ function batchPass() {
             $.unblockUI();
         },
         success:function(data){
+            resp = data.data;
             $.unblockUI();
-            if(data.c == 0){
+            if(resp[0]){
                 target[1].fnReloadAjax();
                 $('#batchPassModal').modal('hide');
                 $.notific8('批量审核通过');
@@ -100,29 +101,17 @@ function refuseAll() {
         return false;
     }
     $.ajax({
-        url: '/task/receive',
+        url: '/activity/actVerityRefuse',
         type: 'post',
-        data: {tid: nowdno, type: 2011},
+        data: {dno: nowdno, remark: '客服批量处理'},
         success: function (data) {
-            if (data.success) {
-                $.ajax({
-                    url: '/kzb/playeractivity/refuse',
-                    type: 'post',
-                    data: {dno: nowdno, remark: '客服批量处理'},
-                    success: function (data) {
-                        if (data.c == 0) {
-                            //window.location.reload();
-                        }
-                        else {
-                            $.notific8(errorMsg(data), {theme: 'ebony'});
-                        }
-                        refuseAll();
-                    },
-                    cache: false
-                });
-            } else {
-                refuseAll();
+            if (data.c == 0) {
+                //window.location.reload();
             }
+            else {
+                $.notific8(errorMsg(data), {theme: 'ebony'});
+            }
+            refuseAll();
         },
         cache: false
     });
@@ -198,17 +187,18 @@ function calc1() {
     $("#jv1").val(amount);
 }
 
-function freetask() {
-    $.ajax({
-        url: '/kzb/playeractivity/freetask',
-        data: {dno: nowdno},
-        type: 'post',
-        dataType: 'json',
-        success: function (data) {
-        },
-        cache: false
-    });
-}
+// function freetask() {
+//     $.ajax({
+//         url: '/kzb/playeractivity/freetask',
+//         data: {dno: nowdno},
+//         type: 'post',
+//         dataType: 'json',
+//         success: function (data) {
+//         },
+//         cache: false
+//     });
+// }
+
 function refuse(o) {
     if ($("#refusedealremark").val() == "") {
         $.notific8("请认真填写拒绝的理由", {theme: 'ebony'});
@@ -216,35 +206,19 @@ function refuse(o) {
     }
     $.blockUI();
     $.ajax({
-        url: '/task/receive',
-        data: {tid: nowdno, type: 2011},
+        url: '/activity/actVerityRefuse',
+        data: {dno: nowdno, remark: $("#refusedealremark").val()},
         type: 'post',
         dataType: 'json',
         success: function (data) {
-            if (data.success) {
-                $.ajax({
-                    url: '/kzb/playeractivity/refuse',
-                    data: {dno: nowdno, remark: $("#refusedealremark").val()},
-                    type: 'post',
-                    dataType: 'json',
-                    success: function (data) {
-                        $.unblockUI();
-                        if (data.c == 0) {
-                            target[1].fnReloadAjax();
-                            $("#refuseModal").modal('hide');
-                            $.notific8("该申请已拒绝", {theme: 'ebony'});
-                        } else {
-                            $.notific8(errorMsg(data), {theme: 'ebony'});
-                        }
-                    },
-                    error: function () {
-                        $.unblockUI();
-                    },
-                    cache: false
-                });
+            resp = data.data;
+            $.unblockUI();
+            if (resp[0]) {
+                target[1].fnReloadAjax();
+                $("#refuseModal").modal('hide');
+                $.notific8("操作成功，已拒绝该申请");
             } else {
-                $.unblockUI();
-                //$.notific8(errorMsg(data), {theme: 'ebony'});
+                $.notific8("操作失败，请联系客服", {theme: 'ebony'});
             }
         },
         error: function () {
@@ -254,24 +228,24 @@ function refuse(o) {
     });
 }
 
-function istartverifytask(dno) {
-    if (confirm("当前任务他人审核中,若您领走，其他人当前审核状态将被中断")) {
-        nowdno = dno;
-        $.ajax({
-            url: '/task/receive',
-            type: 'post',
-            data: {tid: nowdno, type: 2011},
-            success: function (data) {
-                if (data.success) {
-                    target[1].fnReloadAjax();
-                } else {
-                    $.notific8(data.m);
-                }
-            },
-            cache: false
-        });
-    }
-}
+// function istartverifytask(dno) {
+//     if (confirm("当前任务他人审核中,若您领走，其他人当前审核状态将被中断")) {
+//         nowdno = dno;
+//         $.ajax({
+//             url: '/task/receive',
+//             type: 'post',
+//             data: {tid: nowdno, type: 2011},
+//             success: function (data) {
+//                 if (data.success) {
+//                     target[1].fnReloadAjax();
+//                 } else {
+//                     $.notific8(data.m);
+//                 }
+//             },
+//             cache: false
+//         });
+//     }
+// }
 
 
 function pass(o) {
@@ -298,43 +272,27 @@ function pass(o) {
     var remark = $("#passremark").val();
     $.blockUI();
     $.ajax({
-        url: '/task/receive',
-        data: {tid: nowdno, type: 2011},
+        url: '/activity/actVerityPass',
+        data: {
+            dno: nowdno,
+            ddno: ddno,
+            gpid: gpid,
+            atype: atype,
+            amount: amount,
+            flows: flows,
+            remark: remark
+        },
         type: 'post',
         dataType: 'json',
         success: function (data) {
-            $.unblockUI();
-            if (data.success) {
-                $.ajax({
-                    url: '/kzb/playeractivity/pass',
-                    data: {
-                        dno: nowdno,
-                        ddno: ddno,
-                        gpid: gpid,
-                        atype: atype,
-                        amount: amount,
-                        flows: flows,
-                        remark: remark
-                    },
-                    type: 'post',
-                    dataType: 'json',
-                    success: function (data) {
-                        if (data.c == 0) {
-                            target[1].fnReloadAjax();
-                            $("#passModal").modal('hide');
-                            $.notific8("该申请已通过");
-                        } else {
-                            $.notific8(errorMsg(data), {theme: 'ebony'});
-                        }
-                    },
-                    error: function () {
-                        $.unblockUI();
-                    },
-                    cache: false
-                });
+            $.unblockUI()
+            resp = data.data;
+            if (resp[0]) {
+                target[1].fnReloadAjax();
+                $("#passModal").modal('hide');
+                $.notific8("该申请已通过");
             } else {
-                $.unblockUI();
-                //$.notific8(errorMsg(data), {theme: 'ebony'});
+                $.notific8("申请失败", {theme: 'ebony'});
             }
         },
         error: function () {

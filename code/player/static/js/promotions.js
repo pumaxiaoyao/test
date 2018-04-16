@@ -24,6 +24,7 @@ function changeImg(next, type) {
 }
 
 function autoPlay(type) {
+    console.log("auto playing");
     var index = $(".mi_" + type + "_ctrl").find(".mi_select").attr(type + "_ctrl");
     index = parseInt(index, 10);
     var next;

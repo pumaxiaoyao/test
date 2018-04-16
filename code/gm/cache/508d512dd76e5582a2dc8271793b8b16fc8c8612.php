@@ -80,8 +80,11 @@
                             </div>
                             <div class="col-md-10">
                                 <div class="form-group">
-                                    <img id="activityPicShow" src="<?php echo e(isset($act['picUrl1']) ? $act['picUrl1'] : ''); ?>" />
-                                    <input type="hidden" id="picUrl1" name="picUrl1" value="<?php echo e(isset($act['picUrl1']) ? $act['picUrl1'] : ''); ?>" />
+                                    <img id="activityPicShow" <?php if(isset($act['picUrl1']) && $act['picUrl1']): ?> src="<?php echo e($act['picUrl1']); ?>" <?php endif; ?>" width="640px"/>
+                                    <input type="hidden" id="picUrl1" name="picUrl1" value="<?php if(isset($act['picUrl1']) && $act['picUrl1']): ?> 
+                                    <?php echo e($act['picUrl1']); ?>
+
+                                     <?php endif; ?>" />
                                 </div>
                             </div>
                         </div>
@@ -122,7 +125,7 @@
                             </div>
                             <div class="col-md-10">
                                 <div class="form-group">
-                                    <img id="headActivityPicShow" src="<?php echo e(isset($act['picUrl2']) ? $act['picUrl2'] : ''); ?>" />
+                                    <img id="headActivityPicShow" <?php if(isset($act['picUrl2']) && $act['picUrl2']): ?> src="<?php echo e($act['picUrl2']); ?>" <?php endif; ?>" width="640px"/>
                                     <input type="hidden" id="picUrl2" name="picUrl2" value="<?php echo e(isset($act['picUrl2']) ? $act['picUrl2'] : ''); ?>" />
                                 </div>
                             </div>
@@ -140,15 +143,16 @@
                                 <div class="radio-list">
                                     <div class="form-group">
                                         <select id="selectagent" style="width: 120px">
-                                            <option value="0" selected="selected">选择代理</option>
+                                            <option value="选择代理" selected="selected">选择代理</option>
                                         </select>
                                         <input type="button" class="btn green btn-sm" style="margin-left: 5px;" id="addagent" value="添加" /></div>
                                 </div>
                             </div>
                             <div class="col-md-6" id="agentlist">
-                                <?php $__currentLoopData = explode(',', isset($act['agentCodes'])?$act['agentCodes']:""); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $agent): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                <A href='javascript:void(0);' style='padding:10px;' onclick='$(this).remove();initAgentInfo();' actid='<?php echo e($agent); ?>'>
-                                        <i class='fa fa-check-square-o'></i><?php echo e($agent); ?></a> <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                <?php $__currentLoopData = $act['agentIds']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $agent): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                <A href='javascript:void(0);' style='padding:10px;' onclick='$(this).remove();initAgentInfo();' actid='<?php echo e($agent["roleId"]); ?>'>
+                                        <i class='fa fa-check-square-o'></i><?php echo e($agent["name"]); ?></a> 
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             </div>
                         </div>
                         <div class="row">
@@ -161,7 +165,7 @@
                                 <div class="radio-list">
                                     <?php $__currentLoopData = $groups; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $group): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                     <label class="radio-inline">
-                                        <input type="checkbox" <?php if(in_array($group["name"], explode(",", isset($act['groupNames'])?$act['groupNames']:""))): ?> checked="checked" <?php endif; ?> name="group" gpname="<?php echo e($group["name"]); ?>" value="<?php echo e($group["id"]); ?>"><?php echo e($group["name"]); ?>
+                                        <input type="checkbox" <?php if(in_array($group["name"], $group)): ?> checked="checked" <?php endif; ?> name="group" gpname="<?php echo e($group["name"]); ?>" value="<?php echo e($group["id"]); ?>"><?php echo e($group["name"]); ?>
 
                                     </label> <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </div>

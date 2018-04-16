@@ -16,7 +16,8 @@ const CallToController = [
     "agent" => "Agent",
     "agentfund" => "AgentFund",
     "activity" => "Activity",
-    "bank" => "Bank"
+    "bank" => "Bank",
+    "report" => "Report"
 ];
 // 错误跳转首页
 Route::error(function(){

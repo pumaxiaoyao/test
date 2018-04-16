@@ -36,6 +36,20 @@ class ActivityStatus
     const delete = 3;
 }
 
+class PayStatus
+{
+    const valid = 1;
+    const invalid = 2;
+    const delete = 3;
+}
+
+class PayPosType
+{
+    const web = 1;
+    const phone = 2;
+    const app = 4;
+}
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //玩家
 class PlayerStatus

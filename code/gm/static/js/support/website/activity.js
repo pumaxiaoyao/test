@@ -80,7 +80,6 @@ $(document).ready(function(){
         dataType: 'json',
         //delay: 250,
         data: function (params) {
-            console.log(123);
           return {
             q: params.term
           };
@@ -94,11 +93,11 @@ $(document).ready(function(){
       },
       escapeMarkup: function (markup) { return markup; },
       minimumInputLength: 1,
-      templateResult: function(repo){return repo.name;},
+      templateResult: function(repo){return repo.id;},
       templateSelection: function(repo){
-          nowSelectAgent = repo.code;
-          nowSelectAname = repo.name;
-          return repo.name || repo.text;
+          nowSelectAgent = repo.id;
+          nowSelectAname = repo.code;
+          return repo.id || repo.text;
       }
     });
 
@@ -160,7 +159,7 @@ $('#activity_edit').ajaxForm({
         if (data[0]) {
             
             $.notific8('编辑活动成功！');
-            window.location.href='/activity/activities';
+            // window.location.href='/activity/activities';
         }else{
             $.notific8("error", {theme: 'ebony'});
         }

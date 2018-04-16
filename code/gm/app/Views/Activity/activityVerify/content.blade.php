@@ -18,10 +18,9 @@
                                     </select>
                         <select name="type" id="type" class="table-group-action-input form-control input-small input-sm" tabindex="1">
                                             <option value="0">所有类型</option>
-                                            <option value="1000">存送</option>
-                                            <option value="1001">返水送</option>
-                                            <option value="1002">注册送</option>
-                                            <option value="1003">其他</option>
+                                            @foreach( $actTypes as $_type)
+                                                <option value="{{ $_type["id"] }}">{{ $_type["name"] }}</option>
+                                            @endforeach
                                     </select>
                     </div>
                     <div class="form-group">
@@ -167,49 +166,10 @@
                                         <div class="form-group">
                                             <label class="control-label">红利流水限平台</label>
                                             <select class="form-control" id="gpid">
-                                                                                    <option
-                                                value="0">不限平台</option>
-                                                                                    <option
-                                                value="350808494186211">BB视讯</option>
-                                                                                    <option
-                                                value="350808494186212">BB彩票</option>
-                                                                                    <option
-                                                value="350808494186213">BB3D</option>
-                                                                                    <option
-                                                value="350808494186214">BB机率</option>
-                                                                                    <option
-                                                value="387122175998732">AG电游</option>
-                                                                                    <option
-                                                value="387122175998733">AG捕鱼</option>
-                                                                                    <option
-                                                value="8246252097638400">沙巴体育</option>
-                                                                                    <option
-                                                value="11964220589608960">MG电游</option>
-                                                                                    <option
-                                                value="350808494186210">BB体育</option>
-                                                                                    <option
-                                                value="9283948292830">欧博真人</option>
-                                                                                    <option
-                                                value="7821359015601">蚂蚁彩票</option>
-                                                                                    <option
-                                                value="420987656202">newPT电游</option>
-                                                                                    <option
-                                                value="520723134101">KG</option>
-                                                                                    <option
-                                                value="550123423101">IM捕鱼</option>
-                                                                                    <option
-                                                value="550223423201">IM电子</option>
-                                                                                    <option
-                                                value="773562192801">申博真人</option>
-                                                                                    <option
-                                                value="773562192802">申博老虎机</option>
-                                                                                    <option
-                                                value="940256904101">新EBet</option>
-                                                                                    <option
-                                                value="7589283920390">双赢彩票</option>
-                                                                                    <option
-                                                value="38712217599873024">AG真人</option>
-                                                                            </select>
+                                                <option value="0">不限平台</option>
+                                                @foreach ($platforms as $GPID => $GPNAME)
+                                                    <option value="{{ $GPID }}"> {{ $GPNAME }}</option>
+                                                @endforeach
                                         </div>
                                     </div>
                                     <div class="col-md-12">

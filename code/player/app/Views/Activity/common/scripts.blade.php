@@ -1,13 +1,38 @@
 <link href="/static/css/promotions.css" rel="stylesheet" />
-<script type="/text/javascript" src="/static/js/promotions.js"></script>
+<script src="/static/js/promotions.js"></script>
 <script type="text/javascript">
     function showMessage( msgId) {
-        var url = "/zh-cn/promotions/detail.aspx?promotionid=" + msgId;
+        var url = "/activity/showDetail?actId=" + msgId;
         $("#msgIframe").attr("src", url);
          $("#parentBorder").attr('style','');
              openMessage();
     }
 
+    function joinActivity( actId ){
+        var url = "/activity/joinActivity";
+        $.ajax({
+            url: url,
+            type: 'post',
+            dataType: 'json',
+            data: { actId:actId },
+            success: function (data) {
+                resp = data.data;
+                if (resp[0]) {
+                    swal({
+                        title: "",
+                        text: "提交成功，请等待客服审批！",
+                        type: "success"
+                    });
+                } else {
+                    swal({
+                        title: "",
+                        text: resp[1],
+                        type: "warning"
+                    })
+                }
+            }
+        });
+    }
     $(function () {
         //iframe 加载事件 站内信
         var iframe = $("#msgIframe")[0];
