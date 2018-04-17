@@ -169,35 +169,22 @@ $('#activity_edit').ajaxForm({
 // 初始化用户层级选择的信息
 function initGroupinfo(){
 
-    var groupids="";
-    var groupnames="";
+    var groupids=[];
     $("input[name=group]:checked").each(function(){
-        if(groupids!=""){
-            groupids += ",";
-            groupnames += "|";
-        }
-        groupids+=$(this).val();
-        groupnames+=$(this).attr("gpname");
+        groupids.push(parseInt($(this).val()));
     });
-    $("#groupnames").val(groupnames);
-    $("#groupids").val(groupids);
+    var groupidsStr = groupids.length == 0 ? null : JSON.stringify(groupids);
+    $("#groupids").val(groupidsStr);
 
 }
 
 // 初始化代理选择的信息
 function initAgentInfo(){
-    var agentnamelist="";
-    var agentcodes="";
+    var agentcodes=[];
 
     $("#agentlist").find("a[actid]").each(function(){
-        if(agentcodes!=""){
-            agentcodes += ",";
-            agentnamelist += "|";
-        }
-        agentcodes+=$(this).attr("actid");
-        agentnamelist+=$(this).text();
+        agentcodes.push(parseInt($(this).val()));
     });
-
-    $("#agentnamelist").val(agentnamelist);
-    $("#agentcodes").val(agentcodes);
+    var agentcodesStr = agentcodes.length == 0 ? null : JSON.stringify(agentcodes);
+    $("#agentcodes").val(agentcodesStr);
 }

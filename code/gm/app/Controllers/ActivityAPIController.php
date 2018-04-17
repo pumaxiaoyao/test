@@ -56,6 +56,7 @@ class ActivityAPIController extends BaseController
 
     public static function edit($request)
     {
+        error_reporting(~E_ALL);
         $reqArgs = [
             $request["actid"],
             urldecode($request["name"]),
