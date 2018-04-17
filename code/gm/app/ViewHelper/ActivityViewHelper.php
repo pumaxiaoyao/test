@@ -24,28 +24,16 @@ class ActivityViewHelper extends BaseViewHelper
             $actCell = self::makeActListOperHtml($actT);
 
             
-            
-            $agentCell = [];
-            foreach ($act["agentIds"] as $agentId => $agentInfo) {
-                $agentCell[] = $agentInfo["account"];
-            }
-
-            $groupCell = [];
-            foreach ($act["groupIds"] as $groupId => $groupInfo) {
-                $groupCell[] = $groupInfo["name"];
-            }
-
-
             $tmpdata = array(
                 $x + 1,
                 $act["name"],
-                $act['type']["name"],
+                '',
                 '<div  id="status_'. $actId .'">' . Config::actStatusTransMap[$act['status']] . '</div>',
-                "<div style=\"width:150px;word-break:break-all;word-wrap:break-word;\">" . join(",", $agentCell) . "</div>",
-                join(",", $groupCell),
+                "<div style=\"width:150px;word-break:break-all;word-wrap:break-word;\">" . $act['agentStr'] . "</div>",
+                $act['groupStr'],
                 $act['timesLimit'],
                 $act['orderVal'],
-                $act['created_at'],
+                date('Y-m-d H:i:s',$act['createTime']),
                 $actCell,
             );
 

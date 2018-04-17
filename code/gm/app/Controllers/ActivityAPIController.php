@@ -14,10 +14,10 @@ class ActivityAPIController extends BaseController
     public static function activityAjax($request)
     {
         $s_args = parseCommonRequestArgus($request);
-        $retJson = http::gmHttpCaller("GetActivities", [null, $s_args[2], $s_args[3]]);
+        $retJson = http::gmHttpCaller("GetActivities", [$s_args[2], $s_args[3]]);
         $retSize = count($retJson);
         $ret = [];
-        foreach ($retJson as $_ret)
+        foreach ($retJson[0]['data'] as $_ret)
         {
             if ($_ret['status'] != 3) 
                 $ret[] = $_ret;
