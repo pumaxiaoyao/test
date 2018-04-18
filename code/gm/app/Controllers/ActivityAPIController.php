@@ -184,9 +184,9 @@ class ActivityAPIController extends BaseController
             $s_args[3]
         ];
         $retJson = http::gmHttpCaller("GetPlayerActivityRecord", $t);
-        if ($retJson) {
-            $retSize = $retJson["size"];
-            $retData = $retJson["data"];
+        if ($retJson[0]) {
+            $retSize = $retJson[0]["size"];
+            $retData = $retJson[0]["data"];
         } else {
             $retSize = 0;
             $retData = [];
@@ -210,9 +210,9 @@ class ActivityAPIController extends BaseController
             $s_args[3]
         ];
         $retJson = http::gmHttpCaller("GetPlayerActivityStatisticsData", $t);
-        if ($retJson) {
-            $retSize = count($retJson);
-            $retData = $retJson;
+        if ($retJson[0]) {
+            $retSize = count($retJson[0]);
+            $retData = $retJson[0];
         } else {
             $retSize = 0;
             $retData = [];
