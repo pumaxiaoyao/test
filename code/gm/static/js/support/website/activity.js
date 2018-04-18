@@ -20,10 +20,10 @@ $(document).ready(function(){
         'swf'      : '/static/js/uploadify/uploadify.swf',
         'uploader' : '/activity/uploadPic',
         'buttonText'    :   '选择照片',  
-        'method'            :   'post',  
+        'method'        :   'post',  
         'buttonClass'   :  'upload_button',  
         'fileTypeDesc'  :   '图片文件',  
-        'fileTypeExts'  :   '*.gif;*.jpg;*.png;*.bmp',  
+        'fileTypeExts'  :   '*.gif;*.jpg;*.png;*.bmp', 
         "onUploadSuccess" : function(file, data, response) { // 上传成功回调函数
             data = JSON.parse(data);
             data = data.data;
@@ -147,6 +147,7 @@ function addAgent(id,name){
 
 $('#activity_edit').ajaxForm({
     beforeSubmit: function (arr, $form, options) {
+        console.log(arr);
         $.blockUI();
 
     },
@@ -173,7 +174,7 @@ function initGroupinfo(){
     $("input[name=group]:checked").each(function(){
         groupids.push(parseInt($(this).val()));
     });
-    var groupidsStr = groupids.length == 0 ? null : JSON.stringify(groupids);
+    var groupidsStr = groupids[0] ? JSON.stringify(groupids) : "";
     $("#groupids").val(groupidsStr);
 
 }
@@ -185,6 +186,6 @@ function initAgentInfo(){
     $("#agentlist").find("a[actid]").each(function(){
         agentcodes.push(parseInt($(this).val()));
     });
-    var agentcodesStr = agentcodes.length == 0 ? null : JSON.stringify(agentcodes);
+    var agentcodesStr = agentcodes[0] ? JSON.stringify(agentcodes):"";
     $("#agentcodes").val(agentcodesStr);
 }

@@ -108,9 +108,9 @@ class ActivityAPIController extends BaseController
         $s_type = $request["type"];
         $s_actId = false;
         $retJson = http::gmHttpCaller("GetPlayerActivityCheck", [$s_type, "", $s_actId, $s_args[2], $s_args[3]]);
-        if ($retJson) {
-            $retSize = $retJson["size"];
-            $retData = $retJson["data"];
+        if ($retJson[0]) {
+            $retSize = $retJson[0]["size"];
+            $retData = $retJson[0]["data"];
         } else {
             $retSize = 0;
             $retData = [];

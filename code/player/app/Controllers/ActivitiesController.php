@@ -12,15 +12,17 @@ class ActivitiesController extends BaseController
 {
     public function activities($request)
     {
-        $acts = http::playerHttpCaller('GetActivities', []);
+        $loginSession = getSessionValue("PlayerSessionID", "");
+        $acts = http::playerHttpCaller('GetActivities', [$loginSession]);
+        // var_dump( $acts);die;
         $headActs = [];
         $normalActs = [];
         // Todo：默认的CDN资源下载配置根路径
         // GM后台上传后的预览地址，以及前台的下载地址都是此路径
         // 稍后拆分
         // $downLoadUrl = "http://47.91.199.24:8080";
-        $downLoadUrl = "http://localhost:9090"; 
-        foreach( $acts as $act) {
+        $downLoadUrl = "http://localhost:8080"; 
+        foreach( $acts[0] as $act) {
             $act["listTime"] = date("Y-m月d日 ", strtotime($act["labelTime"]));
             $act["listTime"] = str_replace("-", "<br/>", $act["listTime"]);
             if ($act["picUrl1"])
@@ -48,8 +50,9 @@ class ActivitiesController extends BaseController
      */
     public static function showDetail($request)
     {
+        $loginSession = getSessionValue("PlayerSessionID", "");
         $actId = $request["actId"];
-        $acts = http::playerHttpCaller('GetActivities', [$actId]);
+        $acts = http::playerHttpCaller('GetActivity', [$loginSession,$actId]);
         $act = (count($acts)>0)?$acts[0]:[];
         $factory = View::getView();
         return $factory->make('Activity.showDetail.layout', ["content" => $act["content"]])
