@@ -21,14 +21,14 @@ class PlayerAPIController extends BaseController
      */
     private static function searchOnlinePlayer($s_st, $s_et, $_stype, $_key, $_startIdx, $_count)
     {
-        return http::gmHttpCaller("SearchPlayer", array($s_st, $s_et, 1, 0, 0, $_stype, $_key, $_startIdx, $_count));
+        return http::gmHttpCaller("SearchPlayer", array(0, $s_et, 1, 0, 0, $_stype, $_key, $_startIdx, $_count));
     }
 
 
     
     public static function SearchAllPlayer($s_st, $s_et, $s_group, $_stype, $_key, $_startIdx, $_count)
     {
-        return http::gmHttpCaller("SearchPlayer", array($s_st, $s_et, 0, 0, $s_group, $_stype, $_key, $_startIdx, $_count));
+        return http::gmHttpCaller("SearchPlayer", array(0, $s_et, 0, 0, $s_group, $_stype, $_key, $_startIdx, $_count));
     }
 
     private static function SearchRegPlayer($s_st, $s_et, $status,  $_stype, $_key, $_startIdx, $_count)
