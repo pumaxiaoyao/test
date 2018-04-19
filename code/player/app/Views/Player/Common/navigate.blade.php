@@ -47,7 +47,7 @@
                             <div class="fans"><i><img src="../../static/img/head/ty1.png" /></i><span>每周返水<br />不设上限</span></div>
                             <div class="middle ahover">
                                 <a href="/sportsbook/">
-                                <i><img src="../../static/img/head/ty2.png" /></i>
+                                <!-- <i><img src="../../static/img/head/ty2.png" /></i> -->
                                 <span>每月上万场体育赛事，稳定快速的结算系统 <strong>立即游戏</strong></span>
                                 </a>
                             </div>

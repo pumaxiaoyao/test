@@ -220,7 +220,7 @@
                         <i class="t-11-1"></i>
                         <div class="advantages-content">
                             <div class="advantages-content-h">值得信赖 </div>
-                            Beplay团队最致力于移动安全应用的开发和整合，为您资金及信息安全保驾护航！
+                            NBBET团队最致力于移动安全应用的开发和整合，为您资金及信息安全保驾护航！
                         </div>
                     </div>
                 </div>
