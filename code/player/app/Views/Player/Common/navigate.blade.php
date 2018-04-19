@@ -39,7 +39,7 @@
                         
                         <a href="/game/mobile" class="" id="mobile">手机投注</a>  --}}
                     </div>
-                    <div style="float: right;"><a onclick="openServiceBox()" class="hd_char_icon hd_char"></a></div>
+                    <!-- <div style="float: right;"><a onclick="openServiceBox()" class="hd_char_icon hd_char"></a></div> -->
                 </div>
                 <div class="navigation-down">
                     <div id="ty" class="nav-down-menu menu-1" _t_nav="ty">
