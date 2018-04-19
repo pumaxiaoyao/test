@@ -148,10 +148,10 @@
                                 </div>
                             </div>
                             <div class="col-md-6" id="agentlist">
-                                @if (isset($act['agentIds']))
-                                    @foreach ( $act['agentIds'] as $agent)
-                                    <A href='javascript:void(0);' style='padding:10px;' onclick='$(this).remove();initAgentInfo();' actid='{{ $agent["roleId"] }}'>
-                                            <i class='fa fa-check-square-o'></i>{{ $agent["name"] }}</a> 
+                                @if (isset($act['agentStr']))
+                                    @foreach ( json_decode($act['agentStr']) as $k =>$v)
+                                    <A href='javascript:void(0);' style='padding:10px;' onclick='$(this).remove();initAgentInfo();' actid='{{ $k }}'>
+                                            <i class='fa fa-check-square-o'></i>{{ $v }}</a> 
                                     @endforeach
                                 @endif
                             </div>
@@ -166,7 +166,7 @@
                                 <div class="radio-list">
                                     @foreach( $groups as $group)
                                     <label class="radio-inline">
-                                        <input type="checkbox" @if (in_array($group["name"], $group)) checked="checked" @endif name="group" gpname="{{ $group["name"] }}" value="{{ $group["id"] }}">{{ $group["name"] }}
+                                        <input type="checkbox" @if (in_array($group["name"], $group)) @endif name="group" gpname="{{ $group["name"] }}" value="{{ $group["id"] }}">{{ $group["name"] }}
                                     </label> @endforeach
                                 </div>
                             </div>
