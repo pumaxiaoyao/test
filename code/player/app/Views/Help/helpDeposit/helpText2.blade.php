@@ -10,23 +10,14 @@
 
 <div>
  <h3 style="margin:0">如何存款</h3>
-  <p>1.	存款前，请确保您已经成功注册成为BEPLAY会员，如未注册，请点击此处进行<a href="/player/register" target="_blank">注册</a><br>
+  <p>1.	存款前，请确保您已经成功注册成为NBBET会员，如未注册，请点击此处进行<a href="/player/register" target="_blank">注册</a><br>
     2.	如未开通网上银行，请到当地银行柜台开通网上银行业务；<br>
-    3.	存款前请先登录BEPLAY账号——资金管理——存款——选择存款方式<br>
+    3.	存款前请先登录NBBET账号——资金管理——存款——选择存款方式<br>
   </p><br>
  <h3>第三方支付</h3>
   <p><img src="/static/img/help/help1.jpg" style="width: 90%"></p>
   <p>填写存款金额——选择相应银行——点击立即存款——按照页面提示登录个人网上银行——存款完成 </p>
   <br>
-  <p><h3>极速转账</h3>
-  <p><img src="/static/img/help/help2.jpg" style="width:90%"></p>
-    <p>
-
-  1.	登录BEPLAY账号——资金管理——存款——极速转账；<br>
-  2.	登录个人网上银行——转账汇款——复制收款人信息， 填到对应的表单——填写存款金额——附言处填写正确附言代码——存款完成<br>
-  3.	非工行存款请跨行至当前工行账号 <span style="color: red">(为了保证到账速度, 一定 要选择“加急”)</span>
-      </p>
-      <br>
 <h3>存款常见问题</h3>
   <p>
     1.	没有网银如何充值？<br>
