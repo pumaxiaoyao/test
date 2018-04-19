@@ -12,24 +12,24 @@
     <div class="container">
         <div class="index-content">
             <div class="index-content-notice">
-                <div class="download">
+                <!-- <div class="download">
                     <div class="line">
                         <span class="title"><span>•</span>手机客户端下载 </span>
                         <div id="myCarousel" class="carousel slide" style="width: 70%; float: right">
-                            <!-- Carousel items -->
+                            <!-- Carousel items 
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <div class="notice">
                     <div class="title">最新公告：</div>
                     <div class="noticelist">
-                        <div onclick="showAnnMessage()" id="noticeModal"><span class='ann_infoline'>● 史上最好用，最高颜值体育APP震撼登场，全面覆盖IOS和安卓系统，使用自带浏览器输入www.beplaysport.com即可下载体验~</span>
+                        <div onclick="showAnnMessage()" id="noticeModal"><span class='ann_infoline'>● 史上最好用，最高颜值体育网站NBBET欢迎您的到来~</span>
                             <span
                                 class='ann_infoline'>● 每周存款天数达到5天，即可在下周免费获得50元彩金，详情请查看优惠界面~</span><span class='ann_infoline'>● 首次存款即可申请30%首存优惠，最高200元，只需5倍流水即可提款~</span></div>
                     </div>
                 </div>
             </div>
-            <hr style="width:100%; left:0; overflow: hidden; position:absolute; box-shadow:0 1px 5px 0 #eeeeee; margin-top: 0; display:inline-block" />
+            <!-- <hr style="width:100%; left:0; overflow: hidden; position:absolute; box-shadow:0 1px 5px 0 #eeeeee; margin-top: 0; display:inline-block" />
             <div class="dw-item" id="dw-item">
                 <div class="pj-Carousel-box">
                     <div class="index-content-mobile active item pj-Carousel-item">
@@ -52,7 +52,7 @@
                                 下载方式二
                                 <hr id="index-content-mobile-ways-hr-2" />
                                 <div id="indexApple"></div>
-                                <!--<img src="/static/img/iso.jpg" />-->
+                                <!--<img src="/static/img/iso.jpg" />
                             </div>
                         </div>
                         <div id="iphone-fade" class="index-content-mobile right">
@@ -83,7 +83,7 @@
                                 下载方式二
                                 <hr id="index-content-mobile-ways-hr-2" />
                                 <div id="indexAndroid"></div>
-                                <!--<img id="indexAndroid" src="/static/img/iso.jpg" />-->
+                                <!--<img id="indexAndroid" src="/static/img/iso.jpg" />
                             </div>
                         </div>
                         <div id="android-fade" class="index-content-mobile right">
@@ -150,7 +150,7 @@
                     </strong>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <hr style="width:100%; margin-top:0; overflow: hidden; position:absolute;left:0; display:inline-block" />
 
             <div class="index-content-advantage" style="height: 460px;">
