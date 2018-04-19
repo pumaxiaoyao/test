@@ -28,7 +28,7 @@
                     <div class="bank_prompt_img"><img src="/static/img/player/bank_prompt.png" /></div>
                     <div class="bank_prompt_div">
                         <span>成功付款后,将会自动到账,并弹出到账提示<br />
-                             长时间无反应，请<a onclick="openServiceBox()" class="a">联系客服</a></span>
+                             长时间无反应，请联系客服</span>
                     </div>
                 </div>
                 <div class="step-2" style="display:none;">
