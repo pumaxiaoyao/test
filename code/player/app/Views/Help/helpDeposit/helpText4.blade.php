@@ -11,7 +11,7 @@
   <div ><h3 style="margin: 0">如何转帐</h3></div>
 </div>
 <div>
-  <p>登录BEPLAY账号——资金管理——转账</p>
+  <p>登录NBBET账号——资金管理——转账</p>
   <p><img src="/static/img/help/help5.jpg" style="width:90%"></p>
    <h3>转账常见问题</h3>
     <p>

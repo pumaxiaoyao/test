@@ -18,7 +18,7 @@
   <p>如果由于长时间未登录或其他原因忘记您的会员账号用户名，请您点击联系<a onclick="window.parent.openServiceBox()" >在线客服</a>并提供您的注册邮箱、绑定手机、绑定姓名或其他相关注册信息，我们在线客服会在审核通过后为您提供正确的用户名。</p>
   <p> </p>
   <h3>忘记密码</h3>
-  <p>在输入密码前请确保您的密码至少为8个字符，假如您不小心忘记密码，您可以在登录框中点击“<a  href="/player/retrieve" target="_blank">忘记？</a>"，按钮进行找回密码操作。找回密码的前提是您已经绑定手机或已经绑定邮箱。如果您都没有绑定，请您点击此处联系<a onclick="window.parent.openServiceBox()" href="" target="_blank">在线客服</a>。</p>
+  <p>在输入密码前请确保您的密码至少为8个字符，假如您不小心忘记密码，您可以在登录框中点击“<a  href="/player/retrieve" target="_blank">忘记？</a>"，按钮进行找回密码操作。找回密码的前提是您已经绑定手机或已经绑定邮箱。如果您都没有绑定，请您点击此处联系<a onclick="window.parent.openServiceBox()" "" target="_blank">在线客服</a>。</p>
   <p> </p>
   <h3>我的个人资料安全吗？</h3>
   <p> NBBET 是注册于欧洲 马耳他 的合法博彩公司。</p>

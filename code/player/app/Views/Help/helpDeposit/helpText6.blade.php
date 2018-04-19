@@ -14,15 +14,15 @@
   <h3>1.为什么使用版本较低的浏览器会导致投注体验下降和账号不安全？</h3>
   <p>首先，IE6或其他低版本浏览器效率极低，很多比较新颖和动画效果都无法实现加载，导致用户阅读和游戏时效果极差；</p>
   <p>其次，低版本浏览器安全性较低，黑客很容易利用其进行病毒或木马植入，从而导致你的投注体验和资金受到极大威胁。</p>
-  <p>因此，我们强烈建议您将浏览器升级到最新版本，以此来获得BEPLAY带来最好的游戏体验和优质服务。</p>
+  <p>因此，我们强烈建议您将浏览器升级到最新版本，以此来获得NBBET带来最好的游戏体验和优质服务。</p>
   <p> </p>
-  <h3>2. 选择什么样的浏览器才能获得BEPLAY最佳的投注体验？</h3>
+  <h3>2. 选择什么样的浏览器才能获得NBBET最佳的投注体验？</h3>
   <p><a href="http://chrome.360.cn/" target="_blank">360极速浏览器</a>（使用Chrome内核，支持国内银行转账）</p>
   <p><a href="http://windows.microsoft.com/internet-explorer/download-ie" target="_blank">IE11或以上版本</a></p>
   <p><a href="https://www.google.com/intl/zh-CN/chrome/browser/" target="_blank">谷歌Chrome</a></p>
   <p><a href="http://firefox.com.cn/download/" target="_blank">火狐Firefox</a></p>
   <p>如果您使用的是手持移动设备，我们强烈建议您通过手机自带浏览器进行访问。</p>
-  <p>如果您使用的并非以上浏览器且在访问BEPLAY遇到问题，我们建议您点击以上链接安装最新版本的浏览器。如果还由于浏览器访问出现问题，请您联系我们24*7<a onclick="window.parent.openServiceBox()" href="javascript:void(0)" target="_blank">在线客服</a>获取帮助。</p>
+  <p>如果您使用的并非以上浏览器且在访问NBBET遇到问题，我们建议您点击以上链接安装最新版本的浏览器。如果还由于浏览器访问出现问题，请您联系我们24*7<a onclick="window.parent.openServiceBox()"  target="_blank">在线客服</a>获取帮助。</p>
   <p> </p>
   <h3>3. 我是否需要更改任何浏览器配置？</h3>
   <p>为了访问我们网站的全部功能，您需要启用JavaScript和在您的浏览器设置接受Cookies。如果您已经禁用JavaScript和cookies，将会无法进行投注或受到严重限制。如果您的浏览器使用浏览器的默认设置，您应该是可以正常进行投注。</p>
@@ -56,7 +56,7 @@
   <p>插件：浏览器插件是一个添加在浏览器中句有特定功能或服务的软件。一些常见的插件有Java、Flash播放器、Adobe Acrobat、QuickTime和Microsoft Silverlight。</p>
   <p> </p>
   <h3>6. 如果我已经使用网站更新和正确配置网站浏览器，仍然遇到问题，我应该怎么做？</h3>
-  <p>请您通过我们的<a onclick="window.parent.openServiceBox()" href="javascript:void(0)" >在线客服</a>反馈您的问题。提供您所使用的网页浏览器版本，以及您的操作系统，网络接入类型和其他相关信息，以便我们更快为您找出问题。</p>
+  <p>请您通过我们的<a onclick="window.parent.openServiceBox()"  >在线客服</a>反馈您的问题。提供您所使用的网页浏览器版本，以及您的操作系统，网络接入类型和其他相关信息，以便我们更快为您找出问题。</p>
   <p>例如: 用哪种浏览器：微软IE8 所用操作系统：Windows 7 Home Basic（家庭版） 网络接入类型：5M宽带 所遇到的问题：注册的时候页面无法读取。</p>
 </div>
 

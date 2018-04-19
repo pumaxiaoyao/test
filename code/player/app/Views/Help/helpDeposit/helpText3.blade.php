@@ -11,9 +11,9 @@
   <div><h3  style="margin: 0">如何提款</h3></div>
 </div>
 <div>
-  <p>登录BEPLAY账号——资金管理——提款</p>
+  <p>登录NBBET账号——资金管理——提款</p>
   <p><img src="/static/img/help/help4.jpg" style="width:90%"></p>
-  <p>1.	第一次提款请先绑定提款卡，绑定提款卡步骤：登录BEPLAY账号——资金管理——银行卡——添加提款银行卡<br>
+  <p>1.	第一次提款请先绑定提款卡，绑定提款卡步骤：登录NBBET账号——资金管理——银行卡——添加提款银行卡<br>
     2.	绑定完成后在提款处申请提款；<br>
 
   </p><br>

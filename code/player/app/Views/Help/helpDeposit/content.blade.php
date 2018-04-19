@@ -76,7 +76,7 @@
                             </table>
                         </div>
                     </div>
-                    <div class="panel-heading" role="tab" id="heading_3" data-toggle="collapse" aria-expanded="true" aria-controls="collapse_3"
+                    <!--  <div class="panel-heading" role="tab" id="heading_3" data-toggle="collapse" aria-expanded="true" aria-controls="collapse_3"
                         href="#collapse_3" onclick="collapseArrow1(3)">
                         <i></i>
                         <span class="nav_text_1 panel-title">快乐彩资讯</span><img id="nav_arrow_3" src="/static/img/help/arrows-1-r.png"
@@ -102,7 +102,7 @@
                                 </tr>
                             </table>
                         </div>
-                    </div>
+                    </div>  -->
                     <div class="panel-heading" role="tab" id="heading_4" data-toggle="collapse" aria-expanded="true" aria-controls="collapse_4"
                         href="#collapse_4" onclick="collapseArrow1(4)">
                         <i></i>
