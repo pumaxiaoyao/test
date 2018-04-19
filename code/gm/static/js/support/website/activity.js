@@ -130,9 +130,9 @@ function redirectURL() {
 }
 
 var nowSelectAgent = 0;var nowSelectAname = "";
-var roleIds = [];
 $("#addagent").click(function(){
-    roleIds.push( parseInt($("#selectagent").select2('val')) );
+    // roleIds.push( parseInt($("#selectagent").select2('val')) );
+    // console.log(roleIds);
     if(nowSelectAgent!=0&&nowSelectAgent){
         if($("#agentlist").find("a[actid="+nowSelectAgent+"]").length==0)addAgent(nowSelectAgent,nowSelectAname);
     }
@@ -149,7 +149,6 @@ function addAgent(id,name){
 
 $('#activity_edit').ajaxForm({
     beforeSubmit: function (arr, $form, options) {
-        console.log(arr);
         $.blockUI();
 
     },
@@ -176,19 +175,18 @@ function initGroupinfo(){
     $("input[name=group]:checked").each(function(){
         groupids.push(parseInt($(this).val()));
     });
-    var groupidsStr = groupids[0] ? JSON.stringify(groupids) : "";
+    var groupidsStr = (groupids[0] && groupids[0] !="") ? JSON.stringify(groupids) : "";
     $("#groupids").val(groupidsStr);
 
 }
 
 // 初始化代理选择的信息
 function initAgentInfo(){
-    // var agentcodes=[];
-
-    // $("#agentlist").find("a[actid]").each(function(){
-    //     agentcodes.push(parseInt($(this).val()));
-    // });
-    // var agentcodesStr = agentcodes[0] ? JSON.stringify(agentcodes):"";
-    roleIdsStr= (roleIds[0]) ? JSON.stringify(roleIds) : "";
+    var roleIds=[];
+    $("#agentlist a").each(function( index, element){
+        // roleIds.push(parseInt($(this).val()));
+        roleIds.push( parseInt( $(this).attr('actid') ) );
+    });
+    var roleIdsStr = (roleIds[0] && roleIds[0] != "") ? JSON.stringify(roleIds) : "";
     $("#agentcodes").val(roleIdsStr);
 }
