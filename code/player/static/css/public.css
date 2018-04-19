@@ -90,7 +90,7 @@ img{vertical-align:middle}
 .hd_input_lp{background-position:-84px -207px;width:174px;height:27px;float:left}
 .hd_wjpd{background:0 0;width:40px;height:16px;float:left;border:1px solid #47546b;border-radius:3px;line-height:14px;text-align:center;color:#6c7481}
 .hd_input_wjmm:hover{text-decoration:none;border:1px solid #fff;color:#fff}
-.hd_char_icon{background:url(../img/chat.gif) no-repeat}
+/*.hd_char_icon{background:url(../img/chat.gif) no-repeat}*/
 .hd_char{margin-top:10px;background-position:0 0;width:101px;height:40px;float:left}
 .hd_char:hover{background-position:0 -40px;width:101px;margin-top:10px;height:40px;float:left}
 .button_blue{width:220px;height:36px;border-radius:22px;cursor:pointer;line-height:36px;text-align:center;color:#fff;font-size:16px;background-color:#09f}
