@@ -54,7 +54,7 @@
                             <div class="last ahover">
                                 <a href="/mobile/">
                                     <div id="head_code_1"></div>
-                                    <i><img src="../../static/img/head/ty3.png" /></i>
+                                    <!-- <i><img src="../../static/img/head/ty3.png" /></i> -->
                                     <span>使用手机QQ或微信扫一扫可立即进行手机投注 <strong>手机投注</strong></span>
                                 </a>
                             </div>
