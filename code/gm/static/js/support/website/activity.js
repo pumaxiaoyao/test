@@ -189,5 +189,6 @@ function initAgentInfo(){
     //     agentcodes.push(parseInt($(this).val()));
     // });
     // var agentcodesStr = agentcodes[0] ? JSON.stringify(agentcodes):"";
-    $("#agentcodes").val(JSON.stringify(roleIds));
+    roleIdsStr= (roleIds[0]) ? JSON.stringify(roleIds) : "";
+    $("#agentcodes").val(roleIdsStr);
 }
