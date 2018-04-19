@@ -130,7 +130,9 @@ function redirectURL() {
 }
 
 var nowSelectAgent = 0;var nowSelectAname = "";
+var roleIds = [];
 $("#addagent").click(function(){
+    roleIds.push( parseInt($("#selectagent").select2('val')) );
     if(nowSelectAgent!=0&&nowSelectAgent){
         if($("#agentlist").find("a[actid="+nowSelectAgent+"]").length==0)addAgent(nowSelectAgent,nowSelectAname);
     }
@@ -181,11 +183,11 @@ function initGroupinfo(){
 
 // 初始化代理选择的信息
 function initAgentInfo(){
-    var agentcodes=[];
+    // var agentcodes=[];
 
-    $("#agentlist").find("a[actid]").each(function(){
-        agentcodes.push(parseInt($(this).val()));
-    });
-    var agentcodesStr = agentcodes[0] ? JSON.stringify(agentcodes):"";
-    $("#agentcodes").val(agentcodesStr);
+    // $("#agentlist").find("a[actid]").each(function(){
+    //     agentcodes.push(parseInt($(this).val()));
+    // });
+    // var agentcodesStr = agentcodes[0] ? JSON.stringify(agentcodes):"";
+    $("#agentcodes").val(JSON.stringify(roleIds));
 }
