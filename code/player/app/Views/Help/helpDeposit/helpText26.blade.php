@@ -6,7 +6,7 @@
     <title>Title</title>
     <link href="/static/css/help/subpage.css" rel="stylesheet">
 </head>
-<<body>
+<body>
 <h3 style="margin: 0">隐私保护规则</h3><br>
 <div>
 NBBET尊重及重视会员的隐私权，我们将竭力保证您的信息与数据安全。<br><br>
