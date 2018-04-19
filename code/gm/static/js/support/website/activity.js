@@ -93,7 +93,7 @@ $(document).ready(function(){
       },
       escapeMarkup: function (markup) { return markup; },
       minimumInputLength: 1,
-      templateResult: function(repo){return repo.id;},
+      templateResult: function(repo){return repo.code;},
       templateSelection: function(repo){
           nowSelectAgent = repo.id;
           nowSelectAname = repo.code;
