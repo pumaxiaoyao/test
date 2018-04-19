@@ -46,7 +46,7 @@
                         <a class="r_icon fs_chorom"></a>
                         <a class="r_icon fs_firefox"></a>
                     </div>
-                    <div style=" margin-left: 40px;height: 40px; line-height: 40px; clear: both; color: #a0adc3">版权所有 © 2016-2026 BEPLAY 保留所有权</div>
+                    <div style=" margin-left: 40px;height: 40px; line-height: 40px; clear: both; color: #a0adc3">版权所有 © 2016-2026 NBBET 保留所有权</div>
                 </div>
             </div>
         </div>
