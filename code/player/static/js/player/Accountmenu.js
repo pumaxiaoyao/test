@@ -63,9 +63,9 @@ function ampageinit() {
         if (times >= 18 && times < 20) {
             regardstr = "忙碌了一整天，晚餐吃顿好的吧";
         } else if (times >= 20 && times < 22) {
-            regardstr = "来beplay娱乐城看看荷官，养养眼吧";
+            regardstr = "来NBBET娱乐城看看荷官，养养眼吧";
         } else if (times >= 22 && times < 24) {
-            regardstr = "看球时间别忘了来beplay体育投两把";
+            regardstr = "看球时间别忘了来NBBET体育投两把";
         }
         
     } 
