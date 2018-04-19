@@ -10,6 +10,7 @@
 <div>
   <div><h3 style="margin: 0">体育博彩规则</h3></div>
 </div>
+  <p> </p>
 <div>
   <div><h3 style="margin: 0">概述</h3></div>
 </div>
@@ -221,7 +222,7 @@
 <p>连串过关如果涉及不同体育级别的限制，系统将以体育级别最低派彩金额限制为准。</p>
 </li>
 <li>
-<p>如果您对您账户的投注限额有任何疑问或者需要进行特殊修改，麻烦您联系我们<a onclick="window.parent.openServiceBox()" href="javascript:void(0)" target="_blank">在线客服</a>进行咨询或修改。</p>
+<p>如果您对您账户的投注限额有任何疑问或者需要进行特殊修改，麻烦您联系我们<a onclick="window.parent.openServiceBox()" target="_blank">在线客服</a>进行咨询或修改。</p>
 </li>
 </ul>
 </div>
