@@ -36,7 +36,7 @@
                     <h3>订单已失效</h3>
                     <p>非常抱歉，由于长时间没有检测到您的存款，<br />订单已经失效，请再次尝试存款</p>
                     <div class="b1">
-                        <div onclick="window.location.reload();" class="as_but inputwd140">再存一次</div><a onclick="openServiceBox()" class="a">联系客服</a>
+                        <div onclick="window.location.reload();" class="as_but inputwd140">再存一次</div>
                     </div>
                 </div>
                 <div class="step-3" style="display:none;">
