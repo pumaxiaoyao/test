@@ -4,7 +4,7 @@
         <!-- BEGIN LOGO -->
         <div class="page-logo">
             <a href="/home/index">
-                <img src="/static/image/logo.png" alt="logo" class="logo-default"/>            </a>
+                <!-- <img src="/static/image/logo.png" alt="logo" class="logo-default"/>  -->          </a>
             <div class="menu-toggler sidebar-toggler hide">
             </div>
         </div>

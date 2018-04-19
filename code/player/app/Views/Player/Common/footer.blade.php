@@ -5,9 +5,9 @@
             <div>
                 <div class="fl33">
                     <div style="margin:5px 0 10px 0">
-                        <img src="/static/img/beplay_logo_031.png" />
+                        <img src="" />
                     </div>
-                    <div style="color: #a0adc3; line-height: 30px; margin-top: 5px; "> Beplay 是注册于欧洲 马耳他 的合法博彩公司。受马耳他博彩管理委员会(MGA)及其政府监管并遵守欧洲游戏和博彩协会(EGBA)制定的行为和准则</div>
+                    <div style="color: #a0adc3; line-height: 30px; margin-top: 5px; "> NBBET 是注册于欧洲 的合法博彩公司。受马耳他博彩管理委员会(MGA)及其政府监管并遵守欧洲游戏和博彩协会(EGBA)制定的行为和准则</div>
                     <div class="ft_mg34">
                         <a href="/help/default?id=1">如何存款</a>
                         <a href="/help/default?id=2">如何提款</a>
