@@ -387,11 +387,11 @@ class AgentFundViewHelper extends BaseViewHelper
 
         $ccHtml .= "<tr><td>实际承担费用</td>";
         $ccHtml .= "<td colspan=2>存款优惠</td>";
-        $ccHtml .= "<td>" . ($depositBonusAllocationAmount - $totalDeposit) . "</td>";
+        $ccHtml .= "<td>" . ($totalDeposit - $depositBonusAllocationAmount) . "</td>";
         $ccHtml .= "<td colspan=2>红利</td>";
-        $ccHtml .= "<td>" . ($bonusAllocationAmount - $totalBonus) . "</td>";
+        $ccHtml .= "<td>" . ($totalBonus - $bonusAllocationAmount) . "</td>";
         $ccHtml .= "<td colspan=2>返水</td>";
-        $ccHtml .= "<td>" . ($rebateAllocationAmount - $totalRebate) . "</td>";
+        $ccHtml .= "<td>" . ($totalRebate - $rebateAllocationAmount) . "</td>";
 
         return array($caHtml, $ccHtml);
     }
