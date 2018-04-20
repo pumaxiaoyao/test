@@ -63,8 +63,8 @@ class ActivityController extends BaseController
             $act = getArrayValue(0, [], http::gmHttpCaller('GetActivity', [$actId]));
         } else {
             $act = [];
+            $act['groupStr'] = null;
         }
-
         $factory = View::getView();
         $groups = SettingAPI::getGroupConfig(false);
         $groupArr = json_decode($act['groupStr'])?:[];
