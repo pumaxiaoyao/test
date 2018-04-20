@@ -209,7 +209,7 @@ class FlowViewHelper extends BaseViewHelper
             $validAmountStr = array("green", number_format($validAmount, 2));
         }
         $tmpdata = array(
-            getArrayValue($platform, "", Config::platform) . " - " . $pGame,
+            getArrayValue($platform, "", Config::platform), // . " - " . $pGame, mantisbug-45按需求去除游戏显示
             array($account, $account),
             $betId,
             $betTime,
