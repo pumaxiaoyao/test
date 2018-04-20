@@ -24,7 +24,7 @@
     </body>
     <footer>
         {{-- 包含页脚 --}}
-        @include('Player.common.footer')
+        @include('Player.Common.footer')
     </footer>
 </html>
 
