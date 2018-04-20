@@ -25,7 +25,7 @@ class PlayerViewHelper extends BaseViewHelper
             $agentId = $role["agentId"];
             $agentName = $role["agentAccount"];
             $roleId = $role["roleId"];
-            $companyWinLose = $role["companyWinLose"];
+            $companyWinLose = getArrayValue("companyWinLose", "", $role);
             $loginWay = $role["lastLoginWay"];
             // 构建账号格子Html
             $accountCell = self::makeAccHtml(["account"=>$account]);
@@ -51,14 +51,14 @@ class PlayerViewHelper extends BaseViewHelper
             
             // 构建余额格子Html
             $balanceT = [
-                "balance" => $role["balance"],
+                "balance" => getArrayValue("balance", "", $role),
                 "account" => $account
             ];
             $balanceCell = self::makeBalanceHtml($balanceT);
             
             // 构建红利格子Html
             $bonusT = [
-                "bonus" => $role["cost"],
+                "bonus" => getArrayValue("cost", "", $role),
                 "account" => $account
             ];
             $bonusCell = self::makeBonusHtml($bonusT);
@@ -246,7 +246,7 @@ class PlayerViewHelper extends BaseViewHelper
             $agentId = $role["agentId"];
             $agentName = $role["agentAccount"];
             $roleId = $role["roleId"];
-            $companyWinLose = $role["companyWinLose"];
+            $companyWinLose = getArrayValue("companyWinLose", "", $role);
             $loginWay = $role["lastLoginWay"];
 
             $checkT = [
@@ -278,14 +278,14 @@ class PlayerViewHelper extends BaseViewHelper
             
             // 构建余额格子Html
             $balanceT = [
-                "balance" => $role["balance"],
+                "balance" => getArrayValue("balance", "", $role),
                 "account" => $account
             ];
             $balanceCell = self::makeBalanceHtml($balanceT);
             
             // 构建红利格子Html
             $bonusT = [
-                "bonus" => $role["cost"],
+                "bonus" => getArrayValue("cost", "", $role),
                 "account" => $account
             ];
             $bonusCell = self::makeBonusHtml($bonusT);
@@ -376,9 +376,9 @@ class PlayerViewHelper extends BaseViewHelper
                 $accountCell, //account cell inner html
                 $amount,
                 Config::opTypeMap[$opType],
-                "TODO:来源".getArrayValue("Source", "", $role),
+                "",
                 parseDate($timeTag),
-                "TODO:操作人".getArrayValue("Operator2", "", $role),
+                "",
                 $role["note"], // 备注
 
             ];
