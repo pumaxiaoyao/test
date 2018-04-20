@@ -228,7 +228,7 @@ class AgentFundViewHelper extends BaseViewHelper
             $gameData = json_decode($gameStr, true);
 
             foreach ($gameData as $gpName => $gpData) {
-                $winlose = getArrayValue("winLoseAmount", 0, $gpData);
+                $winlose = 0 - getArrayValue("winLoseAmount", 0, $gpData);
                 $commision = getArrayValue("pumpingCommisionAmount", 0, $gpData);
                 $water = getArrayValue("pumpingWaterAmount", 0, $gpData);
                 $stake = getArrayValue("validStakeAmount", 0, $gpData);
@@ -256,7 +256,7 @@ class AgentFundViewHelper extends BaseViewHelper
 
         $lineCommision = (1 - $lineChargeRate / 100) * $TotalCommision;
         $crHtml .= "<tr><td>平台合计</td>";
-        $crHtml .= "<td>" . $TotalCommision . "</td>";
+        $crHtml .= "<td>" . ($TotalCommision +  $TotalWater) . "</td>";
         $crHtml .= "<td>线路费</td>";
         $crHtml .= "<td>" . $lineChargeRate . "%</td>";
         $crHtml .= "<td>代理线佣金</td>";
