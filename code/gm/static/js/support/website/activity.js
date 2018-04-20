@@ -161,6 +161,7 @@ $('#activity_edit').ajaxForm({
         if (data[0]) {
             
             $.notific8('编辑活动成功！');
+            history.back();
             // window.location.href='/activity/activities';
         }else{
             $.notific8("error", {theme: 'ebony'});
