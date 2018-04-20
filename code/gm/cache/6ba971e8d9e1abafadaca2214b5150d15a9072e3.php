@@ -1,0 +1,1 @@
+<span class='label label-info' style='cursor:pointer;' onclick='custom_getBalance("<?php echo e($account); ?>", "<?php echo e($account); ?>")'><?php echo e($account); ?></span>
