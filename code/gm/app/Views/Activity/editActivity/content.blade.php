@@ -166,8 +166,10 @@
                                 <div class="radio-list">
                                     @foreach( $groups as $group)
                                     <label class="radio-inline">
-                                        <input type="checkbox" @if (in_array($group["name"], $group)) @endif name="group" gpname="{{ $group["name"] }}" value="{{ $group["id"] }}">{{ $group["name"] }}
-                                    </label> @endforeach
+                                        <input type="checkbox" @if (in_array($group["name"], $group)) @endif name="group" gpname="{{ $group["name"] }}" value="{{ $group["id"] }}" 
+                                        @if (in_array($group["id"],$groupArr)) checked="checked" @endif>{{ $group["name"] }}
+                                    </label> 
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
