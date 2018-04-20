@@ -132,7 +132,7 @@ class PlayerViewHelper extends BaseViewHelper
             $agentId = $role["agentId"];
             $agentName = $role["agentAccount"];
             $roleId = $role["roleId"];
-            $companyWinLose = $role["companyWinLose"];
+            $companyWinLose = getArrayValue("companyWinLose", "", $role);
             $loginWay = $role["lastLoginWay"];
 
             $checkT = [
@@ -164,14 +164,14 @@ class PlayerViewHelper extends BaseViewHelper
             
             // 构建余额格子Html
             $balanceT = [
-                "balance" => $role["balance"],
+                "balance" => getArrayValue("balance", "", $role),
                 "account" => $account
             ];
             $balanceCell = self::makeBalanceHtml($balanceT);
             
             // 构建红利格子Html
             $bonusT = [
-                "bonus" => $role["cost"],
+                "bonus" => getArrayValue("cost", "", $role),
                 "account" => $account
             ];
             $bonusCell = self::makeBonusHtml($bonusT);
