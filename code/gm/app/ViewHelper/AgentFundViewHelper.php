@@ -104,7 +104,7 @@ class AgentFundViewHelper extends BaseViewHelper
         $validPlayerCount = (int) getArrayValue("validPlayerCount", 0, $_data);
         $layerNeedPlayer = (int) getArrayValue("layerNeedPlayer", 0, $_data);
 
-        if ($validPlayerCount > $layerNeedPlayer) {
+        if ($validPlayerCount >= $layerNeedPlayer) {
             $playerTag = "<font color='green'>" . $validPlayerCount . " / " . $layerNeedPlayer . "</font>";
         } else {
             $playerTag = "<font color='red'>" . $validPlayerCount . " / " . $layerNeedPlayer . "</font>";
