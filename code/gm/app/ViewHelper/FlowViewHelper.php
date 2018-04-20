@@ -546,12 +546,14 @@ class FlowViewHelper extends BaseViewHelper
             $gameNo = $contentJson["gameNo"];
             // 解析数据
             $betOnStr = null;
-            if (mb_strlen($betOn) > 4 && substr($betOn, 0, 5) == "BALL_" && isset($gameBetOnConfig[$betOn])) { //betOn "BALL_"特殊处理
-                // 2018/4/20/16:58 之前逻辑：$betOnStr = "第" . substr($betOn, 5, strlen($betOn)) . "球";
-                $betOnStr = $gameBetOnConfig[$betOn];
-            } else if(mb_strlen($betOn) > 4 && substr($betOn, 0, 5) == "BALL_" && !isset($gameBetOnConfig[$betOn])){
-                // 2018/4/20/16:58 之前逻辑：$betOnStr = getArrayValue($betOn, "不存在的betOn配置" . $betOn, $gameBetOnConfig);
-                $betOnStr = "第" . substr($betOn, 5, strlen($betOn)) . "球";
+            if (mb_strlen($betOn) > 4 && substr($betOn, 0, 5) == "BALL_") { //betOn "BALL_"特殊处理
+                if(isset($gameBetOnConfig[$betOn])){
+                    $betOnStr = $gameBetOnConfig[$betOn];
+                }else if(!isset($gameBetOnConfig[$betOn])){
+                    $betOnStr = "第" . substr($betOn, 5, strlen($betOn)) . "球";
+                }   
+            } else {
+                $betOnStr = getArrayValue($betOn, "不存在的betOn配置" . $betOn, $gameBetOnConfig);
             }
             if (mb_strlen($betType) > 3 && substr($betType, 0, 3) == "NO_") { //"NO_"开头只显示数值
                 $betTypeStr = substr($betType, 3, strlen($betType)) . "号";
