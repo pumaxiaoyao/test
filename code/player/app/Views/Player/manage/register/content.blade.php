@@ -3,8 +3,8 @@
         <!--内容-->
         <div class="r_content_fixed">
             <div class="r_content_box">
-                <div class="r_logo"><a href="/"><img src="/static/img/player/reglogin.png"></a></div>
-                <div class="login_img"><img src="/static/img/player/regfont.png " width="398" height="49"></div>
+                <div class="r_logo"><a href="/"><!-- <img src="/static/img/player/reglogin.png"> --></a></div>
+                <div class="login_img"><!-- <img src="/static/img/player/regfont.png " width="398" height="49"> --></div>
                 <div class="r_content_box">
                     <div class="r_rigest radius">
                         <div style="font-size: 18px; color: #ffffff">注册</div>
