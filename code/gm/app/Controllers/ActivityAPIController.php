@@ -218,11 +218,6 @@ class ActivityAPIController extends BaseController
             $retData = [];
         }
 
-        foreach ($retJson[0] as $activity)
-        {
-            $activity['actCreateTime'] = date("Y-m-d H:i:s", $activity['createTime']);
-        }
-
         return [
             "sEcho" => $s_args[4],
             "iTotalRecords" => $retSize,

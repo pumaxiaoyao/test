@@ -123,18 +123,20 @@ class ActivityViewHelper extends BaseViewHelper
 
     public static function makeActivityFundHtml($data)
     {
+        error_reporting(~E_ALL);
+
         $retdatas = [];
         for ($x = 0; $x < count($data); $x++) {
             $ret = $data[$x];
 
             $retdatas[] = [
                 '<a href="/activity/activityHistory?actid='.$ret["activityId"].'">'. $ret["activityName"].'</a>', // index number
-                $ret["playerCount"], //未提供支持
+                $ret["playerCount"] or 0, //未提供支持
                 $ret["count"], // account detail button
                 0, //存款总额
                 $ret["bonusAmount"],
                 Config::actStatusTransMap[$ret["actStatus"]],
-                $ret["actCreateTime"],
+                date('Y-m-d H:i:s',$ret['createTime']),
             ];
         }
         return $retdatas;
