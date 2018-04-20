@@ -131,7 +131,7 @@ class ActivityViewHelper extends BaseViewHelper
 
             $retdatas[] = [
                 '<a href="/activity/activityHistory?actid='.$ret["activityId"].'">'. $ret["activityName"].'</a>', // index number
-                $ret["playerCount"] ? $ret["playerCount"] : 0, //未提供支持
+                $ret["playerCount"], //未提供支持
                 $ret["count"], // account detail button
                 0, //存款总额
                 $ret["bonusAmount"],
