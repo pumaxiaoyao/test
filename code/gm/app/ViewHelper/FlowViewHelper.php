@@ -545,7 +545,7 @@ class FlowViewHelper extends BaseViewHelper
             $gameTray = $contentJson["tray"];
             $gameNo = $contentJson["gameNo"];
             // 解析数据
-            if (mb_strlen($betOn) > 4 && substr($betOn, 0, 5) == "BALL_" && $gameBetOnConfig[$betOn] != NULL) { //betOn "BALL_"特殊处理
+            if (mb_strlen($betOn) > 4 && substr($betOn, 0, 5) == "BALL_" && isset($gameBetOnConfig[$betOn])) { //betOn "BALL_"特殊处理
                 $betOnStr = "第" . substr($betOn, 5, strlen($betOn)) . "球";
             } else {
                 $betOnStr = getArrayValue($betOn, "不存在的betOn配置" . $betOn, $gameBetOnConfig);
