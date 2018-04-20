@@ -67,12 +67,14 @@ class ActivityController extends BaseController
 
         $factory = View::getView();
         $groups = SettingAPI::getGroupConfig(false);
+        $groupArr = json_decode($act['groupStr'])?:[];
         $pageArgs = [
             "sysMessageList" => [],
             "todayDate" => date("Y-m-d", time() + 8 * 3600),
             "groups" => $groups["t1"], // 只用生效玩家组
             "actTypes" => [],
-            "act" => $act
+            "act" => $act,
+            "groupArr" => $groupArr //玩家组数组
         ];
         return $factory->make('Activity.editActivity.layout', $pageArgs)
             ->render();
