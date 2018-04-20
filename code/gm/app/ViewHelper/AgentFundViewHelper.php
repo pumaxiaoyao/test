@@ -113,9 +113,11 @@ class AgentFundViewHelper extends BaseViewHelper
         $platformCommision = getArrayValue("platformCommision", 0, $_data);
         $costAllocation = getArrayValue("costAllocation", 0, $_data);
         $lastMonthLeftAMount = getArrayValue("lastMonthLeftAmount", 0, $_data);
-        $nextMonthLeftAMount = getArrayValue("lastMonthLeftAmount", 0, $_data);
+        
         $adjustmentAmount = getArrayValue("adjustmentAmount", 0, $_data);
         $adjustmentNote = getArrayValue("adjustmentNote", "", $_data);
+
+        $nextMonthLeftAMount = $adjustmentAmount;
 
         $commisionAmount = getArrayValue("commisionAmount", 0, $_data);
         $commisionResultAmount = getArrayValue("commisionResultAmount", 0, $_data);
@@ -352,7 +354,7 @@ class AgentFundViewHelper extends BaseViewHelper
             $childData = json_decode($childStr, true);
             foreach ($childData as $cData) {
                 $roleId = getArrayValue("roleId", "", $cData);
-
+                $account = $cData["account"];
                 $_depositBonusAllocationAmount = (float) getArrayValue("depositBonusAllocationAmount", 0, $cData);
                 $_depositBonusAmount = (float) getArrayValue("depositBonusAmount", 0, $cData);
                 $_depositBonusRate = sprintf("%.2f", getArrayValue("depositBonusRate", 0, $cData) * 100);
@@ -369,7 +371,7 @@ class AgentFundViewHelper extends BaseViewHelper
                 $totalBonus += $_bonusAllocationAmount;
                 $totalRebate += $_rebateAllocationAmount;
 
-                $ccHtml .= "<tr><td>" . $roleId . "</td>";
+                $ccHtml .= "<tr><td>" . $account . "</td>";
                 $ccHtml .= "<td>" . $_depositBonusAllocationAmount . "</td>";
                 $ccHtml .= "<td>" . $_depositBonusRate . "%</td>";
                 $ccHtml .= "<td>" . $_depositBonusAmount . "</td>";
