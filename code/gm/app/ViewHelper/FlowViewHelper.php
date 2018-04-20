@@ -792,7 +792,7 @@ class FlowViewHelper extends BaseViewHelper
                 $game,
                 $count,
                 $stakeAmount,
-                $winLoseAmount,
+                number_format(($stakeAmount - $winLoseAmount), 2),
                 $amount,
                 $status,
 

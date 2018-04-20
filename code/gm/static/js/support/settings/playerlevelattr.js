@@ -38,8 +38,8 @@ function savePLAttr() {
         var layerid = $(this).attr("layerid");
         layerGP = $(this).find("input[name=groupname]").val();
         layerDPT = $(this).find("input[name=dptamount]").val();
-        var rebateStr = attrJsonData[groupid][layerid].rebateSetting;
-        var bankStr = attrJsonData[groupid][layerid].bankCardSetting;
+        var rebateStr = attrJsonData[groupid][layerid]["rebateSetting"];
+        var bankStr = attrJsonData[groupid][layerid]["bankCardSetting"];
         if (layerGP !== null && layerGP !== undefined && layerGP !== "") {
             if (layerDPT !== null && layerDPT !== undefined && layerDPT !== "") {
                 var data = {
