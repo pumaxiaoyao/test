@@ -67,7 +67,7 @@ class Config
     ];
 
     public const platform = [
-        // "NB" => "牛博",
+        "NB" => "牛博",
         "IBC" => "沙巴",
         "IG" => "IG埔京",
         "AG" => "AG游戏",
