@@ -8,10 +8,10 @@ use App\Config\Config;
 class HttpRequest
 {
     private const dataCenter = [
-        // "host" => "47.91.199.24",//"47.91.199.24",
-        // "port" => "7878",
-        "host" => "localhost",//"47.91.199.24",
-        "port" => "8888",
+        "host" => "47.91.199.24",//"47.91.199.24",
+        "port" => "7878",
+        // "host" => "localhost",//"47.91.199.24",
+        // "port" => "8888",
         "server" => [
             "player"=>"GatePlayer",
             "agent"=>"GateAgent",
