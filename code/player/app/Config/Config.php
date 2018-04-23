@@ -23,7 +23,8 @@ class Config
         "agent" => [
             "ignore" => [
                 "index", "agentMode", "Policies", "Contact", // 首页
-                "Apply", "checkAgentName", "login", "Retrieve", "getCaptcha" // 账号
+                "Apply", "checkAgentName", "login", "Retrieve", "getCaptcha",
+                "agentReg" // 账号
             ],
             "skey" => "AgentSessionID"
         ]

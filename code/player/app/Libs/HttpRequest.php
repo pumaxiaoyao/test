@@ -8,7 +8,7 @@ use App\Config\Config;
 class HttpRequest
 {
     private const dataCenter = [
-        "host" => "47.91.199.24",//"47.91.199.24",
+        "host" => "127.0.0.1",//"47.91.199.24",
         "port" => "7878",
         // "host" => "localhost",//"47.91.199.24",
         // "port" => "8888",
