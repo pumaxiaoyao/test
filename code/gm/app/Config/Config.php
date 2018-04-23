@@ -73,6 +73,20 @@ class Config
         "AG" => "AG游戏",
         "BBIN" => "BBIN"
     ];
+    
+    public const game = 
+    [
+        'sport' => '沙巴体育',
+        'nbGame' => '牛博彩票',
+        'lottery' => 'IG时时彩',
+        'lotto' => 'IG香港彩',
+        'AGIN' => 'AG娱乐',
+        'YOPLAY' =>'AG电游',
+        'BB-Sport' =>'BB体育',
+        'Lottery-Games' =>'BB彩票',
+        'Live-Games' => 'BB视讯',
+        'Casino-Games' =>'BB电游',
+    ];
 
     public const platformGame = [
         "sport", "pk", "lotto", "lottery" 

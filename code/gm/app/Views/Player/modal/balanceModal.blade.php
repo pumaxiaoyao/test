@@ -105,27 +105,10 @@
                                 </div>
                                 <div class="col-md-12">
                                     <select class="form-control" id="gpid1">
-                                        <option value="0">不限平台</option>
-                                        <option value="350808494186211">BB视讯</option>
-                                        <option value="350808494186212">BB彩票</option>
-                                        <option value="350808494186213">BB3D</option>
-                                        <option value="350808494186214">BB机率</option>
-                                        <option value="387122175998732">AG电游</option>
-                                        <option value="387122175998733">AG捕鱼</option>
-                                        <option value="8246252097638400">沙巴体育</option>
-                                        <option value="11964220589608960">MG电游</option>
-                                        <option value="350808494186210">BB体育</option>
-                                        <option value="9283948292830">欧博真人</option>
-                                        <option value="7821359015601">蚂蚁彩票</option>
-                                        <option value="420987656202">newPT电游</option>
-                                        <option value="520723134101">KG</option>
-                                        <option value="550123423101">IM捕鱼</option>
-                                        <option value="550223423201">IM电子</option>
-                                        <option value="773562192801">申博真人</option>
-                                        <option value="773562192802">申博老虎机</option>
-                                        <option value="940256904101">新EBet</option>
-                                        <option value="7589283920390">双赢彩票</option>
-                                        <option value="38712217599873024">AG真人</option>
+                                            <option value="">不限平台</option>
+                                            @foreach( $games as $id => $name)
+                                                <option value="{{$id}}">{{$name}}</option>
+                                            @endforeach
                                     </select>
                                 </div>
                             </div>

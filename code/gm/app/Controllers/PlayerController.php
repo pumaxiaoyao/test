@@ -14,6 +14,7 @@ class PlayerController extends BaseController
         $factory = View::getView();
         $pageArgs = [
             "sysMessageList" => [],
+            "games" => Config::game,
         ];
         return $factory->make('Player.online.layout', $pageArgs)
             ->render();
@@ -24,6 +25,7 @@ class PlayerController extends BaseController
         $factory = View::getView();
         $pageArgs = [
             "sysMessageList" => [],
+            "games" => Config::game,
         ];
         return $factory->make('Player.allRoles.layout', $pageArgs)
             ->render();
