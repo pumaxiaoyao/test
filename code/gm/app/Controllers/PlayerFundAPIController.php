@@ -252,7 +252,7 @@ class PlayerFundAPIController extends BaseController
         $cks = (int)getArrayValue("cks", "1", $request);
         $wids = getArrayValue("wids", "", $request);
         $dno = getArrayValue("dno", "", $request);
-        if(empty($cks) || empty($wids) || empty($dno)){
+        if(empty($cks) || empty($dno)){
             return ["c"=> 400, "m"=>"set water check status failed", "d"=> null];
         }
 
@@ -307,9 +307,9 @@ class PlayerFundAPIController extends BaseController
         }
 
         if ($RequestStatus == 99) {
-            $retJson = http::gmHttpCaller("RemoveWithdrawalLimits", array($RequestFlowlimitID));
+            $retJson = http::gmHttpCaller("RemoveWithdrawalLimits", array(array($RequestFlowlimitID)));
         } else {
-            $retJson = http::gmHttpCaller("ResetWithdrawalLimits", array($RequestFlowlimitID));
+            $retJson = http::gmHttpCaller("ResetWithdrawalLimits", array(array($RequestFlowlimitID)));
         }
 
         if (getArrayValue(0, "", $retJson) == 1) {

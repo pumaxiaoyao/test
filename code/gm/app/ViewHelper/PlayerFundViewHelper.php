@@ -202,7 +202,7 @@ class PlayerFundViewHelper extends BaseViewHelper
             $flows = getArrayValue("flows", 0, $datas[$x], true);
             
             $withdrawalLimitAmount = getArrayValue("withdrawalLimitAmount", 0, $datas[$x], true);
-            $withdrawalLimitCheckStatus = getArrayValue("withdrawalLimitCheckStatus", 1, $datas[$x]);
+            $withdrawalLimitCheckStatus = getArrayValue("withdrawal_limitCheckStatus", 1, $datas[$x]);
             
             $bankType = (int)getArrayValue("withdrawal_remitBankCardId", 0, $datas[$x]);
             $bankCardName = getArrayValue("bankCardName", "", $datas[$x]);
@@ -237,7 +237,6 @@ class PlayerFundViewHelper extends BaseViewHelper
                 "rname" => $registerBank,
                 "bank" => $bankConfigs["name"],
                 "card" => $bankCardNo
-
 
             ]);
             $tmpdata = array(
