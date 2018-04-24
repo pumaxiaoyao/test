@@ -35,7 +35,7 @@
                         <select name="s_type" id="s_type" class="table-group-action-input form-control  input-inline input-sm" tabindex="1">
                                 <option value="account">账号</option>
                                 <option value="name">姓名</option>
-                                <option value="agenName">代理</option>
+                                <option value="agentName">代理</option>
                             </select>
                     </div>
                     <div class="form-group">
