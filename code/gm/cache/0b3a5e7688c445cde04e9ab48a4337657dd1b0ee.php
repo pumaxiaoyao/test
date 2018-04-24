@@ -1,1 +1,0 @@
-<a href="#brokerageModal" id="brokerageModallayer<?php echo e($args[1]); ?>" data-toggle="modal" onclick="setBrokerage(<?php echo join(",", $args); ?>)" class="btn btn-xs blue">设置抽佣/抽水</a>

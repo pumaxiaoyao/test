@@ -1,1 +1,0 @@
-<script type="text/javascript" src="/static/js/support/playerfund/transfer.js?20171"></script>

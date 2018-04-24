@@ -1,2 +1,0 @@
-<a href="#passModal" data-toggle="modal" onclick="setPass('<?php echo e(isset($dno) ? $dno : ""); ?>','<?php echo e(isset($account) ? $account : ""); ?>');" class="btn btn-xs green">通过</a>
-<a href="#refuseModal" data-toggle="modal" onclick="setRefuse('<?php echo e(isset($dno) ? $dno : ""); ?>');" class="btn btn-xs red">拒绝</a>

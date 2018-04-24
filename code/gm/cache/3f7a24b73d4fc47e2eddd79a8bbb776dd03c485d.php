@@ -1,2 +1,0 @@
-<label remark='remark' id='remark_<?php echo e($dno); ?>' title='<?php echo e($note); ?>}'><?php echo e($note); ?></label><a href='javascript:void(0);' csremark='csremark'
-    dno='<?php echo e($dno); ?>'><i class='fa fa-edit'></i></a>
