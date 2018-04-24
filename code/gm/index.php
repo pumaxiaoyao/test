@@ -1,4 +1,5 @@
 <?php
+error_reporting(~E_ALL);
 define('PUBLIC_PATH', __DIR__);
 require PUBLIC_PATH.'/app/Core/bootstrap.php';
 require PUBLIC_PATH.'/app/Libs/Utilities.php';

@@ -75,6 +75,7 @@ class PlayerFundViewHelper extends BaseViewHelper
             $name = $role["name"];
             $agentAccount = $role["agentAccount"];
             $roleId = $role["roleId"];
+            $amount = $role["amount"];
             
             // 构建DNO单号选择格子Html
             $dnoCell = self::makeDnoCheckHtml(["dno" => $dno]);
